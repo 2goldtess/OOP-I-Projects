@@ -1,0 +1,10 @@
+ -----------------------------------------------------------------------------------
+|   TRACKING # |        TYPE | SPECIFICATION |        CLASS |    WEIGHT |    VOLUME |
+ -----------------------------------------------------------------------------------
+|         632VR|       Letter|            n/a|   first-class|       1.55|          6|
+|         87DDD|       Packet|        Fragile|        Ground|      55.00|         24|
+|         99KLK|       Letter|        Fragile|        Ground|      55.00|         23|
+|         88888|       Letter|            n/a|   first-class|       1.55|         33|
+|         88889|       Letter|            n/a|        ground|      20.60|        100|
+|         12344|     Envelope|    Do-not-Bend|   First-Class|      22.50|         80|
+|         FFFFP|     Envelope|    do-not-bend|   first-class|      10.00|         10|
