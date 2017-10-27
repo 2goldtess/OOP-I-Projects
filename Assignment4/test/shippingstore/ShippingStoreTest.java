@@ -4,7 +4,6 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
-import java.util.InputMismatchException;
 
 import static org.junit.Assert.*;
 
@@ -78,6 +77,9 @@ public class ShippingStoreTest {
 //        shippingStore.addOrder("11111", "Postcard", "Do-not-Bend", "Metro", "0.3", "");
 //
 //    }
+
+   // @TODO: CONTINUE HERE
+    // look into why invalid input for integer value isn't causing an exception
 //
 //    @Test
 //    public void removeOrder() throws Exception {
