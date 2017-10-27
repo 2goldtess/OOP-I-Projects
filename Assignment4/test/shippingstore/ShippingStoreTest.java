@@ -15,16 +15,17 @@ public class ShippingStoreTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @Before
-    public void createEnvironment() throws Exception {
+    @BeforeClass
+    public static void createEnvironment() throws Exception {
         shippingStore = new ShippingStore();
-        packageOrder = new PackageOrder("11111", "Postcard", "Do-not-Bend", "Metro", 0.3f, 2);
+        packageOrder = new PackageOrder("12345", "Postcard", "Do-not-Bend",
+                                        "Metro", 0.3f, 2);
 
         System.out.println("Set Up Environment");
     }
 
-    @After
-    public void clearEnvironment() throws Exception{
+    @AfterClass
+    public static void clearEnvironment() throws Exception{
         shippingStore = null;
         packageOrder = null;
 
@@ -57,30 +58,29 @@ public class ShippingStoreTest {
     @Test
     public void testAddOrderWithInvalidPackageInformation() throws Exception {
         // invalid tracking number
-        shippingStore.addOrder("1111", "Postcard", "Do-not-Bend", "Metro", "0.3", "2");
+        shippingStore.addOrder("1234", "Postcard", "Do-not-Bend", "Metro",
+                               "0.3", "2");
         // invalid type
-        shippingStore.addOrder("11111", "Postard", "Do-not-Bend", "Metro", "0.3", "2");
+        shippingStore.addOrder("12345", "Postard", "Do-not-Bend", "Metro",
+                               "0.3", "2");
     }
 
     @Test
     public void testForNumberFormatExceptionWhenAddingOrderWeight() throws Exception {
         try {
-            shippingStore.addOrder("11111", "Postcard", "Do-not-Bend", "Metro", "CAUSE FAILURE", "2");
+            shippingStore.addOrder("12345", "Postcard", "Do-not-Bend",
+                                   "Metro", "CAUSE FAILURE", "2");
             fail("Should've thrown a \'Number Format Exception!\'");
 
         } catch (NumberFormatException expected) { }
     }
 
-//    @Test
-//    public void testFor() throws Exception {
-//        // WRRONG thrown.expect(InputMismatchException.class);
-//        shippingStore.addOrder("11111", "Postcard", "Do-not-Bend", "Metro", "0.3", "");
-//
-//    }
+    @Test
+    public void testAddOrderWithValidPackageInformation() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                               "0.3", "2");
+    }
 
-   // @TODO: CONTINUE HERE
-    // look into why invalid input for integer value isn't causing an exception
-//
 //    @Test
 //    public void removeOrder() throws Exception {
 //    }
