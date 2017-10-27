@@ -35,7 +35,7 @@
       <file leaf-file-name="ShippingStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-271">
+            <state relative-caret-position="-289">
               <caret line="199" column="9" lean-forward="true" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
               <folding />
             </state>
@@ -45,8 +45,8 @@
       <file leaf-file-name="ShippingStoreTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+            <state relative-caret-position="973">
+              <caret line="74" column="3" lean-forward="false" selection-start-line="74" selection-start-column="3" selection-end-line="79" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -374,34 +374,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 33m 11s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 51m 25s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 33m 39s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 51m 32s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 34m 09s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 51m 54s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 34m 22s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 52m 23s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 35m 15s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 53m 13s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 35m 27s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 53m 33s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 35m 35s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 53m 53s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 35m 59s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 54m 13s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 36m 17s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 54m 25s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 37m 38s.xml">
+    <history-entry file="ShippingStoreTest - 2017.10.26 at 22h 55m 36s.xml">
       <configuration name="ShippingStoreTest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -513,7 +513,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
+        <state relative-caret-position="-289">
           <caret line="199" column="9" lean-forward="true" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
           <folding />
         </state>
@@ -521,8 +521,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="59" column="9" lean-forward="false" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
+        <state relative-caret-position="973">
+          <caret line="74" column="3" lean-forward="false" selection-start-line="74" selection-start-column="3" selection-end-line="79" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,12 +1,10 @@
 package shippingstore;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
+import java.util.InputMismatchException;
 
 import static org.junit.Assert.*;
 
@@ -18,16 +16,16 @@ public class ShippingStoreTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @BeforeClass
-    public static void createEnvironment() throws Exception {
+    @Before
+    public void createEnvironment() throws Exception {
         shippingStore = new ShippingStore();
         packageOrder = new PackageOrder("11111", "Postcard", "Do-not-Bend", "Metro", 0.3f, 2);
 
         System.out.println("Set Up Environment");
     }
 
-    @AfterClass
-    public  static void clearEnvironment() throws Exception{
+    @After
+    public void clearEnvironment() throws Exception{
         shippingStore = null;
         packageOrder = null;
 
@@ -66,13 +64,20 @@ public class ShippingStoreTest {
     }
 
     @Test
-    public void testForNumberFormatExceptionWhenAddingOrder() throws Exception {
+    public void testForNumberFormatExceptionWhenAddingOrderWeight() throws Exception {
         try {
             shippingStore.addOrder("11111", "Postcard", "Do-not-Bend", "Metro", "CAUSE FAILURE", "2");
-            fail("Should've thrown an exception!");
+            fail("Should've thrown a \'Number Format Exception!\'");
 
         } catch (NumberFormatException expected) { }
     }
+
+//    @Test
+//    public void testFor() throws Exception {
+//        // WRRONG thrown.expect(InputMismatchException.class);
+//        shippingStore.addOrder("11111", "Postcard", "Do-not-Bend", "Metro", "0.3", "");
+//
+//    }
 //
 //    @Test
 //    public void removeOrder() throws Exception {
