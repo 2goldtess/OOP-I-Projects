@@ -4,32 +4,35 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class ShippingStoreTest {
 
-    private static ShippingStore shippingStore = null;
-    private static PackageOrder packageOrder = null;
+    private ShippingStore shippingStore;
+    private PackageOrder packageOrder;
+    private ArrayList<PackageOrder> packageOrderList;
+
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    @BeforeClass
-    public static void createEnvironment() throws Exception {
+    @Before
+    public  void createEnvironment() throws Exception {
         shippingStore = new ShippingStore();
         packageOrder = new PackageOrder("12345", "Postcard", "Do-not-Bend",
                                         "Metro", 0.3f, 2);
 
-        System.out.println("Set Up Environment");
+        //System.out.println("Set Up Environment");
     }
 
-    @AfterClass
-    public static void clearEnvironment() throws Exception{
+    @After
+    public void clearEnvironment() throws Exception{
         shippingStore = null;
         packageOrder = null;
 
-        System.out.println("Cleared Environment");
+        //System.out.println("Cleared Environment");
 
     }
 
@@ -39,12 +42,21 @@ public class ShippingStoreTest {
                      shippingStore.getDataFile());
     }
 
-//    @Test
-//    public void showPackageOrders() throws Exception {
-//    }
+    @Test
+    public void testShowPackageOrdersWhenListIsNotEmpty() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                               "0.3", "2");
+        shippingStore.showPackageOrders();
+    }
+
+    @Test
+    public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
+        shippingStore.showPackageOrders();
+    }
 //
 //    @Test
 //    public void showPackageOrdersRange() throws Exception {
+
 //    }
 //
 //    @Test
@@ -81,17 +93,31 @@ public class ShippingStoreTest {
                                "0.3", "2");
     }
 
-//    @Test
-//    public void removeOrder() throws Exception {
-//    }
-//
-//    @Test
-//    public void getPackageOrder() throws Exception {
-//    }
-//
-//    @Test
-//    public void read() throws Exception {
-//    }
+    @Test
+    public void testRemoveOrderThatExists() throws Exception {
+        shippingStore.addOrder("23456", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+        shippingStore.removeOrder("23456");
+    }
+
+    @Test
+    public void testRemoveOrderThatDoestNotExists() throws Exception {
+        shippingStore.removeOrder("00000");
+    }
+
+    @Test
+    public void testGetPackageOrderWithValidIndexValue() throws Exception {
+        shippingStore.addOrder("23456", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        String packageReturned = shippingStore.getPackageOrder(0).getTrackingNumber();
+        assertEquals( "0 index must return first package in the list","23456", packageReturned);
+    }
+
+    @Test
+    public void read() throws Exception {
+        
+    }
 //
 //    @Test
 //    public void flush() throws Exception {
