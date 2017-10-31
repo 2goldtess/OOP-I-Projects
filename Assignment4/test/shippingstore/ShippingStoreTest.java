@@ -51,18 +51,25 @@ public class ShippingStoreTest {
         shippingStore.showPackageOrders();
     }
 
+//    @Test
+//    public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
+//        shippingStore.showPackageOrders();
+//    }
+
+
     @Test
     public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
+        OutputStream os= new ByteArrayOutputStream();
+        PrintStream ps= new PrintStream(os);
+        System.setOut(ps);
         shippingStore.showPackageOrders();
-    }
-
-    //TODO when emmpt shippingStore.getTracking
-    // assert Null
-//
-
-    @Test
-    public void testAccessingPackageWhenListIsEmpty() throws Exception {
-        
+        String separator = System.getProperty("line.separator");
+        String expectedOutput = " -------------------------------------------------------------------------- " + separator +
+                                "| Tracking # | Type    | Specification | Class       | Weight(oz) | Volume |" + separator +
+                                " -------------------------------------------------------------------------- " + separator +
+                                " --------------------------------------------------------------------------" + separator + separator;
+        ;
+        assertEquals(expectedOutput, os.toString());
     }
 
 
