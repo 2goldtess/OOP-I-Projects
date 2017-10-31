@@ -43,18 +43,27 @@ public class ShippingStoreTest {
         assertEquals("File reference must be \'PackageOrderDB.txt\'", new File("PackageOrderDB.txt"),
                      shippingStore.getDataFile());
     }
+    
 
     @Test
     public void testShowPackageOrdersWhenListIsNotEmpty() throws Exception {
         shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
                                "0.3", "2");
-        shippingStore.showPackageOrders();
-    }
 
-//    @Test
-//    public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
-//        shippingStore.showPackageOrders();
-//    }
+        OutputStream os= new ByteArrayOutputStream();
+        PrintStream ps= new PrintStream(os);
+        System.setOut(ps);
+        shippingStore.showPackageOrders();
+        String separator = System.getProperty("line.separator");
+        String expectedOutput = " -------------------------------------------------------------------------- " + separator +
+                                "| Tracking # | Type    | Specification | Class       | Weight(oz) | Volume |" + separator +
+                                " -------------------------------------------------------------------------- " + separator +
+                                "| 56789      | Postcard| Do-not-Bend   | Metro       | 0.30       | 2      |" + separator +
+                                " --------------------------------------------------------------------------" + separator
+                                                                                                              + separator;
+        assertEquals(expectedOutput, os.toString());
+
+    }
 
 
     @Test
@@ -67,8 +76,8 @@ public class ShippingStoreTest {
         String expectedOutput = " -------------------------------------------------------------------------- " + separator +
                                 "| Tracking # | Type    | Specification | Class       | Weight(oz) | Volume |" + separator +
                                 " -------------------------------------------------------------------------- " + separator +
-                                " --------------------------------------------------------------------------" + separator + separator;
-        ;
+                                " --------------------------------------------------------------------------" + separator
+                                                                                                              + separator;
         assertEquals(expectedOutput, os.toString());
     }
 
