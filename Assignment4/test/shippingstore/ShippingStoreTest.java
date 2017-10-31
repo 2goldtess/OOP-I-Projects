@@ -4,6 +4,7 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 import java.io.*;
+import java.nio.channels.Channels;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -115,6 +116,12 @@ public class ShippingStoreTest {
         assertEquals( "0 index must return first package in the list","23456", packageReturned);
     }
 
+    @Test (expected = FileNotFoundException.class)
+    public void testReadWithFileThatDoesNotExist() throws Exception {
+        FileReader dataReader = new FileReader("fileDoesNotExist.txt");
+        shippingStore.read(dataReader);
+    }
+
     @Test
     public void testReadWithValidInputString() throws Exception {
 
@@ -124,13 +131,14 @@ public class ShippingStoreTest {
         shippingStore.read(input);
 
         // if read method was successful then the package should have been added to the packageOrderList
-        // to check is that is the case, just call showPackages to see if the order is in the list
+        // to check is that is the case, call showPackages to see if the order is in the list
         shippingStore.showPackageOrders();
     }
 
     @Test (expected = NumberFormatException.class)
     public void  testReadWithInvalidInputToForceAnException() throws Exception {
-        String data = "This string does-not-contain float or int values to parse";
+        String data = "This string does-not-contain float or int values to parse or data with right amount of space" +
+                       "    between      each          substring" ;
         Reader input = new StringReader(data);
 
         shippingStore.read(input);
@@ -143,9 +151,11 @@ public class ShippingStoreTest {
 
         shippingStore.read(input);
     }
-//
-//    @Test
-//    public void flush() throws Exception {
-//    }
 
+    @Test (expected = IOException.class)
+    public void testFlush() throws Exception {
+        RandomAccessFile raFile = new RandomAccessFile("raFileTest.txt", "r");
+        OutputStreamWriter writer = new OutputStreamWriter(Channels.newOutputStream(raFile.getChannel()));
+        shippingStore.flush(writer);
+    }
 }
