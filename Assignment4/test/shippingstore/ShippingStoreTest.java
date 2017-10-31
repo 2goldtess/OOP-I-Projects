@@ -26,7 +26,7 @@ public class ShippingStoreTest {
                                         "Metro", 0.3f, 2);
         packageOrderList = new ArrayList<>();
 
-        //System.out.println("Set Up Environment");
+        System.out.println("Set Up Environment");
     }
 
     @After
@@ -34,8 +34,7 @@ public class ShippingStoreTest {
         shippingStore = null;
         packageOrder = null;
 
-        //System.out.println("Cleared Environment");
-
+        System.out.println("Cleared Environment");
     }
 
     @Test
@@ -43,15 +42,15 @@ public class ShippingStoreTest {
         assertEquals("File reference must be \'PackageOrderDB.txt\'", new File("PackageOrderDB.txt"),
                      shippingStore.getDataFile());
     }
-    
+
 
     @Test
     public void testShowPackageOrdersWhenListIsNotEmpty() throws Exception {
         shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
                                "0.3", "2");
 
-        OutputStream os= new ByteArrayOutputStream();
-        PrintStream ps= new PrintStream(os);
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
         System.setOut(ps);
         shippingStore.showPackageOrders();
         String separator = System.getProperty("line.separator");
@@ -62,14 +61,13 @@ public class ShippingStoreTest {
                                 " --------------------------------------------------------------------------" + separator
                                                                                                               + separator;
         assertEquals(expectedOutput, os.toString());
-
     }
 
 
     @Test
     public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
-        OutputStream os= new ByteArrayOutputStream();
-        PrintStream ps= new PrintStream(os);
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
         System.setOut(ps);
         shippingStore.showPackageOrders();
         String separator = System.getProperty("line.separator");
