@@ -65,10 +65,14 @@ public class ShippingStoreTest {
 //    public void findPackageOrder() throws Exception {
 //    }
 //
-//    @Test
-//    public void searchPackageOrder() throws Exception {
-//    }
-//
+    @Test
+    public void testSearchPackageOrderWhenPackageDoestNotExistsInList() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        shippingStore.searchPackageOrder("11111");
+    }
+
     @Test
     public void testAddOrderWithInvalidPackageInformation() throws Exception {
         // invalid tracking number
