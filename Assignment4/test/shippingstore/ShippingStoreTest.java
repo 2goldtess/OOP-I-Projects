@@ -3,7 +3,7 @@ package shippingstore;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -23,6 +23,7 @@ public class ShippingStoreTest {
         shippingStore = new ShippingStore();
         packageOrder = new PackageOrder("12345", "Postcard", "Do-not-Bend",
                                         "Metro", 0.3f, 2);
+        packageOrderList = new ArrayList<>();
 
         //System.out.println("Set Up Environment");
     }
@@ -115,8 +116,32 @@ public class ShippingStoreTest {
     }
 
     @Test
-    public void read() throws Exception {
-        
+    public void testReadWithValidInputString() throws Exception {
+
+        String data = "88888 Postcard Do-Not-Bend Metro 0.8 8";
+        Reader input = new StringReader(data);
+
+        shippingStore.read(input);
+
+        // if read method was successful then the package should have been added to the packageOrderList
+        // to check is that is the case, just call showPackages to see if the order is in the list
+        shippingStore.showPackageOrders();
+    }
+
+    @Test (expected = NumberFormatException.class)
+    public void  testReadWithInvalidInputToForceAnException() throws Exception {
+        String data = "This string does-not-contain float or int values to parse";
+        Reader input = new StringReader(data);
+
+        shippingStore.read(input);
+    }
+
+    @Test (expected = ArrayIndexOutOfBoundsException.class)
+    public void testReadWithInsufficientAmountStringsToBeParsedByArray() throws Exception {
+        String data = "Not enough";
+        Reader input = new StringReader(data);
+
+        shippingStore.read(input);
     }
 //
 //    @Test
