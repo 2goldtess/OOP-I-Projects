@@ -55,22 +55,74 @@ public class ShippingStoreTest {
     public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
         shippingStore.showPackageOrders();
     }
-//
-//    @Test
-//    public void showPackageOrdersRange() throws Exception {
 
-//    }
+    //TODO when emmpt shippingStore.getTracking
+    // assert Null
 //
-//    @Test
-//    public void findPackageOrder() throws Exception {
-//    }
-//
+
     @Test
-    public void testSearchPackageOrderWhenPackageDoestNotExistsInList() throws Exception {
+    public void testAccessingPackageWhenListIsEmpty() throws Exception {
+        
+    }
+
+
+    @Test
+    public void testShowPackageOrdersRangeWhenPackagesExistInSpecifiedRange() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        shippingStore.addOrder("67890", "Postcard", "Do-not-Bend", "Metro",
+                "10", "2");
+
+        shippingStore.showPackageOrdersRange(0, 10);
+    }
+
+    @Test
+    public void testShowPackageOrdersRangeWhenPackagesDoesNotExistInSpecifiedRange() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        shippingStore.addOrder("67890", "Postcard", "Do-not-Bend", "Metro",
+                "10", "2");
+
+        shippingStore.showPackageOrdersRange(11, 100);
+    }
+
+    @Test
+    public void tesFindPackageOrderWhenOrderExists() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        shippingStore.addOrder("67890", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        int results = shippingStore.findPackageOrder("67890");
+        assertEquals(1, results);
+    }
+
+    @Test
+    public void tesFindPackageOrderWhenOrderDoestNotExists() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        int results = shippingStore.findPackageOrder("00000");
+        assertEquals(-1, results);
+    }
+
+    @Test
+    public void testSearchPackageOrderWhenPackageDoesNotExistsInList() throws Exception {
         shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
                 "0.3", "2");
 
         shippingStore.searchPackageOrder("11111");
+    }
+
+    @Test
+    public void testSearchPackageOrderWhenPackageExistsInList() throws Exception {
+        shippingStore.addOrder("56789", "Postcard", "Do-not-Bend", "Metro",
+                "0.3", "2");
+
+        shippingStore.searchPackageOrder("56789");
     }
 
     @Test
