@@ -5,7 +5,6 @@ import org.junit.rules.ExpectedException;
 
 import java.io.*;
 import java.nio.channels.Channels;
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -13,19 +12,21 @@ public class ShippingStoreTest {
 
     private ShippingStore shippingStore;
     private PackageOrder packageOrder;
-    private ArrayList<PackageOrder> packageOrderList;
     String separator = System.getProperty("line.separator");
     String expectedOutput;
+    String expectedInput;
     final String expectedHeader =  " -------------------------------------------------------------------------- " + separator +
                                    "| Tracking # | Type    | Specification | Class       | Weight(oz) | Volume |" + separator +
                                    " -------------------------------------------------------------------------- " + separator;
     final String expectedFooter =  " --------------------------------------------------------------------------" + separator + separator;
 
-    //TODO check test constructor
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    /**
+     * This method instantiates all the necessary member objects used in the test methods before each test method is ran
+     * @throws Exception
+     */
     @Before
     public  void createEnvironment() throws Exception {
         shippingStore = new ShippingStore();
@@ -36,15 +37,25 @@ public class ShippingStoreTest {
         System.out.println("Set Up Environment");
     }
 
+
+    /**
+     * This method sets all the member object used with the class back to null after each test method has been
+     * executed
+     * @throws Exception
+     */
     @After
     public void clearEnvironment() throws Exception{
         shippingStore = null;
         packageOrder = null;
         expectedOutput = null;
-
-        System.out.println("Cleared Environment");
+        expectedInput = null;
     }
 
+
+    /**
+     * This method tests that the getDataFile method returns the expected File object
+     * @throws Exception
+     */
     @Test
     public void testGetDataFile() throws Exception {
         assertEquals("File reference must be \'PackageOrderDB.txt\'", new File("PackageOrderDB.txt"),
@@ -52,6 +63,10 @@ public class ShippingStoreTest {
     }
 
 
+    /**
+     * This method tests that the showPackageOrder method returns the expected output when the list is not empty
+     * @throws Exception
+     */
     @Test
     public void testShowPackageOrdersWhenListIsNotEmpty() throws Exception {
         OutputStream os = new ByteArrayOutputStream();
@@ -71,6 +86,10 @@ public class ShippingStoreTest {
     }
 
 
+    /**
+     * This method tests that the showPackageOrder method returns the expected output when the list is empty
+     * @throws Exception
+     */
     @Test
     public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
         shippingStore.removeOrder("56789");
@@ -83,6 +102,11 @@ public class ShippingStoreTest {
     }
 
 
+    /**
+     * This method tests the showPackageOrdersRange method that the expected output is printed to the console when
+     * there are packages fitting the range provided
+     * @throws Exception
+     */
     @Test
     public void testShowPackageOrdersRangeWhenPackagesExistInSpecifiedRange() throws Exception {
         shippingStore.addOrder("18888", "Postcard", "Do-not-Bend", "Metro",
@@ -102,6 +126,12 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests that the showPackageOrdersRange expected output is printed to the console when there are not
+     * packages fitting the range provided
+     * @throws Exception
+     */
     @Test
     public void testShowPackageOrdersRangeWhenPackagesDoesNotExistInSpecifiedRange() throws Exception {
         OutputStream os = new ByteArrayOutputStream();
@@ -113,6 +143,11 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests that the findPackageOrder method returns the expected value when the package exist in database
+     * @throws Exception
+     */
     @Test
     public void tesFindPackageOrderWhenOrderExists() throws Exception {
         shippingStore.addOrder("12345", "Postcard", "Do-not-Bend", "Metro",
@@ -125,12 +160,24 @@ public class ShippingStoreTest {
         assertEquals(2, results);
     }
 
+
+    /**
+     * This method tests that the findPackageOrder method returns the expected value when the package does not exist in
+     * the database
+     * @throws Exception
+     */
     @Test
     public void tesFindPackageOrderWhenOrderDoestNotExists() throws Exception {
         int results = shippingStore.findPackageOrder("00000");
         assertEquals(-1, results);
     }
 
+
+    /**
+     * This method tests the searchPackageOrder method for the specified output when the package exists is not in
+     * the database
+     * @throws Exception
+     */
     @Test
     public void testSearchPackageOrderWhenPackageDoesNotExistsInList() throws Exception {
         OutputStream os = new ByteArrayOutputStream();
@@ -143,6 +190,11 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests the searchPackageOrder method for the specified output when the package exists in the database
+     * @throws Exception
+     */
     @Test
     public void testSearchPackageOrderWhenPackageExistsInList() throws Exception {
 
@@ -166,6 +218,12 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests the addOrder method for the specified console output when an invalid tracking number is given
+     * for the tracking number field
+     * @throws Exception
+     */
     @Test
     public void testAddOrderWithInvalidTrackingNumberForPackageInformation() throws Exception {
 
@@ -183,6 +241,13 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
 
     }
+
+
+    /**
+     * This method tests the addOrder method for the specified console output when an invalid type is given for the
+     * type field
+     * @throws Exception
+     */
     @Test
     public void testAddOrderWithInvalidTypeForPackageInformation() throws Exception {
 
@@ -200,6 +265,12 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests the addOrder method for a NumberFormatException when invalid information is provided for the
+     * weight field
+     * @throws Exception
+     */
     @Test
     public void testForNumberFormatExceptionWhenAddingOrderWeight() throws Exception {
         try {
@@ -210,6 +281,12 @@ public class ShippingStoreTest {
         } catch (NumberFormatException expected) { }
     }
 
+
+    /**
+     * This method tests the addOrder method. It checks that the specified console output is return when there's an
+     * attempt to add an order with valid information
+     * @throws Exception
+     */
     @Test
     public void testAddOrderWithValidPackageInformation() throws Exception {
         OutputStream os = new ByteArrayOutputStream();
@@ -224,6 +301,11 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method test that an order is removed if it existed in the database
+     * @throws Exception
+     */
     @Test
     public void testRemoveOrderThatExists() throws Exception {
         OutputStream os = new ByteArrayOutputStream();
@@ -237,6 +319,12 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests that the specified console output is return when there's an attempt to remove an order that
+     * does not exist in the database
+     * @throws Exception
+     */
     @Test
     public void testRemoveOrderThatDoestNotExists() throws Exception {
 
@@ -250,6 +338,11 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests that a package object is returned when a valid index is provided
+     * @throws Exception
+     */
     @Test
     public void testGetPackageOrderWithValidIndexValue() throws Exception {
 
@@ -257,12 +350,42 @@ public class ShippingStoreTest {
         assertEquals( "0 index must return first package in the list","56789", packageReturned);
     }
 
+
+    /**
+     * This method tests the getPackageOrder method. It checks that a null object is returned when an invalid index is
+     * provided. It also does a comparison for the expected output the function should console out
+     * @throws Exception
+     */
+    @Test
+    public void testGetPackageOrderWithInvalidIndexValue() throws Exception {
+
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        System.setOut(ps);
+
+        PackageOrder packageOrder = shippingStore.getPackageOrder(-1);
+        assertNull( "1 is not a valid index", packageOrder);
+
+        expectedOutput = "Invalid Index. Please enter another command or 'h' to list the commands." + separator;
+        assertEquals(expectedOutput, os.toString());
+    }
+
+
+    /**
+     * This method read function throws the expected exception when file does not exists
+     * @throws Exception (FileNotFoundException)
+     */
     @Test (expected = FileNotFoundException.class)
     public void testReadWithFileThatDoesNotExist() throws Exception {
         FileReader dataReader = new FileReader("fileDoesNotExist.txt");
         shippingStore.read(dataReader);
     }
 
+
+    /**
+     * This method tests that read method operates as expected and is successfully when valid input is provided
+     * @throws Exception
+     */
     @Test
     public void testReadWithValidInputString() throws Exception {
 
@@ -300,6 +423,13 @@ public class ShippingStoreTest {
         assertEquals(expectedOutput, os.toString());
     }
 
+
+    /**
+     * This method tests for expected exception 'NumberFormatException' is thrown when the substrings that should be
+     * containing digits do not contain any. The expected exception is thrown when ParseInt or ParseFloat attempts to
+     * parse the string and there is not digits to return
+     * @throws Exception (NumberFormatException)
+     */
     @Test (expected = NumberFormatException.class)
     public void  testReadWithInvalidInputToForceAnException() throws Exception {
         String data = "This string does-not-contain float or int values to parse or data with right amount of space" +
@@ -309,6 +439,13 @@ public class ShippingStoreTest {
         shippingStore.read(input);
     }
 
+
+    /**
+     * This method tests the read method when the user enters insufficient amount of information required. In this case
+     * if the user enters less than 5 substrings in a single line, the expected exception 'ArrayOutOfBoundsException' is
+     * thrown.
+     * @throws Exception (ArrayIndexOutOfBoundsException)
+     */
     @Test (expected = ArrayIndexOutOfBoundsException.class)
     public void testReadWithInsufficientAmountStringsToBeParsedByArray() throws Exception {
         String data = "Not enough";
@@ -317,14 +454,31 @@ public class ShippingStoreTest {
         shippingStore.read(input);
     }
 
+
     /**
-     * This
-     * @throws Exception
+     * This method tests the flush method using a read only file. In this case the method should thrown an exception
+     * because the file cannot be accessed
+     * @throws Exception (IOException)
      */
     @Test (expected = IOException.class)
-    public void testFlush() throws Exception {
+    public void testFlushWithFileInReadModeOnly() throws Exception {
         RandomAccessFile raFile = new RandomAccessFile("raFileTest.txt", "r");
         OutputStreamWriter writer = new OutputStreamWriter(Channels.newOutputStream(raFile.getChannel()));
         shippingStore.flush(writer);
+    }
+
+
+    /**
+     * This method tests the flush method to ensure that packages are being stored in the correct way
+     * @throws Exception
+     */
+    @Test
+    public void testFlush()  throws  Exception{
+        StringWriter output = new StringWriter();
+        shippingStore.flush(output);
+
+        String string = new String(output.toString());
+        expectedInput = "56789 Postcard Do-not-Bend Metro 0.30 2" + separator;
+        assertEquals(expectedOutput, string);
     }
 }
