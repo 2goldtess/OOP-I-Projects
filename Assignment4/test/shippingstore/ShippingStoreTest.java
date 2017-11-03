@@ -49,6 +49,8 @@ public class ShippingStoreTest {
         packageOrder = null;
         expectedOutput = null;
         expectedInput = null;
+
+        System.out.println("Cleared Environment");
     }
 
 
@@ -69,6 +71,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testShowPackageOrdersWhenListIsNotEmpty() throws Exception {
+        PrintStream originalOut = System.out;
+
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
@@ -83,6 +87,8 @@ public class ShippingStoreTest {
                           Integer.toString(packageOrder.getVolume())) + separator;
         expectedOutput += expectedFooter;
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -92,6 +98,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testShowPackageOrdersWhenListIsEmpty() throws Exception {
+        PrintStream originalOut = System.out;
+
         shippingStore.removeOrder("56789");
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -99,6 +107,8 @@ public class ShippingStoreTest {
         shippingStore.showPackageOrders();
         expectedOutput = expectedHeader + expectedFooter;
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -109,6 +119,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testShowPackageOrdersRangeWhenPackagesExistInSpecifiedRange() throws Exception {
+        PrintStream originalOut = System.out;
+
         shippingStore.addOrder("18888", "Postcard", "Do-not-Bend", "Metro",
                 "0.5", "2");
 
@@ -124,6 +136,8 @@ public class ShippingStoreTest {
                            "| 67890      | Postcard| Do-not-Bend   | Metro       | 10.00      | 2      |" + separator;
         expectedOutput += expectedFooter;
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -134,6 +148,9 @@ public class ShippingStoreTest {
      */
     @Test
     public void testShowPackageOrdersRangeWhenPackagesDoesNotExistInSpecifiedRange() throws Exception {
+
+        PrintStream originalOut = System.out;
+
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
@@ -141,6 +158,8 @@ public class ShippingStoreTest {
         expectedOutput = "No packages found with weight within the given range.\n" + separator;
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -150,14 +169,17 @@ public class ShippingStoreTest {
      */
     @Test
     public void tesFindPackageOrderWhenOrderExists() throws Exception {
+        PrintStream originalOut = System.out;
+
         shippingStore.addOrder("12345", "Postcard", "Do-not-Bend", "Metro",
                 "0.3", "2");
-
         shippingStore.addOrder("67890", "Postcard", "Do-not-Bend", "Metro",
                 "0.3", "2");
 
         int results = shippingStore.findPackageOrder("67890");
         assertEquals(2, results);
+
+        System.setOut(originalOut);
     }
 
 
@@ -168,6 +190,7 @@ public class ShippingStoreTest {
      */
     @Test
     public void tesFindPackageOrderWhenOrderDoestNotExists() throws Exception {
+
         int results = shippingStore.findPackageOrder("00000");
         assertEquals(-1, results);
     }
@@ -180,6 +203,9 @@ public class ShippingStoreTest {
      */
     @Test
     public void testSearchPackageOrderWhenPackageDoesNotExistsInList() throws Exception {
+
+        PrintStream originalOut = System.out;
+
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
@@ -188,6 +214,8 @@ public class ShippingStoreTest {
 
         shippingStore.searchPackageOrder("11111");
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -197,6 +225,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testSearchPackageOrderWhenPackageExistsInList() throws Exception {
+
+        PrintStream originalOut = System.out;
 
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -216,6 +246,8 @@ public class ShippingStoreTest {
         shippingStore.searchPackageOrder("56789");
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -226,6 +258,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testAddOrderWithInvalidTrackingNumberForPackageInformation() throws Exception {
+
+        PrintStream originalOut = System.out;
 
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -240,6 +274,7 @@ public class ShippingStoreTest {
 
         assertEquals(expectedOutput, os.toString());
 
+        System.setOut(originalOut);
     }
 
 
@@ -250,6 +285,7 @@ public class ShippingStoreTest {
      */
     @Test
     public void testAddOrderWithInvalidTypeForPackageInformation() throws Exception {
+        PrintStream originalOut = System.out;
 
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -263,6 +299,8 @@ public class ShippingStoreTest {
                 "Postcard, Letter, Envelope, Packet, Box, Crate, Drum, Roll, Tube." + separator;
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -289,6 +327,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testAddOrderWithValidPackageInformation() throws Exception {
+        PrintStream originalOut = System.out;
+
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
@@ -299,6 +339,8 @@ public class ShippingStoreTest {
         expectedOutput = "Package Order has been added.\n" + separator;
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -308,6 +350,8 @@ public class ShippingStoreTest {
      */
     @Test
     public void testRemoveOrderThatExists() throws Exception {
+        PrintStream originalOut = System.out;
+
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
@@ -317,6 +361,8 @@ public class ShippingStoreTest {
         expectedOutput = "\nAction successful. Package order has been removed from the database.\n" + separator;
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -327,6 +373,7 @@ public class ShippingStoreTest {
      */
     @Test
     public void testRemoveOrderThatDoestNotExists() throws Exception {
+        PrintStream originalOut = System.out;
 
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -336,6 +383,8 @@ public class ShippingStoreTest {
         shippingStore.removeOrder("00000");
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -358,6 +407,7 @@ public class ShippingStoreTest {
      */
     @Test
     public void testGetPackageOrderWithInvalidIndexValue() throws Exception {
+        PrintStream originalOut = System.out;
 
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -368,6 +418,8 @@ public class ShippingStoreTest {
 
         expectedOutput = "Invalid Index. Please enter another command or 'h' to list the commands." + separator;
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -388,6 +440,7 @@ public class ShippingStoreTest {
      */
     @Test
     public void testReadWithValidInputString() throws Exception {
+        PrintStream originalOut = System.out;
 
         String data = "88888 Postcard Do-Not-Bend Metro 0.8 8";
         Reader input = new StringReader(data);
@@ -421,6 +474,8 @@ public class ShippingStoreTest {
         shippingStore.showPackageOrders();
 
         assertEquals(expectedOutput, os.toString());
+
+        System.setOut(originalOut);
     }
 
 
@@ -479,6 +534,6 @@ public class ShippingStoreTest {
 
         String string = new String(output.toString());
         expectedInput = "56789 Postcard Do-not-Bend Metro 0.30 2" + separator;
-        assertEquals(expectedOutput, string);
+        assertEquals(expectedInput, string);
     }
 }

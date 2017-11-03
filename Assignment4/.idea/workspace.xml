@@ -35,18 +35,18 @@
       <file leaf-file-name="ShippingStore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1734">
+            <state relative-caret-position="-4595">
               <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShippingStoreTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ShippingStoreTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="-8447">
+              <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,11 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShippingStoreTestRunner.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShippingStoreTestRunner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTestRunner.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,6 +137,11 @@
             <path>
               <item name="Assignment4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assignment4" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Assignment4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -200,7 +205,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue">
+  <component name="RunManager" selected="JUnit.ShippingStoreTest">
     <configuration name="ShippingStoreTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -410,11 +415,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest.testFlush" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.ShippingStoreTestRunner" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest.testShowPackageOrdersWhenListIsNotEmpty" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.ShippingStoreTestRunner" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest.testFlush" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" />
       </list>
     </recent_temporary>
   </component>
@@ -437,35 +442,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 14m 33s.xml">
+    <history-entry file="ShippingStoreTest - 2017.11.02 at 19h 57m 02s.xml">
+      <configuration name="ShippingStoreTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest - 2017.11.02 at 20h 06m 13s.xml">
+      <configuration name="ShippingStoreTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest_testFlush - 2017.11.02 at 19h 55m 24s.xml">
+      <configuration name="ShippingStoreTest.testFlush" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest_testFlush - 2017.11.02 at 19h 56m 15s.xml">
+      <configuration name="ShippingStoreTest.testFlush" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest_testFlush - 2017.11.02 at 19h 56m 27s.xml">
+      <configuration name="ShippingStoreTest.testFlush" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest_testFlush - 2017.11.02 at 19h 56m 47s.xml">
+      <configuration name="ShippingStoreTest.testFlush" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 55m 57s.xml">
       <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 15m 02s.xml">
+    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 56m 11s.xml">
       <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 15m 41s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
+    <history-entry file="ShippingStoreTest_testShowPackageOrdersWhenListIsNotEmpty - 2017.11.02 at 20h 00m 03s.xml">
+      <configuration name="ShippingStoreTest.testShowPackageOrdersWhenListIsNotEmpty" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 16m 05s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 16m 22s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 17m 07s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 17m 37s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 17m 51s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 18m 53s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ShippingStoreTest_testGetPackageOrderWithInvalidIndexValue - 2017.11.02 at 19h 19m 19s.xml">
-      <configuration name="ShippingStoreTest.testGetPackageOrderWithInvalidIndexValue" configurationId="JUnit" />
+    <history-entry file="ShippingStoreTest_testShowPackageOrdersWhenListIsNotEmpty - 2017.11.02 at 20h 03m 45s.xml">
+      <configuration name="ShippingStoreTest.testShowPackageOrdersWhenListIsNotEmpty" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -480,7 +485,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23596674" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4261954" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -533,7 +538,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -808,9 +813,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTestRunner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1734">
+        <state relative-caret-position="-4595">
           <caret line="21" column="20" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
           <folding />
         </state>
@@ -818,18 +833,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/shippingstore/ShippingStoreTestRunner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="-8447">
+          <caret line="19" column="33" lean-forward="false" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
