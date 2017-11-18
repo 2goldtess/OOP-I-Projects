@@ -1,6 +1,6 @@
 package shippingstore.shippingstore.gui;
 
-import sun.font.TextLabel;
+import oracle.jvm.hotspot.jfr.JFR;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -11,14 +11,18 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShippingStoreGUI  extends JFrame {
+public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
 
+    private JPanel panelShowPackages;
+    private JFrame frameAddUser;
+    private JPanel panelMenu;
+    private JList  listMenu;
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
                                                     "Delete a Package", "Search for a Package", "Show All Users",
                                                     "Add a New User", "Update an Existing User", "Deliver a Package",
                                                     "Show All Transactions") ;
 
-    private final DefaultListModel menuName = new DefaultListModel();
+    private final DefaultListModel menuModel;
     private ListSelectionModel listSelectionModel;
 
 
@@ -42,22 +46,32 @@ public class ShippingStoreGUI  extends JFrame {
         setLayout(new BorderLayout(0,0));
 
 
-        //create a panel for the sidebar menu
-        JPanel panelMenu = new JPanel();
+        //setting up main display
+        panelShowPackages = new JPanel();
+        //panelMainDisplay.setBackground(Color.GREEN);
+
+
+        //setting up a panel for the sidebar menu
+        panelMenu = new JPanel();
         panelMenu.setLayout(new BorderLayout());
         panelMenu.setPreferredSize(new Dimension(200, 600));
         panelMenu.setBackground(Color.WHITE);
 
 
-        // setting up menu list for sidebar
+        // setting up menu list model
+        menuModel = new DefaultListModel();
         for (String mn: menuOptions) {
-            menuName.addElement(mn);
+            menuModel.addElement(mn);
         }
 
-        final JList listMenu = new JList(menuName);
-        listMenu.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        // setting up list for sidebar menu
+        listMenu = new JList();
+        listMenu.setModel(menuModel);
+        listMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listMenu.setLayoutOrientation(JList.VERTICAL);
+        listMenu.addListSelectionListener(this);
         listMenu.setSelectedIndex(0);
-        listMenu.setVisibleRowCount(10);
+//        listMenu.setVisibleRowCount(2);
 
         // adding list of menu options to scrollable sidebar
         JScrollPane listMenuScroller = new JScrollPane(listMenu);
@@ -70,39 +84,75 @@ public class ShippingStoreGUI  extends JFrame {
         panelMenu.add(listMenuScroller);
 
 
-
-
-
-        listSelectionModel = listMenu.getSelectionModel();
-        listSelectionModel.addListSelectionListener(
-                new ListSelectionListener() {
-                    @Override
-                    public void valueChanged(ListSelectionEvent lse) {
-//                        System.out.println(e.getFirstIndex());
-                        if (!lse.getValueIsAdjusting()) {
-                            if (listMenu.getSelectedIndex() == 0 ) {
-                                DefaultListModel model = (DefaultListModel) listMenu.getModel();
-                                System.out.println(model.elementAt(0));
-                            }
-                            System.out.println(lse.getLastIndex() + ": Selection triggered");
-                        }
-
-                    }
-                });
-
-
-
-
-
         // adding child components to main window
         add(panelMenu, BorderLayout.WEST);
+        add(panelShowPackages, BorderLayout.CENTER);
+    }
+
+    class ListListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
 
-//        JPanel p2 = new JPanel();
-//        add(p2, BorderLayout.CENTER);
+        }
 
 
+    }
 
+    @Override
+    public void valueChanged(ListSelectionEvent lse) {
+        if (!lse.getValueIsAdjusting()) {
+            switch (listMenu.getSelectedIndex()){
+                case 0:
+                    // user selects show all packages,
+                    //add(panelMainDisplay, BorderLayout.SOUTH);
+                    panelShowPackages.add(new JButton("b1"));
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 1:
+                    //user selects 'add a new package'
+//                    frameAddUser = new JFrame();
+//                    frameAddUser.setBackground(Color.BLUE);
+//                    frameAddUser.add(new Button("b2"));
+//                    frameAddUser.pack();
+//                    frameAddUser.setVisible(true);
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 2:
+                    //user selects 'delete a package'
+                  //  panelMainDisplay.add(new JButton("b3"));
+                    panelShowPackages.setBackground(Color.LIGHT_GRAY);
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 3:
+                    //user selects 'search for a package'
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 4:
+                    //user selects 'show all users
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 5:
+                    //user selects 'add a new user
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 6:
+                    //user selects 'update an existing user
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 7:
+                    //user selects 'deliver a package
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 8:
+                    //user selects 'show all transactions
+                    System.out.println(listMenu.getSelectedIndex());
+                    break;
+            }
+        }
+//        else {
+//            System.out.println("FOR DEBUGGING: Value is adjusting");
+//        }
 
     }
 
