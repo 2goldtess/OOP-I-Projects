@@ -1,7 +1,5 @@
 package shippingstore.shippingstore.gui;
 
-import oracle.jvm.hotspot.jfr.JFR;
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -12,16 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
-
-//    private JFrame frameShowPackages;
-//    private JFrame frameAddPackage;
-//    private JFrame frameDeletePackage;
-//    private JFrame frameSearchPackage;
-//    private JFrame frameShowAllUsers;
-//    private JFrame frameAddNewUser;
-//    private JFrame frameUpdateUser;
-//    private JFrame frameDeliverPackage;
-//    private JFrame frameShowAllTransactions;
 
     private JPanel panelMenu;
     private JList  listMenu;
@@ -39,7 +27,6 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
             @Override
             public void run() {
                 ShippingStoreGUI app = new ShippingStoreGUI();
-                //app.pack();
                 app.setVisible(true);
             }
         });
@@ -54,14 +41,9 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         setLayout(new BorderLayout(0,0));
 
 
-        // setting up secondary display
-//        frameShowPackages = new JFrame();
-
-
-        // setting up a panel for the sidebar menu
+        // setting up a panel for the main menu
         panelMenu = new JPanel();
         panelMenu.setLayout(new BorderLayout());
-        // panelMenu.setPreferredSize(new Dimension(200, 600));
         panelMenu.setBackground(Color.WHITE);
 
 
@@ -101,8 +83,6 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
 
 
         }
-
-
     }
 
     @Override
@@ -110,13 +90,15 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         if (!lse.getValueIsAdjusting()) {
             switch (listMenu.getSelectedIndex()){
                 case 0:
-                    System.out.println(listMenu.getSelectedIndex());
+                    // System.out.println(listMenu.getSelectedIndex());
+                    //user selects 'show all packages'
                     ShowPackages sp = new ShowPackages();
                     sp.setLocation(this.getX(), this.getY());
                     break;
                 case 1:
                     //user selects 'add a new package'
-                    System.out.println(listMenu.getSelectedIndex());
+                    AddPackage ap = new AddPackage();
+                    ap.setLocation(this.getX(), this.getY());
                     break;
                 case 2:
                     //user selects 'delete a package'
@@ -149,19 +131,6 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
                     break;
             }
         }
-//        else {
-//            System.out.println("FOR DEBUGGING: Value is adjusting");
-//        }
-
     }
-
-
-
-
-
-
-
-
-
 }
 
