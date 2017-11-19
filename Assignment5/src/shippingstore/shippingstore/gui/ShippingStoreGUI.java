@@ -69,6 +69,7 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
                         BorderFactory.createCompoundBorder(
                                 BorderFactory.createTitledBorder("Main Menu"),
                                 BorderFactory.createEmptyBorder(5,5,5,5)),
+
                         listMenuScroller.getBorder()));
         panelMenu.add(listMenuScroller);
 
