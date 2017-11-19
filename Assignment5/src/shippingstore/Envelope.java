@@ -76,8 +76,12 @@ public class Envelope extends Package {
      */
     @Override
     public String getFormattedText() {
-        return String.format("| %12s | %12s | %13s | %13s | Height: %10d, Width: %10d        | %n",
+//        return String.format("| %12s | %12s | %13s | %13s | Height: %10d, Width: %10d        | %n",
+//                "Envelope", ptn, specification, mailingClass, height, width);
+
+        return String.format("%s %s %s %s %d %d %n",
                 "Envelope", ptn, specification, mailingClass, height, width);
+
     }
 
     @Override

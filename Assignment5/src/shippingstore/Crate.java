@@ -77,7 +77,9 @@ public class Crate extends Package {
      */
     @Override
     public String getFormattedText() {
-        return String.format("| %12s | %12s | %13s | %13s | Load Weight: %10f, Content: %10s | %n",
+//        return String.format("| %12s | %12s | %13s | %13s | Load Weight: %10f, Content: %10s | %n",
+//                "Crate", ptn, specification, mailingClass, loadWeight, content);
+        return String.format("%s %s %s %s %.2f %s %n",
                 "Crate", ptn, specification, mailingClass, loadWeight, content);
     }
 
