@@ -468,4 +468,12 @@ public class ShippingStore {
         }
     }
 
+    /**
+     * This method returns an unformatted list of packages
+     * @return packageList
+     */
+    public  List<Package> getPackages() {
+        return packageList;
+    }
+
 }

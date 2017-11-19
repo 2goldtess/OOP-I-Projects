@@ -13,14 +13,22 @@ import java.util.List;
 
 public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
 
-    private JPanel panelShowPackages;
-    private JFrame frameAddUser;
+//    private JFrame frameShowPackages;
+//    private JFrame frameAddPackage;
+//    private JFrame frameDeletePackage;
+//    private JFrame frameSearchPackage;
+//    private JFrame frameShowAllUsers;
+//    private JFrame frameAddNewUser;
+//    private JFrame frameUpdateUser;
+//    private JFrame frameDeliverPackage;
+//    private JFrame frameShowAllTransactions;
+
     private JPanel panelMenu;
     private JList  listMenu;
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
-                                                    "Delete a Package", "Search for a Package", "Show All Users",
-                                                    "Add a New User", "Update an Existing User", "Deliver a Package",
-                                                    "Show All Transactions") ;
+            "Delete a Package", "Search for a Package", "Show All Users",
+            "Add a New User", "Update an Existing User", "Deliver a Package",
+            "Show All Transactions") ;
 
     private final DefaultListModel menuModel;
     private ListSelectionModel listSelectionModel;
@@ -30,31 +38,30 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-               ShippingStoreGUI app = new ShippingStoreGUI();
-               //app.pack();
-               app.setVisible(true);
+                ShippingStoreGUI app = new ShippingStoreGUI();
+                //app.pack();
+                app.setVisible(true);
             }
         });
     }
 
 
     private ShippingStoreGUI() {
-        //setting up main window
+        // setting up main window
         setTitle("Shipping Store");
-        setSize(800, 600);
+        setSize(300, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(0,0));
 
 
-        //setting up main display
-        panelShowPackages = new JPanel();
-        //panelMainDisplay.setBackground(Color.GREEN);
+        // setting up secondary display
+//        frameShowPackages = new JFrame();
 
 
-        //setting up a panel for the sidebar menu
+        // setting up a panel for the sidebar menu
         panelMenu = new JPanel();
         panelMenu.setLayout(new BorderLayout());
-        panelMenu.setPreferredSize(new Dimension(200, 600));
+        // panelMenu.setPreferredSize(new Dimension(200, 600));
         panelMenu.setBackground(Color.WHITE);
 
 
@@ -70,7 +77,7 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         listMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listMenu.setLayoutOrientation(JList.VERTICAL);
         listMenu.addListSelectionListener(this);
-        listMenu.setSelectedIndex(0);
+        listMenu.setSelectedIndex(-1);
 //        listMenu.setVisibleRowCount(2);
 
         // adding list of menu options to scrollable sidebar
@@ -78,15 +85,14 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         listMenu.setBorder(
                 BorderFactory.createCompoundBorder(
                         BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder("Store Main Menu"),
+                                BorderFactory.createTitledBorder("Main Menu"),
                                 BorderFactory.createEmptyBorder(5,5,5,5)),
                         listMenuScroller.getBorder()));
         panelMenu.add(listMenuScroller);
 
 
         // adding child components to main window
-        add(panelMenu, BorderLayout.WEST);
-        add(panelShowPackages, BorderLayout.CENTER);
+        add(panelMenu, BorderLayout.CENTER);
     }
 
     class ListListener implements ActionListener {
@@ -104,24 +110,17 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         if (!lse.getValueIsAdjusting()) {
             switch (listMenu.getSelectedIndex()){
                 case 0:
-                    // user selects show all packages,
-                    //add(panelMainDisplay, BorderLayout.SOUTH);
-                    panelShowPackages.add(new JButton("b1"));
                     System.out.println(listMenu.getSelectedIndex());
+                    ShowPackages sp = new ShowPackages();
+                    sp.setLocation(this.getX(), this.getY());
                     break;
                 case 1:
                     //user selects 'add a new package'
-//                    frameAddUser = new JFrame();
-//                    frameAddUser.setBackground(Color.BLUE);
-//                    frameAddUser.add(new Button("b2"));
-//                    frameAddUser.pack();
-//                    frameAddUser.setVisible(true);
                     System.out.println(listMenu.getSelectedIndex());
                     break;
                 case 2:
                     //user selects 'delete a package'
-                  //  panelMainDisplay.add(new JButton("b3"));
-                    panelShowPackages.setBackground(Color.LIGHT_GRAY);
+                    //  panelMainDisplay.add(new JButton("b3"));
                     System.out.println(listMenu.getSelectedIndex());
                     break;
                 case 3:
@@ -165,3 +164,4 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
 
 
 }
+
