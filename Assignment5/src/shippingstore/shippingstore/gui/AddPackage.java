@@ -1,17 +1,16 @@
 package shippingstore.shippingstore.gui;
 
 import shippingstore.ShippingStore;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.text.ParseException;
-import java.util.ArrayList;
+
 
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private static final String[] packageTypeOptions = {"Box", "Crate", "Drum", "Envelope"};
     private static final String[] specificationOptions = {"Fragile", "Books", "Catalogs", "Do-Not-Bend", "N/A"};
     private static final String[] mailingClassOptions = {"First-Class", "Priority", "Retail", "Ground", "Metro"};
+    private static final String errorMessage = "Invalid entry: (Empty fields not allowed) Please check the form and try again.";
     private JComboBox comboBoxPackageType;
     private JTextField textFieldTrackingNumber;
     private JComboBox comboBoxSpecification;
@@ -33,7 +32,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private String otherdetails2;
 
     AddPackage() {
-        setSize(600, 250);
+        setSize(650, 250);
         setTitle("Add a New Package");
         setLayout(new FormLayout());
 
@@ -67,7 +66,6 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         comboBoxMailingClass.setSelectedIndex(-1);
         add(comboBoxMailingClass);
 
-
         //other details fields
         add(new JLabel("Other Details"));
         panelOtherDetails = new JPanel();
@@ -84,7 +82,6 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         btnReset = new JButton("Reset");
         btnReset.addActionListener(this);
 
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
@@ -93,18 +90,17 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (comboBoxPackageType.getSelectedIndex() != -1) {
-//            type = (String)(comboBoxPackageType.getItemAt(comboBoxPackageType.getSelectedIndex()));
 
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
                     //other detail 1
-                    labelOtherDetails1 = new JLabel("Height");
+                    labelOtherDetails1 = new JLabel("Height (inches)");
                     panelOtherDetails.add(labelOtherDetails1);
                     textFieldOtherDetails1 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails1);
 
                     //other detail 2
-                    labelOtherDetails2 = new JLabel("Width");
+                    labelOtherDetails2 = new JLabel("Width (inches)");
                     panelOtherDetails.add(labelOtherDetails2);
                     textFieldOtherDetails2 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails2);
@@ -112,7 +108,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     break;
                 case 1:
                     //other detail 1
-                    labelOtherDetails1 = new JLabel("Load Weight");
+                    labelOtherDetails1 = new JLabel("Load Weight (inches)");
                     panelOtherDetails.add(labelOtherDetails1);
                     textFieldOtherDetails1 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails1);
@@ -125,26 +121,26 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     break;
                 case 2:
                     //other detail 1
-                    labelOtherDetails1 = new JLabel("Material");
+                    labelOtherDetails1 = new JLabel("Material (Plastic, Fiber)");
                     panelOtherDetails.add(labelOtherDetails1);
                     textFieldOtherDetails1 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails1);
 
                     //other detail 2
-                    labelOtherDetails2 = new JLabel("Diameter");
+                    labelOtherDetails2 = new JLabel("Diameter (inches)");
                     panelOtherDetails.add(labelOtherDetails2);
                     textFieldOtherDetails2 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails2);
                     break;
                 case 3:
                     //other detail 1
-                    labelOtherDetails1 = new JLabel("Height");
+                    labelOtherDetails1 = new JLabel("Height (inches)");
                     panelOtherDetails.add(labelOtherDetails1);
                     textFieldOtherDetails1 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails1);
 
                     //other detail 2
-                    labelOtherDetails2 = new JLabel("Width");
+                    labelOtherDetails2 = new JLabel("Width (inches)");
                     panelOtherDetails.add(labelOtherDetails2);
                     textFieldOtherDetails2 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails2);
@@ -169,38 +165,39 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             otherdetails1 =  textFieldOtherDetails1.getText();
             otherdetails2 =  textFieldOtherDetails2.getText();
 
+//            if (checkForDuplicateTrackingNumbers(trackingNumber));
+//                JOptionPane.showMessageDialog(new Frame(), "Package with the specified tracking number already exists. Please change your entry and try again.");
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
                     try {
                         ss.addBox(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
                     break;
                 case 1:
                     try {
                         ss.addCrate(trackingNumber, specification, mailingClass,Float.parseFloat(otherdetails1), otherdetails2);
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
                     break;
                 case 2:
                     try {
                         ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
                     break;
                 case 3:
                     try {
                         ss.addEnvelope(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
                     break;
             }
             ss.writeDatabase();
-
             System.out.println(trackingNumber + " " + type + " " + specification + " " + mailingClass + " " + otherdetails1 + " " + otherdetails2) ;
         }
         if (e.getSource() == btnReset) {
@@ -231,8 +228,13 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         return text;
     }
 
-    //abcdefghijklmnopqrstuvwxyz
-    //randomNumber = (Math.round(Math.random() * 89999) + 10000);
+//    public boolean checkForDuplicateTrackingNumbers(String trackingNumber) {
+//        Package p = ss.findPackage(trackingNumber);
+//
+//        if (p.getPtn().equalsIgnoreCase(trackingNumber))
+//            return true;
+//        return false;
+//    }
 }
 
 
