@@ -108,7 +108,8 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
                     break;
                 case 3:
                     //user selects 'search for a package'
-                    System.out.println(listMenu.getSelectedIndex());
+                    SearchPackage searchPackage = new SearchPackage();
+                    searchPackage.setLocation(this.getX(), this.getY());
                     break;
                 case 4:
                     //user selects 'show all users

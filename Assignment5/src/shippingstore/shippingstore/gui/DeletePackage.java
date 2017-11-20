@@ -37,7 +37,6 @@ public class DeletePackage extends JFrame implements ActionListener {
 
         add(panelDelete);
 
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setVisible(true);
