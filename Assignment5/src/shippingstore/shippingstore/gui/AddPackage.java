@@ -11,6 +11,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private static final String[] specificationOptions = {"Fragile", "Books", "Catalogs", "Do-Not-Bend", "N/A"};
     private static final String[] mailingClassOptions = {"First-Class", "Priority", "Retail", "Ground", "Metro"};
     private static final String errorMessage = "Invalid entry: (Empty fields not allowed) Please check the form and try again.";
+    private static final String successMessage = "Success: New package added to the database";
     private JComboBox comboBoxPackageType;
     private JTextField textFieldTrackingNumber;
     private JComboBox comboBoxSpecification;
@@ -172,6 +173,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 case 0:
                     try {
                         ss.addBox(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
+                        JOptionPane.showMessageDialog(new JFrame(), successMessage);
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
@@ -179,6 +181,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 case 1:
                     try {
                         ss.addCrate(trackingNumber, specification, mailingClass,Float.parseFloat(otherdetails1), otherdetails2);
+                        JOptionPane.showMessageDialog(new JFrame(), successMessage);
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
@@ -186,6 +189,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 case 2:
                     try {
                         ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
+                        JOptionPane.showMessageDialog(new JFrame(), successMessage);
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
@@ -193,6 +197,8 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 case 3:
                     try {
                         ss.addEnvelope(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
+                        JOptionPane.showMessageDialog(new JFrame(), successMessage);
+
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
