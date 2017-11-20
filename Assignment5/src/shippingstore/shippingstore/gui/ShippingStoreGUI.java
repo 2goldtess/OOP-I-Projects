@@ -103,8 +103,8 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
                     break;
                 case 2:
                     //user selects 'delete a package'
-                    //  panelMainDisplay.add(new JButton("b3"));
-                    System.out.println(listMenu.getSelectedIndex());
+                    DeletePackage dp = new DeletePackage();
+                    dp.setLocation(this.getX(), this.getY());
                     break;
                 case 3:
                     //user selects 'search for a package'
