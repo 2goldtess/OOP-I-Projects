@@ -1,7 +1,8 @@
 package shippingstore.shippingstore.gui;
 
+import shippingstore.*;
+import shippingstore.Box;
 import shippingstore.Package;
-import shippingstore.ShippingStore;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -15,7 +16,7 @@ public class ShowPackages extends JFrame{
     ShippingStore ss;
 
     ShowPackages() {
-        setSize(1200, 600);
+        setSize(1400, 500);
         setTitle("Package List");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -37,14 +38,15 @@ public class ShowPackages extends JFrame{
         DefaultTableModel tableModel = (DefaultTableModel) packagesTable.getModel();
         Object rowData[] = new Object[5];
 
-        for (int i = 0; i < packages.size(); i++) {
-            rowData[0] = packages.get(i).getPtn();
-            rowData[1] = splitFormattedText(packages.get(i).getFormattedText(), 0);
-            rowData[2] = packages.get(i).getSpecification();
-            rowData[3] = packages.get(i).getMailingClass();
-            rowData[4] = getOtherPackageInfo(packages.get(i).getFormattedText());
-            tableModel.addRow(rowData);
-        }
+            for (Package p: packages) {
+                rowData[0] = p.getPtn();
+                rowData[1] = splitFormattedText(p.getFormattedText(), 0);
+                rowData[2] = p.getSpecification();
+                rowData[3] = p.getMailingClass();
+                rowData[4] = getOtherPackageInfo(p);
+
+                tableModel.addRow(rowData);
+            }
     }
 
     public String splitFormattedText(String line, int index) {
@@ -53,20 +55,35 @@ public class ShowPackages extends JFrame{
         return temp[index];
     }
 
-    public String getOtherPackageInfo(String line) {
-        String temp[] = line.trim().split(" ");
+    public String getOtherPackageInfo(Package p) {
+        if (p instanceof Crate) {
+            return "Load Weight: " + ((Crate) p).getLoadWeight() + ", Content: " + ((Crate) p).getContent();
 
-        switch (temp[0]) {
-            case "Envelope":
-                return "Height: " + temp[4] + ", Width: " + temp[5];
-            case "Box":
-                return "Dimension: " + temp[4] + ", Volume: " + temp[5];
-            case "Crate":
-                return "Load Weight: " + temp[4] + ", Content: " + temp[5];
-            case "Drum":
-                return "Material: " + temp[4] + ", Diameter: " + temp[5];
+        }else if (p instanceof Box) {
+            return "Dimension: " + ((Box) p).getDimension() +  ", Volume: " + ((Box) p).getVolume();
+
+        } else if (p instanceof Drum) {
+            return "Material: " + ((Drum) p).getMaterial() + ", Diameter: " + ((Drum) p).getDiameter();
+
+        } else if (p instanceof Envelope) {
+            return "Height: "+ ((Envelope) p).getHeight() + ", Width: " + ((Envelope) p).getWidth();
+
+        } else {
+            return "";
         }
-        return "";
     }
 }
 
+
+//   String temp[] = line.trim().split(" ");
+
+//        switch (temp[0]) {
+//            case "Envelope":
+//                return "Height: " + temp[4] + ", Width: " + temp[5];
+//            case "Box":
+//                return "Dimension: " + temp[4] + ", Volume: " + temp[5];
+//            case "Crate":
+//                return "Load Weight: " + temp[4] + ", Content: " + temp[5];
+//            case "Drum":
+//                return "Material: " + temp[4] + ", Diameter: " + temp[5];
+//        }

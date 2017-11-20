@@ -15,7 +15,7 @@ public class DeletePackage extends JFrame implements ActionListener {
     private ShippingStore ss;
 
     DeletePackage() {
-        setSize(350, 75);
+        setSize(425, 75);
         setTitle("Delete a Package");
         setLayout(new FormLayout());
 
@@ -29,7 +29,7 @@ public class DeletePackage extends JFrame implements ActionListener {
         textFieldTrackingNumber = new JTextField(10);
 
         // delete button
-        btnDelete = new JButton("Delete");
+        btnDelete = new JButton("Delete Package");
         btnDelete.addActionListener(this);
 
         panelDelete.add(textFieldTrackingNumber);
