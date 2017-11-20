@@ -8,10 +8,12 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
+public class ShippingStoreGUI  extends JFrame implements MouseListener {
 
     ShippingStore ss = new ShippingStore();
     private JPanel panelMenu;
@@ -60,7 +62,8 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         listMenu.setModel(menuModel);
         listMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listMenu.setLayoutOrientation(JList.VERTICAL);
-        listMenu.addListSelectionListener(this);
+        //listMenu.addListSelectionListener(this);
+        listMenu.addMouseListener(this);
         listMenu.setSelectedIndex(-1);
 //        listMenu.setVisibleRowCount(2);
 
@@ -80,70 +83,153 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         add(panelMenu, BorderLayout.CENTER);
     }
 
-    class ListListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        switch (listMenu.getSelectedIndex()) {
+            case 0:
+                // System.out.println(listMenu.getSelectedIndex());
+                //user selects 'show all packages'
+                ShowPackages sp = new ShowPackages();
+                sp.setLocation(this.getX(), this.getY());
+                break;
+            case 1:
+                //user selects 'add a new package'
+                AddPackage ap = new AddPackage();
+                ap.setLocation(this.getX(), this.getY());
+                break;
+            case 2:
+                //user selects 'delete a package'
+                DeletePackage dp = new DeletePackage();
+                dp.setLocation(this.getX(), this.getY());
+                break;
+            case 3:
+                //user selects 'search for a package'
+                SearchPackage searchPackage = new SearchPackage();
+                searchPackage.setLocation(this.getX(), this.getY());
+                break;
+            case 4:
+                //user selects 'show all users
+                ShowUsers su = new ShowUsers();
+                su.setLocation(this.getX(), this.getY());
+                System.out.println(listMenu.getSelectedIndex());
+                break;
+            case 5:
+                //user selects 'add a new user
+                AddUser au = new AddUser();
+                au.setLocation(this.getX(), this.getY());
+                break;
+            case 6:
+                //user selects 'update an existing user
+                UpdateUser uu = new UpdateUser();
+                uu.setLocation(this.getX(), this.getY());
+                System.out.println(listMenu.getSelectedIndex());
+                break;
+            case 7:
+                //user selects 'deliver a package
+                DeliverPackage deliverP = new DeliverPackage();
+                deliverP.setLocation(this.getX(), this.getY());
+                System.out.println(listMenu.getSelectedIndex());
+                break;
+            case 8:
+                //user selects 'show all transactions
+                showTransactions st = new showTransactions();
+                st.setLocation(this.getX(), this.getY());
+                System.out.println(listMenu.getSelectedIndex());
+                break;
+            case 9:
+                ss.writeDatabase();
+                this.dispose();
+                break;
         }
+
     }
 
     @Override
-    public void valueChanged(ListSelectionEvent lse) {
-        if (!lse.getValueIsAdjusting()) {
-            switch (listMenu.getSelectedIndex()){
-                case 0:
-                    // System.out.println(listMenu.getSelectedIndex());
-                    //user selects 'show all packages'
-                    ShowPackages sp = new ShowPackages();
-                    sp.setLocation(this.getX(), this.getY());
-                    break;
-                case 1:
-                    //user selects 'add a new package'
-                    AddPackage ap = new AddPackage();
-                    ap.setLocation(this.getX(), this.getY());
-                    break;
-                case 2:
-                    //user selects 'delete a package'
-                    DeletePackage dp = new DeletePackage();
-                    dp.setLocation(this.getX(), this.getY());
-                    break;
-                case 3:
-                    //user selects 'search for a package'
-                    SearchPackage searchPackage = new SearchPackage();
-                    searchPackage.setLocation(this.getX(), this.getY());
-                    break;
-                case 4:
-                    //user selects 'show all users
-                    ShowUsers su = new ShowUsers();
-                    su.setLocation(this.getX(), this.getY());
-                    System.out.println(listMenu.getSelectedIndex());
-                    break;
-                case 5:
-                    //user selects 'add a new user
-                    AddUser au = new AddUser();
-                    au.setLocation(this.getX(), this.getY());
-                    break;
-                case 6:
-                    //user selects 'update an existing user
-                    UpdateUser uu = new UpdateUser();
-                    uu.setLocation(this.getX(), this.getY());
-                    System.out.println(listMenu.getSelectedIndex());
-                    break;
-                case 7:
-                    //user selects 'deliver a package
-                    DeliverPackage deliverP = new DeliverPackage();
-                    deliverP.setLocation(this.getX(), this.getY());
-                    System.out.println(listMenu.getSelectedIndex());
-                    break;
-                case 8:
-                    //user selects 'show all transactions
-                    System.out.println(listMenu.getSelectedIndex());
-                    break;
-                case 9:
-                    ss.writeDatabase();
-                    this.dispose();
-                    break;
-            }
-        }
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }
 
+
+
+
+
+
+
+
+//    @Override
+//    public void valueChanged(ListSelectionEvent lse) {
+//        if (!lse.getValueIsAdjusting()) {
+//            switch (listMenu.getSelectedIndex()){
+//                case 0:
+//                    // System.out.println(listMenu.getSelectedIndex());
+//                    //user selects 'show all packages'
+//                    ShowPackages sp = new ShowPackages();
+//                    sp.setLocation(this.getX(), this.getY());
+//                    break;
+//                case 1:
+//                    //user selects 'add a new package'
+//                    AddPackage ap = new AddPackage();
+//                    ap.setLocation(this.getX(), this.getY());
+//                    break;
+//                case 2:
+//                    //user selects 'delete a package'
+//                    DeletePackage dp = new DeletePackage();
+//                    dp.setLocation(this.getX(), this.getY());
+//                    break;
+//                case 3:
+//                    //user selects 'search for a package'
+//                    SearchPackage searchPackage = new SearchPackage();
+//                    searchPackage.setLocation(this.getX(), this.getY());
+//                    break;
+//                case 4:
+//                    //user selects 'show all users
+//                    ShowUsers su = new ShowUsers();
+//                    su.setLocation(this.getX(), this.getY());
+//                    System.out.println(listMenu.getSelectedIndex());
+//                    break;
+//                case 5:
+//                    //user selects 'add a new user
+//                    AddUser au = new AddUser();
+//                    au.setLocation(this.getX(), this.getY());
+//                    break;
+//                case 6:
+//                    //user selects 'update an existing user
+//                    UpdateUser uu = new UpdateUser();
+//                    uu.setLocation(this.getX(), this.getY());
+//                    System.out.println(listMenu.getSelectedIndex());
+//                    break;
+//                case 7:
+//                    //user selects 'deliver a package
+//                    DeliverPackage deliverP = new DeliverPackage();
+//                    deliverP.setLocation(this.getX(), this.getY());
+//                    System.out.println(listMenu.getSelectedIndex());
+//                    break;
+//                case 8:
+//                    //user selects 'show all transactions
+//                    showTransactions st = new showTransactions();
+//                    st.setLocation(this.getX(),this.getY());
+//                    System.out.println(listMenu.getSelectedIndex());
+//                    break;
+//                case 9:
+//                    ss.writeDatabase();
+//                    this.dispose();
+//                    break;
+//            }
+//        }
+//    }

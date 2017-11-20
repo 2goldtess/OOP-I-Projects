@@ -482,4 +482,11 @@ public class ShippingStore {
      */
     public  List<User> getUsers() { return users; }
 
+    /**
+     * This method returns an unformatted list of all transactions
+     * @return
+     */
+    public List<Transaction> getTransactions() { return transactions; }
+
+
 }
