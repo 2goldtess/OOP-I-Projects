@@ -1,5 +1,7 @@
 package shippingstore.shippingstore.gui;
 
+import shippingstore.ShippingStore;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -11,12 +13,13 @@ import java.util.List;
 
 public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
 
+    ShippingStore ss = new ShippingStore();
     private JPanel panelMenu;
     private JList  listMenu;
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
             "Delete a Package", "Search for a Package", "Show All Users",
             "Add a New User", "Update an Existing User", "Deliver a Package",
-            "Show All Transactions") ;
+            "Show All Transactions", "Exit Program") ;
 
     private final DefaultListModel menuModel;
     private ListSelectionModel listSelectionModel;
@@ -39,7 +42,6 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
         setSize(300, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(0,0));
-
 
         // setting up a panel for the main menu
         panelMenu = new JPanel();
@@ -81,8 +83,6 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
     class ListListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
-
         }
     }
 
@@ -113,23 +113,34 @@ public class ShippingStoreGUI  extends JFrame implements ListSelectionListener {
                     break;
                 case 4:
                     //user selects 'show all users
+                    ShowUsers su = new ShowUsers();
+                    su.setLocation(this.getX(), this.getY());
                     System.out.println(listMenu.getSelectedIndex());
                     break;
                 case 5:
                     //user selects 'add a new user
-                    System.out.println(listMenu.getSelectedIndex());
+                    AddUser au = new AddUser();
+                    au.setLocation(this.getX(), this.getY());
                     break;
                 case 6:
                     //user selects 'update an existing user
+                    UpdateUser uu = new UpdateUser();
+                    uu.setLocation(this.getX(), this.getY());
                     System.out.println(listMenu.getSelectedIndex());
                     break;
                 case 7:
                     //user selects 'deliver a package
+                    DeliverPackage deliverP = new DeliverPackage();
+                    deliverP.setLocation(this.getX(), this.getY());
                     System.out.println(listMenu.getSelectedIndex());
                     break;
                 case 8:
                     //user selects 'show all transactions
                     System.out.println(listMenu.getSelectedIndex());
+                    break;
+                case 9:
+                    ss.writeDatabase();
+                    this.dispose();
                     break;
             }
         }

@@ -476,4 +476,10 @@ public class ShippingStore {
         return packageList;
     }
 
+    /**
+     * This method returns an unformatted list of users
+     * @return
+     */
+    public  List<User> getUsers() { return users; }
+
 }

@@ -1,9 +1,11 @@
 package shippingstore.shippingstore.gui;
 
+import shippingstore.Package;
 import shippingstore.ShippingStore;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
@@ -32,6 +34,8 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private String otherdetails1;
     private String otherdetails2;
 
+    ArrayList<Package> packages;
+
     AddPackage() {
         setSize(650, 250);
         setTitle("Add a New Package");
@@ -39,6 +43,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
 
         // shipping store object;
         ss = new ShippingStore().readDatabase();
+        packages = (ArrayList<Package>) ss.getPackages();
 
         // tracking number field
         add(new JLabel("Tracking Number"));
@@ -83,6 +88,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         btnReset = new JButton("Reset");
         btnReset.addActionListener(this);
 
+        System.out.println((isDuplicateTrackingNumber("0000000")));
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setVisible(true);
@@ -167,15 +173,23 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             otherdetails1 =  textFieldOtherDetails1.getText();
             otherdetails2 =  textFieldOtherDetails2.getText();
 
-//            if (checkForDuplicateTrackingNumbers(trackingNumber));
-//                JOptionPane.showMessageDialog(new Frame(), "Package with the specified tracking number already exists. Please change your entry and try again.");
+            if (isDuplicateTrackingNumber(trackingNumber)) {
+                JOptionPane.showMessageDialog(new JFrame(), "Package with the specified tracking number already exists. Please change the tracking number and try again.");
+                return;
+            }
+
+            if (!trackingNumber.matches("[A-Za-z0-9]{5}")) {
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for the tracking number. (Must be of length 5)");
+                return;
+            }
+
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
                     try {
                         ss.addBox(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
+                        JOptionPane.showMessageDialog(new JFrame(), errorMessage);
                     }
                     break;
                 case 1:
@@ -235,13 +249,14 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         return text;
     }
 
-//    public boolean checkForDuplicateTrackingNumbers(String trackingNumber) {
-//        Package p = ss.findPackage(trackingNumber);
-//
-//        if (p.getPtn().equalsIgnoreCase(trackingNumber))
-//            return true;
-//        return false;
-//    }
+    public boolean isDuplicateTrackingNumber(String trackingNumber) {
+            for (Package p: packages) {
+                if (p.getPtn().equalsIgnoreCase(trackingNumber))
+                    return true;
+            }
+
+            return false;
+    }
 }
 
 
