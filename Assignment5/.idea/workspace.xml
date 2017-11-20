@@ -17,10 +17,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ShowPackages.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ShowPackages.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowPackages.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
+            <state relative-caret-position="170">
               <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -79,7 +79,7 @@
       <file leaf-file-name="SearchPackage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/SearchPackage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
+            <state relative-caret-position="323">
               <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -91,7 +91,7 @@
       <file leaf-file-name="AddPackage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-279">
+            <state relative-caret-position="1360">
               <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -100,10 +100,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeletePackage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DeletePackage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/DeletePackage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
+            <state relative-caret-position="561">
               <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -424,7 +424,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23700623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23700623" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -670,16 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/DeletePackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
@@ -700,26 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-279">
-          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/SearchPackage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreMainApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -730,8 +700,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowPackages.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
+        <state relative-caret-position="170">
           <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/SearchPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1360">
+          <caret line="80" column="42" lean-forward="true" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/DeletePackage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
