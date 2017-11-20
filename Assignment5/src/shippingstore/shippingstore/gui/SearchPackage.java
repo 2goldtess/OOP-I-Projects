@@ -22,7 +22,7 @@ public class SearchPackage extends JFrame implements ActionListener {
     String trackingNumber;
 
     SearchPackage() {
-        setSize(525, 150);
+        setSize(700, 150);
         setTitle("Search Packages");
         setLayout(new FormLayout());
 

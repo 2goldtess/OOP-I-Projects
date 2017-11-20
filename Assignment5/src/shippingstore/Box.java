@@ -79,7 +79,7 @@ public class Box extends Package {
 //        return String.format("| %12s | %12s | %13s | %13s | Dimension: %10d, Volume: %10d    | %n",
 //                "Box", ptn, specification, mailingClass, dimension, volume);
 
-        return String.format("%s %s %s %s %d %d %n",
+        return String.format("%s %s %s %s Dimension: %d, Volume: %d %n",
                 "Box", ptn, specification, mailingClass, dimension, volume);
     }
 
