@@ -83,6 +83,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         btnReset.addActionListener(this);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setVisible(true);
     }
 
