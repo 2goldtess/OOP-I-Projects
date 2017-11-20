@@ -3,7 +3,10 @@ package shippingstore.shippingstore.gui;
 import shippingstore.ShippingStore;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.text.ParseException;
+import java.util.ArrayList;
 
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private static final String[] packageTypeOptions = {"Box", "Crate", "Drum", "Envelope"};
@@ -35,11 +38,12 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         setLayout(new FormLayout());
 
         // shipping store object;
-        ss = new ShippingStore();
+        ss = new ShippingStore().readDatabase();
 
         // tracking number field
         add(new JLabel("Tracking Number"));
         textFieldTrackingNumber = new JTextField(10);
+        textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
         textFieldTrackingNumber.addActionListener(this);
         add(textFieldTrackingNumber);
 
@@ -54,13 +58,13 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         // specification field
         add(new JLabel("Specification"));
         comboBoxSpecification = new JComboBox(specificationOptions);
-        comboBoxSpecification.setSelectedIndex(4);
+        comboBoxSpecification.setSelectedIndex(-1);
         add(comboBoxSpecification);
 
         // mailing class field
         add(new JLabel("Mailing Class"));
         comboBoxMailingClass = new JComboBox(mailingClassOptions);
-        comboBoxMailingClass.setSelectedIndex(3);
+        comboBoxMailingClass.setSelectedIndex(-1);
         add(comboBoxMailingClass);
 
 
@@ -89,7 +93,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (comboBoxPackageType.getSelectedIndex() != -1) {
-            type = (String)(comboBoxPackageType.getItemAt(comboBoxPackageType.getSelectedIndex()));
+//            type = (String)(comboBoxPackageType.getItemAt(comboBoxPackageType.getSelectedIndex()));
 
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
@@ -165,10 +169,42 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             otherdetails1 =  textFieldOtherDetails1.getText();
             otherdetails2 =  textFieldOtherDetails2.getText();
 
+            switch (comboBoxPackageType.getSelectedIndex()) {
+                case 0:
+                    try {
+                        ss.addBox(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                    }
+                    break;
+                case 1:
+                    try {
+                        ss.addCrate(trackingNumber, specification, mailingClass,Float.parseFloat(otherdetails1), otherdetails2);
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                    }
+                    break;
+                case 2:
+                    try {
+                        ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                    }
+                    break;
+                case 3:
+                    try {
+                        ss.addEnvelope(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(new Frame(), "Invalid entry: (Empty fields not allowed) Please check the form and try again.");
+                    }
+                    break;
+            }
+            ss.writeDatabase();
+
             System.out.println(trackingNumber + " " + type + " " + specification + " " + mailingClass + " " + otherdetails1 + " " + otherdetails2) ;
         }
         if (e.getSource() == btnReset) {
-            textFieldTrackingNumber.setText("");
+            textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
             comboBoxPackageType.setSelectedIndex(-1);
             comboBoxSpecification.setSelectedIndex(-1);
             comboBoxMailingClass.setSelectedIndex(-1);
@@ -184,14 +220,19 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             setVisible(true);
         }
     }
+
+    public String randomlyGeneratedTrackingNumber() {
+        String text = "";
+        String possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        long randomNumber = 0;
+           for (int i = 0; i < 5; i++) {
+               text += possible.charAt((int) Math.floor(Math.random() * possible.length()));
+           }
+        return text;
+    }
+
+    //abcdefghijklmnopqrstuvwxyz
+    //randomNumber = (Math.round(Math.random() * 89999) + 10000);
 }
 
-
-// randomly generated numbers
-//   for (int i = 0; i < 10; i++) {
-//        System.out.println(Math.round(Math.random() * 89999) + 10000);
-//
-//
-//
-// }
 
