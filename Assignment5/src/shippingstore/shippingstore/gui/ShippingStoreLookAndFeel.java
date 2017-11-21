@@ -5,11 +5,19 @@ import javax.swing.plaf.metal.DefaultMetalTheme;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
 
+
+/**
+ * ShippingStoreLookAndFeel sets the look and feel and the entire application.
+ */
 public class ShippingStoreLookAndFeel {
 
-    final static String LOOKANDFEEL = "Metal"; // Valid values are: null (use the default), "Metal", "System", "Motif", and "GTK"
+    final static String LOOKANDFEEL = "Metal"; // Valid values are: null (use the default), "Metal", "System", "Motif",
+                                               // and "GTK"
     final static String THEME = "Test";        // Valid values are: "DefaultMetal", "Ocean",  and "Test"
 
+    /**
+     * This method sets the look and feel based provided themes (if they exist on a particular system.
+     */
     public static void initLookAndFeel() {
         String lookAndFeel = null;
 
