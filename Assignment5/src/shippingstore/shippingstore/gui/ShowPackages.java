@@ -16,20 +16,29 @@ public class ShowPackages extends JFrame{
     ShippingStore ss;
 
     ShowPackages() {
-        setSize(1400, 500);
+        setSize(1225, 500);
         setTitle("Package List");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         ss = new ShippingStore().readDatabase();
         packages = (ArrayList) ss.getPackages();
 
+
         packagesTable = new JTable();
         packagesTable.setModel(new DefaultTableModel(new Object[][] {}, columnNames));
+        packagesTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        packagesTable.getColumnModel().getColumn(0).setPreferredWidth(120);
+        packagesTable.getColumnModel().getColumn(1).setPreferredWidth(200);
+        packagesTable.getColumnModel().getColumn(2).setPreferredWidth(200);
+        packagesTable.getColumnModel().getColumn(3).setPreferredWidth(200);
+        packagesTable.getColumnModel().getColumn(4).setPreferredWidth(500);
+
+
+
 
         addRowToJTable();
 
         add(new JScrollPane(packagesTable));
-
         setVisible(true);
     }
 

@@ -3,25 +3,23 @@ package shippingstore.shippingstore.gui;
 import shippingstore.ShippingStore;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.Arrays;
 import java.util.List;
 
-public class ShippingStoreGUI  extends JFrame implements MouseListener {
+public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowListener {
 
-    ShippingStore ss = new ShippingStore();
+    ShippingStore ss;
     private JPanel panelMenu;
     private JList  listMenu;
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
             "Delete a Package", "Search for a Package", "Show All Users",
             "Add a New User", "Update an Existing User", "Deliver a Package",
-            "Show All Transactions", "Exit Program") ;
+            "Show All Transactions", "Save & Exit Program") ;
 
     private final DefaultListModel menuModel;
     private ListSelectionModel listSelectionModel;
@@ -44,6 +42,8 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener {
         setSize(300, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(0,0));
+
+        ss = new ShippingStore().readDatabase();
 
         // setting up a panel for the main menu
         panelMenu = new JPanel();
@@ -137,11 +137,9 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener {
                 System.out.println(listMenu.getSelectedIndex());
                 break;
             case 9:
-                ss.writeDatabase();
-                this.dispose();
+                System.exit(0);
                 break;
         }
-
     }
 
     @Override
@@ -161,6 +159,42 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        ss.readDatabase();
+        ss.writeDatabase();
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
 
     }
 }

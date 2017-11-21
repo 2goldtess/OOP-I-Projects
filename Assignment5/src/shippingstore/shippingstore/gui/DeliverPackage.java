@@ -18,7 +18,7 @@ public class DeliverPackage extends JFrame {
 
         Date currentDate = new Date(System.currentTimeMillis());
 
-        JFrame deliverPackageFrame = new JFrame("Shipping Store Database");
+        JFrame deliverPackageFrame = new JFrame("Deliver a Package");
         JPanel titlePanel = new JPanel();
         JLabel titleLabel = new JLabel("Deliver Package Menu");
 

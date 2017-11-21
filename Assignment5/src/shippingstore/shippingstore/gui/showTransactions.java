@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class showTransactions extends JFrame {
-        JFrame transactionFrame = new JFrame();
+        //JFrame transactionFrame = new JFrame();
 
         JTable transactionsTable;
         String[] columnNames = {"Customer ID", "Employee ID", "Tracking Number", "Shipping Date", "Delivery Date", "Price"};
@@ -21,9 +21,9 @@ public class showTransactions extends JFrame {
         ShippingStore ss;
 
         showTransactions() {
-            transactionFrame.setSize(900, 500);
-            transactionFrame.setTitle("Transaction List");
-            transactionFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setSize(1000, 500);
+            setTitle("Transaction List");
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
             ss = new ShippingStore().readDatabase();
             transactions = (ArrayList) ss.getTransactions();
@@ -46,19 +46,19 @@ public class showTransactions extends JFrame {
             okButton.setSize(30, 30);
             buttonPanel.add(okButton);
 
-            transactionFrame.add(new JScrollPane(transactionsTable));
-            transactionFrame.add(buttonPanel, BorderLayout.SOUTH);
+            add(new JScrollPane(transactionsTable));
+            add(buttonPanel, BorderLayout.SOUTH);
 
-            transactionFrame.setVisible(true);
+            setVisible(true);
 
 
-
-            okButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    transactionFrame.dispose();
-                }
-            });
+//
+//            okButton.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    transactionFrame.dispose();
+//                }
+//            });
 
         }
 

@@ -173,6 +173,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             otherdetails1 =  textFieldOtherDetails1.getText();
             otherdetails2 =  textFieldOtherDetails2.getText();
 
+            //validating tracking number
             if (isDuplicateTrackingNumber(trackingNumber)) {
                 JOptionPane.showMessageDialog(new JFrame(), "Package with the specified tracking number already exists. Please change the tracking number and try again.");
                 return;
@@ -202,8 +203,14 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     break;
                 case 2:
                     try {
-                        ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
-                        JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                        //validate that details entered is plastic or fiber only
+                        if ((otherdetails1.equalsIgnoreCase("Plastic")) || otherdetails1.equalsIgnoreCase("Fiber")) {
+                            ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
+                            JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                        } else {
+                            JOptionPane.showMessageDialog(new JFrame(), "Please enter 'Plastic or Fiber'");
+                            return;
+                        }
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new Frame(), errorMessage);
                     }
@@ -219,7 +226,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     break;
             }
             ss.writeDatabase();
-            System.out.println(trackingNumber + " " + type + " " + specification + " " + mailingClass + " " + otherdetails1 + " " + otherdetails2) ;
+            //System.out.println(trackingNumber + " " + type + " " + specification + " " + mailingClass + " " + otherdetails1 + " " + otherdetails2) ;
         }
         if (e.getSource() == btnReset) {
             textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
