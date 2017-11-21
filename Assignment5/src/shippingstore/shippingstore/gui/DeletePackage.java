@@ -7,7 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+/**
+ * DeletePackage is a subclass of JFrame class and deletes package from the  packages list based on the
+ * tracking number provided by the user.
+ */
 public class DeletePackage extends JFrame implements ActionListener {
+
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private String trackingNumber;
     private ShippingStore ss;
@@ -18,9 +24,12 @@ public class DeletePackage extends JFrame implements ActionListener {
     private JPanel panelButtons;
     private JButton btnShowPackages;
 
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
-
+    /**
+     * Default constructor of the DeletePackage class. Generates and initializes all the component used for the class.
+     * It also sets the default settings used for the frame. Also gives user option to show all current packages in
+     * database.
+     */
     DeletePackage() {
         // default initial settings for the frame
         setSize(600, 75);
@@ -58,6 +67,14 @@ public class DeletePackage extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+
+    /**
+     * Validates entered tracking number. If validated, the tracking number is used to search for a package matching it
+     * and deletes package from database from found. If packing matching the tracking number provided does not exist
+     * the user is prompted. It also responds to when the user clicks the show packages option. When click the table of
+     * all packages is presented.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(btnDelete)) {

@@ -9,6 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
+
+/**
+ * SearchPackage class is subclass of JFrame class. It creates the frame of the GUI that
+ * allows the user uses to search for a package in the database. It also logs most of the user interactions with the
+ * class. It also logs key user interactions with the class to a file.
+ */
 public class SearchPackage extends JFrame implements ActionListener {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -26,6 +32,10 @@ public class SearchPackage extends JFrame implements ActionListener {
     private JLabel labelSearchResults;
 
 
+    /**
+     * Default constructor for the SearchPackage class. Generates and initializes all the component used for the class.
+     * It also sets the default settings used for the frame.
+     */
     SearchPackage() {
         setSize(700, 150);
         setTitle("Search Packages");
@@ -65,6 +75,13 @@ public class SearchPackage extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+
+    /**
+     * Shows package of tracking number entered (if the package exist). It the package does not exist, it returns a
+     * message stating that to the user. Catches exception if tracking number DNE. When the clear button is selected
+     * the search results are cleared.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(btnSearch)) {

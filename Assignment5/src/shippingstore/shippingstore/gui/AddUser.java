@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 
 /**
  * AddUser is a subclass of JFrame Class. It creates a new frame when the user selects the 'Add a New User menu.
- * It adds a new user to the current shipping store database if valid information is provided.
+ * It adds a new user to the current shipping store database if valid information is provided. It also logs key user
+ * interactions with the class to a file.
  */
 public class AddUser extends JFrame {
 
