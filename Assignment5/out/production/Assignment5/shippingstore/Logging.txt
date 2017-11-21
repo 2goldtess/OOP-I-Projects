@@ -1,0 +1,2 @@
+Nov 20, 2017 10:59:42 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+INFO: App is running

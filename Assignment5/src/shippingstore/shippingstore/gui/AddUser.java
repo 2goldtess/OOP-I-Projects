@@ -16,7 +16,7 @@ public class AddUser extends JFrame {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
 
-        JFrame addUserFrame = new JFrame("Shipping Store Database");
+        JFrame addUserFrame = new JFrame("Add a New User");
 
         addUserFrame.setSize(250, 250);
         addUserFrame.setLayout(new BorderLayout());

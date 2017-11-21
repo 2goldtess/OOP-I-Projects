@@ -1,0 +1,4 @@
+Nov 20, 2017 11:00:45 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+INFO: App is running
+Nov 20, 2017 11:00:48 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: Showing packages

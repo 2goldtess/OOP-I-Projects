@@ -8,8 +8,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.*;
 
 public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowListener {
 
@@ -23,12 +25,32 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
 
     private final DefaultListModel menuModel;
     private ListSelectionModel listSelectionModel;
-
+    private static final String dirname = System.getProperty("user.dir");
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
+                StoreLogger storeLogger = new StoreLogger();
+                try {
+                    storeLogger.setup();
+                } catch (IOException e) {
+                }
+//                Logger logger = Logger.getLogger(AddPackage.class.getName());
+//                ConsoleHandler consoleHandler = new ConsoleHandler();
+//                consoleHandler.setFormatter(new SimpleFormatter());
+//
+//                logger.addHandler(consoleHandler);
+//
+//                try {
+//                     FileHandler fileHandler = new FileHandler(dirname+"/src/shippingstore/shippingstore.log");
+//                     fileHandler.setFormatter(new SimpleFormatter());
+//                     logger.addHandler(fileHandler);
+//                } catch (IOException ioe) { }
+//
+//                logger.log(Level.SEVERE, "testing");
+
                 ShippingStoreGUI app = new ShippingStoreGUI();
                 app.setVisible(true);
             }
@@ -37,6 +59,7 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
 
 
     private ShippingStoreGUI() {
+        LOGGER.info("App is running");
         // setting up main window
         setTitle("Shipping Store");
         setSize(300, 250);
@@ -87,10 +110,10 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
     public void mouseClicked(MouseEvent e) {
         switch (listMenu.getSelectedIndex()) {
             case 0:
-                // System.out.println(listMenu.getSelectedIndex());
                 //user selects 'show all packages'
                 ShowPackages sp = new ShowPackages();
                 sp.setLocation(this.getX(), this.getY());
+                LOGGER.info("Showing packages");
                 break;
             case 1:
                 //user selects 'add a new package'
@@ -111,7 +134,6 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 //user selects 'show all users
                 ShowUsers su = new ShowUsers();
                 su.setLocation(this.getX(), this.getY());
-                System.out.println(listMenu.getSelectedIndex());
                 break;
             case 5:
                 //user selects 'add a new user
@@ -122,24 +144,22 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 //user selects 'update an existing user
                 UpdateUser uu = new UpdateUser();
                 uu.setLocation(this.getX(), this.getY());
-                System.out.println(listMenu.getSelectedIndex());
                 break;
             case 7:
                 //user selects 'deliver a package
                 DeliverPackage deliverP = new DeliverPackage();
                 deliverP.setLocation(this.getX(), this.getY());
-                System.out.println(listMenu.getSelectedIndex());
                 break;
             case 8:
                 //user selects 'show all transactions
                 showTransactions st = new showTransactions();
                 st.setLocation(this.getX(), this.getY());
-                System.out.println(listMenu.getSelectedIndex());
                 break;
             case 9:
-                System.exit(0);
+                Runtime.getRuntime().exit(0);
                 break;
         }
+
     }
 
     @Override

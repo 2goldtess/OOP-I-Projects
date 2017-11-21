@@ -2,9 +2,13 @@ package shippingstore.shippingstore.gui;
 
 import shippingstore.Package;
 import shippingstore.ShippingStore;
+import sun.util.logging.resources.logging;
+
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.*;
 
 
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
@@ -35,7 +39,8 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
 
     ArrayList<Package> packages;
 
-    AddPackage() {
+    AddPackage()  {
+
         setSize(625, 225);
         setTitle("Add a New Package");
         setLayout(new FormLayout());
