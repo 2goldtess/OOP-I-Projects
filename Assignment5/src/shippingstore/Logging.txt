@@ -1,4 +1,16 @@
-Nov 21, 2017 8:46:59 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 9:05:01 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 8:47:02 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All packages
+Nov 21, 2017 9:05:03 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Add a New Package
+Nov 21, 2017 9:05:24 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+INFO: New package of type Crate added to the packages list
+Nov 21, 2017 9:05:24 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+INFO: Saving changes to ShippingStore db
+Nov 21, 2017 9:05:30 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+WARNING: Resetting 'Add a New Package' form
+Nov 21, 2017 9:05:35 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+WARNING: Resetting 'Add a New Package' form
+Nov 21, 2017 9:05:38 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+WARNING: Resetting 'Add a New Package' form
+Nov 21, 2017 9:05:40 AM shippingstore.shippingstore.gui.AddPackage actionPerformed
+WARNING: Resetting 'Add a New Package' form

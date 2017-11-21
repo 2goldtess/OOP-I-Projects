@@ -27,7 +27,7 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
     ShippingStore ss;
     private JPanel panelMenu;
     private JList  listMenu;
-    
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override

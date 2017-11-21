@@ -2,11 +2,9 @@ package shippingstore.shippingstore.gui;
 
 import shippingstore.Package;
 import shippingstore.ShippingStore;
-import sun.util.logging.resources.logging;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.*;
 
@@ -17,6 +15,10 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private static final String[] mailingClassOptions = {"First-Class", "Priority", "Retail", "Ground", "Metro"};
     private static final String errorMessage = "Invalid entry: (Empty fields not allowed) Please check the form and try again.";
     private static final String successMessage = "Success: New package added to the database";
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    ArrayList<Package> packages;
+
     private JComboBox comboBoxPackageType;
     private JTextField textFieldTrackingNumber;
     private JComboBox comboBoxSpecification;
@@ -37,12 +39,10 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private String otherdetails1;
     private String otherdetails2;
 
-    ArrayList<Package> packages;
-    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
     AddPackage()  {
-        setSize(625, 225);
+        setSize(650, 225);
         setTitle("Add a New Package");
         setLayout(new FormLayout());
 
@@ -194,16 +194,20 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     try {
                         ss.addBox(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                        LOGGER.info("New package of type Box added to the packages list");
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new JFrame(), errorMessage);
+                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package");
                     }
                     break;
                 case 1:
                     try {
                         ss.addCrate(trackingNumber, specification, mailingClass,Float.parseFloat(otherdetails1), otherdetails2);
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                        LOGGER.info("New package of type Crate added to the packages list");
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new JFrame(), errorMessage);
+                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package");
                     }
                     break;
                 case 2:
@@ -212,27 +216,34 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                         if ((otherdetails1.equalsIgnoreCase("Plastic")) || otherdetails1.equalsIgnoreCase("Fiber")) {
                             ss.addDrum(trackingNumber, specification, mailingClass, otherdetails1, Float.parseFloat(otherdetails2));
                             JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                            LOGGER.info("New package of type Drum added to the packages list");
                         } else {
                             JOptionPane.showMessageDialog(new JFrame(), "Please enter 'Plastic or Fiber'");
                             return;
                         }
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new JFrame(), errorMessage);
+                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package");
                     }
                     break;
                 case 3:
                     try {
                         ss.addEnvelope(trackingNumber, specification, mailingClass, Integer.parseInt(otherdetails1), Integer.parseInt(otherdetails2));
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
+                        LOGGER.info("New package of type Envelope added to the packages list");
 
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new JFrame(), errorMessage);
+                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package");
                     }
                     break;
             }
             ss.writeDatabase();
+            LOGGER.info("Saving changes to ShippingStore db");
         }
         if (e.getSource() == btnReset) {
+            LOGGER.warning("Resetting 'Add a New Package' form");
+
             textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
             comboBoxPackageType.setSelectedIndex(-1);
             comboBoxSpecification.setSelectedIndex(-1);

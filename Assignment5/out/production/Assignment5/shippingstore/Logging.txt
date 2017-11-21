@@ -1,26 +1,4 @@
-Nov 21, 2017 8:43:49 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 8:57:17 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 8:43:55 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All packages
-Nov 21, 2017 8:44:04 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 8:57:21 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Add a New Package
-Nov 21, 2017 8:44:04 AM shippingstore.shippingstore.gui.AddPackage <init>
-SEVERE: THISDFSFSF
-Nov 21, 2017 8:44:07 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Delete a Package
-Nov 21, 2017 8:44:11 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Search for a Package
-Nov 21, 2017 8:44:13 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All Users
-Nov 21, 2017 8:44:20 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Add a New User
-Nov 21, 2017 8:44:23 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Update an Existing User
-Nov 21, 2017 8:44:26 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Deliver a Package
-Nov 21, 2017 8:44:30 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All Transactions
-Nov 21, 2017 8:44:43 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Save & Exit Program
-Nov 21, 2017 8:44:43 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-WARNING: Exiting Program
