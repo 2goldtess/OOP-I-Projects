@@ -7,10 +7,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
+import java.util.logging.Logger;
 
 public class DeliverPackage extends JFrame {
 
-    private Package packageFound;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    //private Package packageFound;
 
     DeliverPackage() {
         ShippingStore ss;
@@ -71,14 +74,14 @@ public class DeliverPackage extends JFrame {
 
         JPanel deliverPackageButtonPanel = new JPanel(new GridBagLayout());
         deliverPackageButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        JButton nextButton = new JButton("Complete Transaction");
-        JButton cancelButton = new JButton("Done");
-        JButton showCurrentUsersButton = new JButton("Show Current Users");
-        JButton showCurrentPackagesButton = new JButton("Show Current Packages");
+        JButton completeTransactionButton = new JButton("Complete Transaction");
+        JButton finishButton = new JButton("Finish");
+        JButton showCurrentUsersButton = new JButton("Show All Users");
+        JButton showCurrentPackagesButton = new JButton("Show All Packages");
         deliverPackageButtonPanel.add(showCurrentPackagesButton);
         deliverPackageButtonPanel.add(showCurrentUsersButton);
-        deliverPackageButtonPanel.add(cancelButton);
-        deliverPackageButtonPanel.add(nextButton);
+        deliverPackageButtonPanel.add(completeTransactionButton);
+        deliverPackageButtonPanel.add(finishButton);
         deliverPackageFrame.add(deliverPackageButtonPanel, BorderLayout.SOUTH);
 
         deliverPackageFrame.pack();
@@ -87,25 +90,31 @@ public class DeliverPackage extends JFrame {
         showCurrentPackagesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ShowPackages show = new ShowPackages();
+                ShowPackages sp = new ShowPackages();
+                sp.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+192);
+                LOGGER.info("User selects: Show All Packages option");
             }
         });
 
         showCurrentUsersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ShowUsers show = new ShowUsers();
+
+                ShowUsers su = new ShowUsers();
+                su.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+192);
+                LOGGER.info("User selects: Show All User option");
             }
         });
 
-        cancelButton.addActionListener(new ActionListener() {
+        finishButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 deliverPackageFrame.dispose();
+                LOGGER.info("User selects: Cancel deliver package option");
             }
         });
 
-        nextButton.addActionListener(new ActionListener() {
+        completeTransactionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean completeTransaction = true;
@@ -116,8 +125,6 @@ public class DeliverPackage extends JFrame {
                 String transactionCost = transactionCostField.getText();
 
                 try {
-
-
                     Integer employeeIdInt = Integer.parseInt(employeeId);
                     Integer customerIdInt = Integer.parseInt(customerId);
                     Float cost = Float.parseFloat(transactionCost);
@@ -145,23 +152,23 @@ public class DeliverPackage extends JFrame {
                     if (completeTransaction) {
                         try {
                             ss.addShppingTransaction(customerIdInt, employeeIdInt, trackingNumber, currentDate, currentDate, cost);
+                            LOGGER.info("Package delivered: Shipping transactions completed, the transactions was added to the transactions list.");
                             ss.deletePackage(trackingNumber);
+                            LOGGER.warning("Package with tracking number: '" + trackingNumber +"' was deleted from the packages list.");
                             ss.writeDatabase();
+                            LOGGER.info("Saving changes to ShippingStore db.");
                         } catch (Exception e1) {
-                            JOptionPane.showMessageDialog(new JFrame(), "An error occurred while completing the transaction.");
+                            JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to complete the transaction.");
+                            LOGGER.info( "An error occurred while attempting to complete the transaction.");
                         }
 
                         JOptionPane.showMessageDialog(new JFrame(), "Success: Transaction was completed.");
-
-                        //deliverPackageFrame.dispose();
-
                     }
                 } catch (NumberFormatException nfe) {
                     JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again.");
+                    LOGGER.severe("A NumberFormatException occurred while attempting to add save the package to the packages");
                 }
             }
-
         });
-
     }
 }

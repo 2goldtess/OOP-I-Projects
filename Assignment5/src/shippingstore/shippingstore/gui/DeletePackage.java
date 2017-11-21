@@ -80,7 +80,6 @@ public class DeletePackage extends JFrame implements ActionListener {
                 } catch (Exception e1) {
                     LOGGER.severe("A error occurred while attempting to save the changes made to ShippingStore db");
                 }
-
             }
         }
 

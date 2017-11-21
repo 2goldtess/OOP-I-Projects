@@ -12,18 +12,16 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ShowUsers extends JFrame {
-    JFrame tableFrame = new JFrame();
+    //JFrame tableFrame = new JFrame();
 
     JTable usersTable;
     String[] columnNames = {"User ID", "First Name", "Last Name", "Other Details"};
     ArrayList<User> users;
-
-
-
+    
     ShowUsers() {
-        tableFrame.setSize(905, 500);
-        tableFrame.setTitle("Package List");
-        tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(905, 500);
+        setTitle("Show All Users");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         ShippingStore ss = new ShippingStore().readDatabase();
         users = (ArrayList) ss.getUsers();
@@ -44,10 +42,10 @@ public class ShowUsers extends JFrame {
 //        okButton.setSize(30, 30);
 //        buttonPanel.add(okButton);
 
-        tableFrame.add(new JScrollPane(usersTable));
+        add(new JScrollPane(usersTable));
         //tableFrame.add(buttonPanel, BorderLayout.SOUTH);
 
-        tableFrame.setVisible(true);
+        setVisible(true);
 
 
 //        okButton.addActionListener(new ActionListener() {
