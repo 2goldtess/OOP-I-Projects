@@ -380,7 +380,7 @@ public class ShippingStore {
     @SuppressWarnings("unchecked") // This will prevent Java unchecked operation warning when
     // convering from serialized Object to Arraylist<>
     public static ShippingStore readDatabase() {
-        System.out.print("Reading database...");
+//        System.out.print("Reading database...");
         
         File dataFile = new File("ShippingStore.ser");
         
@@ -417,7 +417,7 @@ public class ShippingStore {
         } finally {
             close(file);
         }
-        System.out.println("Done.");
+        //System.out.println("Done.");
 
         return ss;
     }
@@ -427,7 +427,7 @@ public class ShippingStore {
      * object.
      */
     public void writeDatabase() {
-        System.out.print("Writing database...");
+//        System.out.print("Writing database...");
         //serialize the database
         OutputStream file = null;
         OutputStream buffer = null;
@@ -448,7 +448,7 @@ public class ShippingStore {
         } finally {
             close(file);
         }
-        System.out.println("Done.");
+        //System.out.println("Done.");
     }
 
     /**

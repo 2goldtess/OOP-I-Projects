@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.logging.*;
 
 
+/**
+ * AddPackage is a subclass of JFrame class. It creates a new frames when the user selects the 'Add a New Package menu
+ * option and, if valid data is provided, it adds a new package to shipping store database.
+ */
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private static final String[] packageTypeOptions = {"Box", "Crate", "Drum", "Envelope"};
     private static final String[] specificationOptions = {"Fragile", "Books", "Catalogs", "Do-Not-Bend", "N/A"};
@@ -29,20 +33,25 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private JTextField textFieldOtherDetails2;
     private JLabel labelOtherDetails1;
     private JLabel labelOtherDetails2;
-    private ShippingStore ss;
     private JButton btnSubmit;
     private JButton btnReset;
+    private JButton btnShowPackages;
+
+    private ShippingStore ss;
     private String trackingNumber;
     private String type;
     private String specification;
     private String mailingClass;
     private String otherdetails1;
     private String otherdetails2;
-
-
-
+    
+    /**
+     * Default constructor for AddPackage class. Generates a random new Tracking Number for user and creates
+     * drop boxes for user to choose different Package type, Specification, and Mailing Class. Based on package
+     * type chosen, constructor generates new input locations for type-specific information.
+     */
     AddPackage()  {
-        setSize(650, 225);
+        setSize(650, 200);
         setTitle("Add a New Package");
         setLayout(new FormLayout());
 
@@ -63,7 +72,6 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         comboBoxPackageType.setSelectedIndex(-1);
         comboBoxPackageType.addItemListener(this);
         add(comboBoxPackageType);
-
 
         // specification field
         add(new JLabel("Specification"));
@@ -92,14 +100,22 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         btnSubmit.addActionListener(this);
         btnReset = new JButton("Reset");
         btnReset.addActionListener(this);
+        btnShowPackages = new JButton("Show All Packages");
+        btnShowPackages.addActionListener(this);
 
-        System.out.println((isDuplicateTrackingNumber("0000000")));
+
+        panelSubmit.add(btnShowPackages);
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setVisible(true);
     }
 
 
+    /**
+     * Depending on which type is selected. Creates new input values with the selection made by the user.
+     * @param e
+     */
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (comboBoxPackageType.getSelectedIndex() != -1) {
@@ -107,13 +123,13 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
                     //other detail 1
-                    labelOtherDetails1 = new JLabel("Height (inches)");
+                    labelOtherDetails1 = new JLabel("Dimension (inches)");
                     panelOtherDetails.add(labelOtherDetails1);
                     textFieldOtherDetails1 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails1);
 
                     //other detail 2
-                    labelOtherDetails2 = new JLabel("Width (inches)");
+                    labelOtherDetails2 = new JLabel("Volume (inches)");
                     panelOtherDetails.add(labelOtherDetails2);
                     textFieldOtherDetails2 = new JTextField(10);
                     panelOtherDetails.add(textFieldOtherDetails2);
@@ -160,7 +176,10 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     break;
             }
 
+            // disable the box to block user from created unnecessary add-ons
             comboBoxPackageType.setEnabled(false);
+
+            // add new buttons and repaint the frame
             panelSubmit.add(btnSubmit);
             panelSubmit.add(btnReset);
             repaint();
@@ -168,6 +187,12 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         }
     }
 
+
+    /**
+     * Validates information of package being entered. If valid, adds package to database. If not valid, notifies user
+     * to updated the information and try again.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnSubmit) {
@@ -180,12 +205,14 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
 
             //validating tracking number
             if (isDuplicateTrackingNumber(trackingNumber)) {
-                JOptionPane.showMessageDialog(new JFrame(), "Package with the specified tracking number already exists. Please change the tracking number and try again.");
+                JOptionPane.showMessageDialog(new JFrame(), "Package with the specified tracking number " +
+                        "already exists. Please change the tracking number and try again.");
                 return;
             }
 
             if (!trackingNumber.matches("[A-Za-z0-9]{5}")) {
-                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for the tracking number. (Must be of length 5)");
+                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for the tracking number. " +
+                        "(Must be of length 5)");
                 return;
             }
 
@@ -238,6 +265,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                     }
                     break;
             }
+            // save changes
             ss.writeDatabase();
             LOGGER.info("Saving changes to ShippingStore db");
         }
@@ -259,7 +287,19 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             repaint();
             setVisible(true);
         }
+
+        if (e.getSource() == btnShowPackages) {
+            ShowPackages sp = new ShowPackages();
+            sp.setLocation(this.getX(), this.getY()+200);
+            LOGGER.info("User selects: Show All Packages");
+        }
     }
+
+
+    /**
+     * Creates a random tracking number of length 5 and returns it to the caller.
+     * @return text - the string containing the random tracking number generated
+     */
 
     public String randomlyGeneratedTrackingNumber() {
         String text = "";
@@ -271,12 +311,19 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
         return text;
     }
 
+
+    /**
+     * Checks if tracking number is duplicate.
+     * @param trackingNumber
+     * @return true - if duplicate number is detected, false otherwise
+     */
+
     public boolean isDuplicateTrackingNumber(String trackingNumber) {
-            for (Package p: packages) {
-                if (p.getPtn().equalsIgnoreCase(trackingNumber))
+        for (Package p: packages) {
+            if (p.getPtn().equalsIgnoreCase(trackingNumber))
                     return true;
-            }
-            return false;
+        }
+        return false;
     }
 }
 

@@ -13,7 +13,7 @@ public class StoreLogger {
 
         // get the global logger to configure it
         Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-        logger.setUseParentHandlers(false);
+        logger.setUseParentHandlers(true);
 
         logger.setLevel(Level.INFO);
         fileTxt = new FileHandler(dirname+"/src/shippingstore/Logging.txt");

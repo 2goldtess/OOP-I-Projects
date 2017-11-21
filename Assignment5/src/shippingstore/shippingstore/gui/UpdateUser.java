@@ -1,13 +1,21 @@
 package shippingstore.shippingstore.gui;
 
+import shippingstore.Customer;
+import shippingstore.Employee;
 import shippingstore.ShippingStore;
+import shippingstore.User;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Logger;
 
 
 public class UpdateUser extends JFrame {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     private  String userId;
+
     UpdateUser() {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
@@ -55,7 +63,9 @@ public class UpdateUser extends JFrame {
         showCurrentUsersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 ShowUsers show = new ShowUsers();
+                show.setLocation(updateUserFrame.getX(), updateUserFrame.getY()+160);
             }
         });
 
@@ -82,6 +92,9 @@ public class UpdateUser extends JFrame {
                     JFrame addCustomerFrame = new JFrame("Update Customer Information");
                     addCustomerFrame.setSize(400, 400);
 
+                    // get user information
+                     User user = ss.findUser(userIdInt);
+
                     // create panel for title
                     JPanel topPanel = new JPanel();
                     JLabel titleLabel = new JLabel("Update Customer Menu", JLabel.CENTER);
@@ -97,6 +110,8 @@ public class UpdateUser extends JFrame {
                     JLabel firstNameLabel = new JLabel("First Name: ");
                     JTextField firstNameField = new JTextField();
                     firstNameField.setPreferredSize(new Dimension(120, 20));
+                    firstNameField.setText(user.getFirstName());
+
                     c.gridx = 0;
                     c.gridy = 0;
                     centerPanel.add(firstNameLabel, c);
@@ -107,6 +122,8 @@ public class UpdateUser extends JFrame {
                     //last name
                     JLabel lastNameLabel = new JLabel("Last Name: ", JLabel.CENTER);
                     JTextField lastNameField = new JTextField();
+                    lastNameField.setText(user.getLastName());
+
                     lastNameField.setPreferredSize(new Dimension(120, 20));
                     c.gridx = 0;
                     c.gridy = 1;
@@ -118,6 +135,7 @@ public class UpdateUser extends JFrame {
                     //phone number
                     JLabel phoneNumberLabel = new JLabel("Phone Number: ");
                     JTextField phoneNumberField = new JTextField();
+                    phoneNumberField.setText(((Customer) user).getPhoneNumber());
                     phoneNumberField.setPreferredSize(new Dimension(120, 20));
                     c.gridx = 0;
                     c.gridy = 2;
@@ -130,6 +148,7 @@ public class UpdateUser extends JFrame {
                     JLabel addressLabel = new JLabel("Address: ");
                     JTextField addressField = new JTextField();
                     addressField.setPreferredSize(new Dimension(200, 20));
+                    addressField.setText(((Customer) user).getAddress());
                     c.gridx = 0;
                     c.gridy = 3;
                     centerPanel.add(addressLabel, c);
@@ -209,10 +228,14 @@ public class UpdateUser extends JFrame {
 
                     c.insets = new Insets(5, 5, 5, 5);
 
+//                    // get user information
+                    User user = ss.findUser(userIdInt);
+
                     //first name
                     JLabel firstNameLabel = new JLabel("First Name: ");
                     JTextField firstNameField = new JTextField();
                     firstNameField.setPreferredSize(new Dimension(120, 20));
+                    firstNameField.setText(user.getFirstName());
                     c.gridx = 0;
                     c.gridy = 0;
                     centerPanel.add(firstNameLabel, c);
@@ -224,6 +247,7 @@ public class UpdateUser extends JFrame {
                     JLabel lastNameLabel = new JLabel("Last Name: ", JLabel.CENTER);
                     JTextField lastNameField = new JTextField();
                     lastNameField.setPreferredSize(new Dimension(120, 20));
+                    lastNameField.setText(user.getLastName());
                     c.gridx = 0;
                     c.gridy = 1;
                     centerPanel.add(lastNameLabel, c);
@@ -235,6 +259,7 @@ public class UpdateUser extends JFrame {
                     JLabel socialLabel = new JLabel("<html>Social:<br>(must be 9 digits)<html>");
                     JTextField socialField = new JTextField();
                     socialField.setPreferredSize(new Dimension(120, 20));
+                    socialField.setText(((Employee) user).getSocialSecurityNumber() + "");
                     c.gridx = 0;
                     c.gridy = 2;
                     centerPanel.add(socialLabel, c);
@@ -246,6 +271,7 @@ public class UpdateUser extends JFrame {
                     JLabel salaryLabel = new JLabel("Salary: ");
                     JTextField salaryField = new JTextField();
                     salaryField.setPreferredSize(new Dimension(120, 20));
+                    salaryField.setText(((Employee) user).getMonthlySalary() + "");
                     c.gridx = 0;
                     c.gridy = 3;
                     centerPanel.add(salaryLabel, c);
@@ -258,6 +284,7 @@ public class UpdateUser extends JFrame {
                     JLabel bankNumberLabel = new JLabel("Bank #: ");
                     JTextField bankNumberField = new JTextField();
                     bankNumberField.setPreferredSize(new Dimension(120, 20));
+                    bankNumberField.setText(((Employee) user).getBankAccountNumber() + "");
                     c.gridx = 0;
                     c.gridy = 4;
                     centerPanel.add(bankNumberLabel, c);

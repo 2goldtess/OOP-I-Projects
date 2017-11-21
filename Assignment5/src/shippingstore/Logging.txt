@@ -1,20 +1,6 @@
-Nov 21, 2017 1:15:16 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 4:44:34 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 1:15:18 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All Users
-Nov 21, 2017 1:15:40 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All Users
-Nov 21, 2017 1:15:44 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Add a New User
-Nov 21, 2017 1:15:46 PM shippingstore.shippingstore.gui.AddUser$1 actionPerformed
-INFO: User selects: Add a New Customer menu option
-Nov 21, 2017 1:15:48 PM shippingstore.shippingstore.gui.AddUser$2 actionPerformed
-INFO: User selects: Add a New Employee menu option
-Nov 21, 2017 1:15:59 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Update an Existing User
-Nov 21, 2017 1:16:04 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Deliver a Package
-Nov 21, 2017 1:16:13 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All Transactions
-Nov 21, 2017 1:16:13 PM shippingstore.shippingstore.gui.showTransactions addRowToJTable
-INFO: Generating transactions table.
+Nov 21, 2017 4:44:36 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Add a New Package
+Nov 21, 2017 4:44:42 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
+INFO: Generating packages table

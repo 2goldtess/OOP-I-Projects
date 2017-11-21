@@ -24,7 +24,6 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private final static int windowOffSet = 302;
 
-
     ShippingStore ss;
     private JPanel panelMenu;
     private JList  listMenu;
@@ -39,13 +38,13 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 } catch (IOException e) {
                     System.out.println("An error occurred while configuring the store logger");
                 }
+                ShippingStoreLookAndFeel.initLookAndFeel();
 
                 ShippingStoreGUI app = new ShippingStoreGUI();
                 app.setVisible(true);
             }
         });
     }
-
 
     private ShippingStoreGUI() {
         LOGGER.info("App is now running");
@@ -148,7 +147,7 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
             case 8:
                 //user selects 'show all transactions
                 LOGGER.info("User selects: Show All Transactions");
-                showTransactions st = new showTransactions();
+                ShowTransactions st = new ShowTransactions();
                 st.setLocation(this.getX(), this.getY());
                 break;
             case 9:
@@ -157,7 +156,6 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 Runtime.getRuntime().exit(0);
                 break;
         }
-
     }
 
     @Override
