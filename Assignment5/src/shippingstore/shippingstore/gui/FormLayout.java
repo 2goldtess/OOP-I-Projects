@@ -6,7 +6,12 @@ import java.awt.*;
    A layout manager that lays out components along a central axis
 */
 public class FormLayout implements LayoutManager
-{  
+{
+   /**
+    * Sets up a layout for forms with preferred layout size.
+    * @param parent
+    * @return
+    */
    public Dimension preferredLayoutSize(Container parent)
    {  
       Component[] components = parent.getComponents();
@@ -27,12 +32,23 @@ public class FormLayout implements LayoutManager
       }      
       return new Dimension(left + GAP + right, height);
    }
-      
+
+
+   /**
+    * Sets the minimum layout size of forms.
+    * @param parent
+    * @return preferredLayoutSize(parent)
+    */
    public Dimension minimumLayoutSize(Container parent)
    {  
       return preferredLayoutSize(parent);
    }
 
+
+   /**
+    * Generates the container for the different components used or added.
+    * @param parent
+    */
    public void layoutContainer(Container parent)
    {  
       preferredLayoutSize(parent); // Sets left, right
@@ -62,11 +78,19 @@ public class FormLayout implements LayoutManager
       }
    }
 
-   public void addLayoutComponent(String name, Component comp)
-   {}
 
-   public void removeLayoutComponent(Component comp)
-   {}
+   /**
+    * adds a component to layout.
+    * @param name
+    * @param comp
+    */
+   public void addLayoutComponent(String name, Component comp) {}
+
+   /**
+    * removes a component from layout.
+    * @param comp
+    */
+   public void removeLayoutComponent(Component comp) {}
 
    private int left;
    private int right;
