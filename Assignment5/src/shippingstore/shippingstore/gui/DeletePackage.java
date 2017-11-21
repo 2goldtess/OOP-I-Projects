@@ -54,9 +54,9 @@ public class DeletePackage extends JFrame implements ActionListener {
                 ss.deletePackage(trackingNumber);
 
                 if (ss.deletePackage(trackingNumber))
-                    JOptionPane.showMessageDialog(new Frame(), "Package was deleted");
+                    JOptionPane.showMessageDialog(new JFrame(), "Package was deleted");
                 else
-                    JOptionPane.showMessageDialog(new Frame(), "Package with the given tracking number (#" + trackingNumber + ") does not exist.");
+                    JOptionPane.showMessageDialog(new JFrame(), "Package with the given tracking number (#" + trackingNumber + ") does not exist.");
                 ss.writeDatabase();
             }
         }

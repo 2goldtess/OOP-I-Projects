@@ -3,7 +3,6 @@ package shippingstore.shippingstore.gui;
 import shippingstore.Package;
 import shippingstore.ShippingStore;
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
@@ -198,7 +197,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                         ss.addCrate(trackingNumber, specification, mailingClass,Float.parseFloat(otherdetails1), otherdetails2);
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
+                        JOptionPane.showMessageDialog(new JFrame(), errorMessage);
                     }
                     break;
                 case 2:
@@ -212,7 +211,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                             return;
                         }
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
+                        JOptionPane.showMessageDialog(new JFrame(), errorMessage);
                     }
                     break;
                 case 3:
@@ -221,12 +220,11 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                         JOptionPane.showMessageDialog(new JFrame(), successMessage);
 
                     } catch (NumberFormatException nfe) {
-                        JOptionPane.showMessageDialog(new Frame(), errorMessage);
+                        JOptionPane.showMessageDialog(new JFrame(), errorMessage);
                     }
                     break;
             }
             ss.writeDatabase();
-            //System.out.println(trackingNumber + " " + type + " " + specification + " " + mailingClass + " " + otherdetails1 + " " + otherdetails2) ;
         }
         if (e.getSource() == btnReset) {
             textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
@@ -261,7 +259,6 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 if (p.getPtn().equalsIgnoreCase(trackingNumber))
                     return true;
             }
-
             return false;
     }
 }
