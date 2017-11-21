@@ -36,7 +36,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     ArrayList<Package> packages;
 
     AddPackage() {
-        setSize(650, 250);
+        setSize(625, 225);
         setTitle("Add a New Package");
         setLayout(new FormLayout());
 
