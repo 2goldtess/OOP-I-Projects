@@ -1,5 +1,6 @@
 package shippingstore.shippingstore.gui;
 
+import oracle.jvm.hotspot.jfr.JFR;
 import shippingstore.ShippingStore;
 import javax.swing.*;
 import java.awt.*;
@@ -61,8 +62,9 @@ public class AddUser extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //create frame
-                JFrame addCustomerFrame = new JFrame("Shipping Store Database");
+                JFrame addCustomerFrame = new JFrame("Add a New Customer");
                 addCustomerFrame.setSize(400, 400);
+                addCustomerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
                 // create panel for title
                 JPanel topPanel = new JPanel();
@@ -98,7 +100,7 @@ public class AddUser extends JFrame {
                 centerPanel.add(lastNameField, c);
 
                 //phone number
-                JLabel phoneNumberLabel = new JLabel("Phone Number: ");
+                JLabel phoneNumberLabel = new JLabel("Phone Number: (212-909-0901)");
                 JTextField phoneNumberField = new JTextField();
                 phoneNumberField.setPreferredSize(new Dimension(120, 20));
                 c.gridx = 0;
@@ -109,7 +111,7 @@ public class AddUser extends JFrame {
                 centerPanel.add(phoneNumberField, c);
 
                 //address
-                JLabel addressLabel = new JLabel("Address: ");
+                JLabel addressLabel = new JLabel("Address: (11229 Forth St. TX 78661)");
                 JTextField addressField = new JTextField();
                 addressField.setPreferredSize(new Dimension(200, 20));
                 c.gridx = 0;
@@ -123,7 +125,7 @@ public class AddUser extends JFrame {
                 //create next and cancel buttons
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-                JButton nextButton = new JButton("Next");
+                JButton nextButton = new JButton("Add Customer");
                 JButton cancelButton = new JButton("Cancel");
                 buttonPanel.add(cancelButton);
                 buttonPanel.add(nextButton);
@@ -138,40 +140,63 @@ public class AddUser extends JFrame {
                         String firstName = firstNameField.getText();
                         String lastName = lastNameField.getText();
                         String phoneNumber = phoneNumberField.getText();
-                        String address = addressField.getText();
+                        String address = addressField.getText().trim();
 
-                        ss.addCustomer(firstName, lastName, phoneNumber, address);
-                        ss.writeDatabase();
+                        // validate customer names
+                        if (firstName.matches("[a-zA-z\\s.]*") && lastName.matches("[a-zA-z\\s]*")) {
 
-                        JFrame successWindow = new JFrame();
-                        JLabel successLabel = new JLabel("Customer successfully added!");
-                        JButton okButton = new JButton("Ok");
-                        okButton.setSize(30, 30);
+                            //validate customer phone number
+                            if (phoneNumber.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")) {
 
-                        JPanel successPanel = new JPanel(new GridBagLayout());
-                        GridBagConstraints c = new GridBagConstraints();
+                                //validate customer address
+                                if (address.matches("[\\d]+[A-Za-z0-9\\s,.]+?[a-zA-Z]+[\\s]+[\\d{5}]+")) {
+                                    try {
+                                        ss.addCustomer(firstName, lastName, phoneNumber, address);
+                                        ss.writeDatabase();
+                                        JOptionPane.showMessageDialog(new JFrame(), "Success: New Customer added to the database");
+                                    } catch (Exception exception) {
 
-                        c.gridx = 0;
-                        c.gridy = 0;
-                        successPanel.add(successLabel, c);
-
-                        c.gridx = 0;
-                        c.gridy = 1;
-                        successPanel.add(okButton, c);
-
-                        successWindow.add(successPanel, BorderLayout.CENTER);
-                        successWindow.pack();
-                        successWindow.setVisible(true);
-
-                        okButton.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                successWindow.dispose();
+                                    }
+                                } else {
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer address. (Follow this format: 123 East St, 78666 TX)");
+                                }
+                                } else {
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone number. (Follow this format: 221-129-8762)");
                             }
-                        });
 
-                        addCustomerFrame.dispose();
-                        addUserFrame.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (use alpha characters only)");
+                        }
+
+//                        JFrame successWindow = new JFrame();
+//                        JLabel successLabel = new JLabel("Customer successfully added!");
+//                        JButton okButton = new JButton("Ok");
+//                        okButton.setSize(30, 30);
+//
+//                        JPanel successPanel = new JPanel(new GridBagLayout());
+//                        GridBagConstraints c = new GridBagConstraints();
+//
+//                        c.gridx = 0;
+//                        c.gridy = 0;
+//                        successPanel.add(successLabel, c);
+//
+//                        c.gridx = 0;
+//                        c.gridy = 1;
+//                        successPanel.add(okButton, c);
+//
+//                        successWindow.add(successPanel, BorderLayout.CENTER);
+//                        successWindow.pack();
+//                        successWindow.setVisible(true);
+//
+//                        okButton.addActionListener(new ActionListener() {
+//                            @Override
+//                            public void actionPerformed(ActionEvent e) {
+//                                successWindow.dispose();
+//                            }
+//                        });
+//
+//                        addCustomerFrame.dispose();
+//                        addUserFrame.dispose();
 
                     }
                 });
