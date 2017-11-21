@@ -21,7 +21,7 @@ public class ShowUsers extends JFrame {
 
 
     ShowUsers() {
-        tableFrame.setSize(900, 500);
+        tableFrame.setSize(905, 500);
         tableFrame.setTitle("Package List");
         tableFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -38,24 +38,24 @@ public class ShowUsers extends JFrame {
 
         addRowToJTable();
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        JButton okButton = new JButton("Ok");
-        okButton.setSize(30, 30);
-        buttonPanel.add(okButton);
+//        JPanel buttonPanel = new JPanel();
+//        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+//        JButton okButton = new JButton("Ok");
+//        okButton.setSize(30, 30);
+//        buttonPanel.add(okButton);
 
         tableFrame.add(new JScrollPane(usersTable));
-        tableFrame.add(buttonPanel, BorderLayout.SOUTH);
+        //tableFrame.add(buttonPanel, BorderLayout.SOUTH);
 
         tableFrame.setVisible(true);
 
 
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                tableFrame.dispose();
-            }
-        });
+//        okButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                tableFrame.dispose();
+//            }
+//        });
 
     }
 
@@ -80,7 +80,5 @@ public class ShowUsers extends JFrame {
         else
             return "Phone Number: " + ((Customer) u).getPhoneNumber() + ", Address: " + ((Customer) u).getAddress();
         }
-
-
 }
 
