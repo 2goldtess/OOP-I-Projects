@@ -10,14 +10,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class ShowUsers extends JFrame {
     //JFrame tableFrame = new JFrame();
 
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     JTable usersTable;
     String[] columnNames = {"User ID", "First Name", "Last Name", "Other Details"};
     ArrayList<User> users;
-    
+
+
     ShowUsers() {
         setSize(905, 500);
         setTitle("Show All Users");

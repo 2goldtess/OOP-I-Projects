@@ -1,8 +1,10 @@
-Nov 21, 2017 10:48:38 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 10:49:59 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 10:48:41 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 10:50:01 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Deliver a Package
-Nov 21, 2017 10:48:42 AM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
+Nov 21, 2017 10:50:02 AM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
 INFO: User selects: Show All Packages option
-Nov 21, 2017 10:48:44 AM shippingstore.shippingstore.gui.DeliverPackage$2 actionPerformed
+Nov 21, 2017 10:50:04 AM shippingstore.shippingstore.gui.DeliverPackage$2 actionPerformed
 INFO: User selects: Show All User option
+Nov 21, 2017 10:51:01 AM shippingstore.shippingstore.gui.DeliverPackage$3 actionPerformed
+INFO: User selects: Cancel deliver package option
