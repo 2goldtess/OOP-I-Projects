@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 
 public class UpdateUser extends JFrame {
+    private  String userId;
     UpdateUser() {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
@@ -68,35 +69,17 @@ public class UpdateUser extends JFrame {
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String userId = enterUserIdText.getText();
-                Integer userIdInt = Integer.parseInt(userId);
+                userId = enterUserIdText.getText();
+                try {
+                    Integer userIdInt = Integer.parseInt(userId);
 
 
                 if (!ss.userExists(userIdInt)) {
-                    JFrame notFoundFrame = new JFrame();
-                    JPanel notFoundPanel = new JPanel();
-                    JLabel userNotFound = new JLabel("User not found!");
-                    notFoundPanel.add(userNotFound);
-                    notFoundFrame.add(notFoundPanel, BorderLayout.CENTER);
-
-                    JPanel buttonPanel = new JPanel();
-                    JButton okButton = new JButton("Ok");
-                    buttonPanel.add(okButton);
-                    notFoundFrame.add(buttonPanel, BorderLayout.SOUTH);
-
-                    notFoundFrame.pack();
-                    notFoundFrame.setVisible(true);
-
-                    okButton.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            notFoundFrame.dispose();
-                        }
-                    });
+                    JOptionPane.showMessageDialog(new JFrame(), "User not found. Please check the user id and try again");
 
                 }
                 else if (ss.isCustomer(userIdInt)) {
-                    JFrame addCustomerFrame = new JFrame("Shipping Store Database");
+                    JFrame addCustomerFrame = new JFrame("Update Customer Information");
                     addCustomerFrame.setSize(400, 400);
 
                     // create panel for title
@@ -158,7 +141,7 @@ public class UpdateUser extends JFrame {
                     //create next and cancel buttons
                     JPanel buttonPanel = new JPanel();
                     buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-                    JButton nextButton = new JButton("Next");
+                    JButton nextButton = new JButton("Save Changes");
                     JButton cancelButton = new JButton("Cancel");
                     buttonPanel.add(cancelButton);
                     buttonPanel.add(nextButton);
@@ -173,43 +156,37 @@ public class UpdateUser extends JFrame {
                             String firstName = firstNameField.getText();
                             String lastName = lastNameField.getText();
                             String phoneNumber = phoneNumberField.getText();
-                            String address = addressField.getText();
+                            String address = addressField.getText().trim();
 
-                            ss.updateCustomer(userIdInt, firstName, lastName, phoneNumber, address);
-                            ss.writeDatabase();
+                            // validate customer names
+                            if (firstName.matches("[a-zA-z\\s.]*") && lastName.matches("[a-zA-z\\s]*")) {
 
-                            JFrame successWindow = new JFrame();
-                            JLabel successLabel = new JLabel("Customer successfully updated!");
-                            JButton okButton = new JButton("Ok");
-                            okButton.setSize(30, 30);
+                                //validate customer phone number
+                                if (phoneNumber.matches("\\d{3}[-\\.\\s]\\d{3}[-\\.\\s]\\d{4}")) {
 
-                            JPanel successPanel = new JPanel(new GridBagLayout());
-                            GridBagConstraints c = new GridBagConstraints();
+                                    //validate customer address
+                                    if (address.matches("[\\d]+[A-Za-z0-9\\s,.]+?[a-zA-Z]+[\\s]+[\\d{5}]+")) {
+                                        try {
+                                            ss.updateCustomer(userIdInt, firstName, lastName, phoneNumber, address);
+                                            ss.writeDatabase();
+                                            addCustomerFrame.dispose();
+                                            JOptionPane.showMessageDialog(new JFrame(), "Success: Customer information was updated.");
+                                        } catch (Exception exception) {
 
-                            c.gridx = 0;
-                            c.gridy = 0;
-                            successPanel.add(successLabel, c);
-
-                            c.gridx = 0;
-                            c.gridy = 1;
-                            successPanel.add(okButton, c);
-
-                            successWindow.add(successPanel, BorderLayout.CENTER);
-                            successWindow.pack();
-                            successWindow.setVisible(true);
-
-                            okButton.addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    successWindow.dispose();
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer address. (Follow this format: 123 East St, 78666 TX)");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone number. (Follow this format: 221-129-8762)");
                                 }
-                            });
 
-                            addCustomerFrame.dispose();
-                            updateUserFrame.dispose();
-
+                            } else {
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (Enter alpha characters only)");
+                            }
                         }
-                    });
+
+                        });
 
                     cancelButton.addActionListener(new ActionListener() {
                         @Override
@@ -220,7 +197,7 @@ public class UpdateUser extends JFrame {
 
                 }
                 else {
-                    JFrame updateEmployeeFrame = new JFrame("Shipping Store Database");
+                    JFrame updateEmployeeFrame = new JFrame("Update Employee Information");
                     JPanel titlePanel = new JPanel();
                     JLabel titleLabel = new JLabel("Update Employee Menu");
 
@@ -310,42 +287,46 @@ public class UpdateUser extends JFrame {
                             String salary = salaryField.getText();
                             String bankNumber = bankNumberField.getText();
 
-                            Integer socialInt = new Integer(Integer.valueOf(social));
-                            Float salaryFloat = new Float(Float.valueOf(salary));
-                            Integer bankNumberInt = new Integer(Integer.valueOf(bankNumber));
+                            try {
+                                Integer socialInt = new Integer(Integer.valueOf(social));
+                                Float salaryFloat = new Float(Float.valueOf(salary));
+                                Integer bankNumberInt = new Integer(Integer.valueOf(bankNumber));
 
-                            ss.updateEmployee(userIdInt, firstName, lastName, socialInt, salaryFloat, bankNumberInt);
-                            ss.writeDatabase();
+                                // validate employee names
+                                if (firstName.matches("[a-zA-z\\s.]*") && lastName.matches("[a-zA-z\\s]*")) {
 
-                            JFrame successWindow = new JFrame();
-                            JLabel successLabel = new JLabel("Employee successfully updated!");
-                            JButton okButton = new JButton("Ok");
-                            okButton.setSize(30, 30);
+                                    //validate social security number
+                                    if (social.matches("[0-9]{9}")) {
 
-                            JPanel successPanel = new JPanel(new GridBagLayout());
-                            GridBagConstraints c = new GridBagConstraints();
+                                        //validate salary data
+                                        if (salary.matches("[0-9]*$")) {
 
-                            c.gridx = 0;
-                            c.gridy = 0;
-                            successPanel.add(successLabel, c);
+                                            //validate bank# data
+                                            if (bankNumber.matches("[0-9]")) {
+                                                try {
+                                                    ss.updateEmployee(userIdInt, firstName, lastName, socialInt, salaryFloat, bankNumberInt);
+                                                    ss.writeDatabase();
+                                                    JOptionPane.showMessageDialog(new JFrame(), "Success: Employee information was  updated");
+                                                    updateEmployeeFrame.dispose();
+                                                } catch (Exception e3) {
+                                                    JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to save the information.");
+                                                }
 
-                            c.gridx = 0;
-                            c.gridy = 1;
-                            successPanel.add(okButton, c);
-
-                            successWindow.add(successPanel, BorderLayout.CENTER);
-                            successWindow.pack();
-                            successWindow.setVisible(true);
-
-                            okButton.addActionListener(new ActionListener() {
-                                @Override
-                                public void actionPerformed(ActionEvent e) {
-                                    successWindow.dispose();
+                                            } else {
+                                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for bank account number. (Enter numeric values only)");
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for salary data number. (Enter numeric values only)");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social security number. (Enter exactly 9-digits)");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee name. (Enter alpha characters only)");
                                 }
-                            });
-
-                            updateEmployeeFrame.dispose();
-                            updateUserFrame.dispose();
+                            }catch (NumberFormatException nfe) {
+                                JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again");
+                            }
                         }
                     });
                     cancelButton.addActionListener(new ActionListener() {
@@ -362,6 +343,11 @@ public class UpdateUser extends JFrame {
                         }
                     });
                 }
+
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Please Enter a the User Id (Integer values only).");
+                }
+
             }
         });
     }

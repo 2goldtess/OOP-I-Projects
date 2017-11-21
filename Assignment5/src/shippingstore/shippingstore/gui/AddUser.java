@@ -165,7 +165,7 @@ public class AddUser extends JFrame {
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (use alpha characters only)");
+                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (Enter alpha characters only)");
                         }
 
 //                        JFrame successWindow = new JFrame();
@@ -212,7 +212,7 @@ public class AddUser extends JFrame {
         employeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame addEmployeeFrame = new JFrame("Shipping Store Database");
+                JFrame addEmployeeFrame = new JFrame("Add a New Employee");
                 JPanel titlePanel = new JPanel();
                 JLabel titleLabel = new JLabel("Add Employee Menu");
 
@@ -284,7 +284,7 @@ public class AddUser extends JFrame {
                 //create next and cancel buttons
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-                JButton nextButton = new JButton("Next");
+                JButton nextButton = new JButton("Add Employee");
                 JButton cancelButton = new JButton("Cancel");
                 buttonPanel.add(cancelButton);
                 buttonPanel.add(nextButton);
@@ -302,42 +302,75 @@ public class AddUser extends JFrame {
                         String salary = salaryField.getText();
                         String bankNumber = bankNumberField.getText();
 
-                        Integer socialInt = new Integer(Integer.valueOf(social));
-                        Float salaryFloat = new Float(Float.valueOf(salary));
-                        Integer bankNumberInt = new Integer(Integer.valueOf(bankNumber));
+                        try {
+                            Integer socialInt = new Integer(Integer.valueOf(social));
+                            Float salaryFloat = new Float(Float.valueOf(salary));
+                            Integer bankNumberInt = new Integer(Integer.valueOf(bankNumber));
 
-                        ss.addEmployee(firstName, lastName, socialInt, salaryFloat, bankNumberInt);
-                        ss.writeDatabase();
+                            // validate employee names
+                            if (firstName.matches("[a-zA-z\\s.]*") && lastName.matches("[a-zA-z\\s]*")) {
 
-                        JFrame successWindow = new JFrame();
-                        JLabel successLabel = new JLabel("Employee successfully added!");
-                        JButton okButton = new JButton("Ok");
-                        okButton.setSize(30, 30);
+                                //validate social security number
+                                if (social.matches("[0-9]{9}")) {
 
-                        JPanel successPanel = new JPanel(new GridBagLayout());
-                        GridBagConstraints c = new GridBagConstraints();
+                                    //validate salary data
+                                    if (salary.matches("[0-9]*$")) {
 
-                        c.gridx = 0;
-                        c.gridy = 0;
-                        successPanel.add(successLabel, c);
+                                        //validate bank# data
+                                        if (bankNumber.matches("[0-9]")) {
+                                            try {
+                                                ss.addEmployee(firstName, lastName, socialInt, salaryFloat, bankNumberInt);
+                                                ss.writeDatabase();
+                                                JOptionPane.showMessageDialog(new JFrame(), "Success: New employee added to the database");
+                                                addEmployeeFrame.dispose();
+                                            } catch (Exception e3) {
+                                                JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to save the information.");
+                                            }
 
-                        c.gridx = 0;
-                        c.gridy = 1;
-                        successPanel.add(okButton, c);
-
-                        successWindow.add(successPanel, BorderLayout.CENTER);
-                        successWindow.pack();
-                        successWindow.setVisible(true);
-
-                        okButton.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                successWindow.dispose();
+                                        } else {
+                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for bank account number. (Enter numeric values only)");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for salary data number. (Enter numeric values only)");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social security number. (Enter exactly 9-digits)");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee name. (Enter alpha characters only)");
                             }
-                        });
-
-                        addEmployeeFrame.dispose();
-                        addUserFrame.dispose();
+                        }catch (NumberFormatException nfe) {
+                            JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again");
+                        }
+//
+//                        JFrame successWindow = new JFrame();
+//                        JLabel successLabel = new JLabel("Employee successfully added!");
+//                        JButton okButton = new JButton("Ok");
+//                        okButton.setSize(30, 30);
+//
+//                        JPanel successPanel = new JPanel(new GridBagLayout());
+//                        GridBagConstraints c = new GridBagConstraints();
+//
+//                        c.gridx = 0;
+//                        c.gridy = 0;
+//                        successPanel.add(successLabel, c);
+//
+//                        c.gridx = 0;
+//                        c.gridy = 1;
+//                        successPanel.add(okButton, c);
+//
+//                        successWindow.add(successPanel, BorderLayout.CENTER);
+//                        successWindow.pack();
+//                        successWindow.setVisible(true);
+//
+//                        okButton.addActionListener(new ActionListener() {
+//                            @Override
+//                            public void actionPerformed(ActionEvent e) {
+//                                successWindow.dispose();
+//                            }
+//                        });
+//
+//                        addUserFrame.dispose();
                     }
                 });
                 cancelButton.addActionListener(new ActionListener() {
