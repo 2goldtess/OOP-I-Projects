@@ -20,9 +20,7 @@ public class DeliverPackage extends JFrame {
 
         JFrame deliverPackageFrame = new JFrame("Deliver a Package");
         JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("Deliver Package Menu");
 
-        titlePanel.add(titleLabel);
         deliverPackageFrame.add(titlePanel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridBagLayout());

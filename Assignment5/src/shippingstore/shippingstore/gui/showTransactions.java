@@ -21,7 +21,7 @@ public class showTransactions extends JFrame {
         ShippingStore ss;
 
         showTransactions() {
-            setSize(1000, 500);
+            setSize(985, 500);
             setTitle("Transaction List");
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -36,18 +36,18 @@ public class showTransactions extends JFrame {
             transactionsTable.getColumnModel().getColumn(2).setPreferredWidth(160);
             transactionsTable.getColumnModel().getColumn(3).setPreferredWidth(250);
             transactionsTable.getColumnModel().getColumn(4).setPreferredWidth(250);
-            transactionsTable.getColumnModel().getColumn(5).setPreferredWidth(80);
+            transactionsTable.getColumnModel().getColumn(5).setPreferredWidth(160);
 
             addRowToJTable();
 
-            JPanel buttonPanel = new JPanel();
-            buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-            JButton okButton = new JButton("Ok");
-            okButton.setSize(30, 30);
-            buttonPanel.add(okButton);
+//            JPanel buttonPanel = new JPanel();
+//            buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+//            JButton okButton = new JButton("Ok");
+//            okButton.setSize(30, 30);
+//            buttonPanel.add(okButton);
 
             add(new JScrollPane(transactionsTable));
-            add(buttonPanel, BorderLayout.SOUTH);
+           // add(buttonPanel, BorderLayout.SOUTH);
 
             setVisible(true);
 
