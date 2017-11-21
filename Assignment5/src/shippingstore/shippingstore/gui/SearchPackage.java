@@ -7,19 +7,24 @@ import shippingstore.ShippingStore;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class SearchPackage extends JFrame implements ActionListener {
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    private ShippingStore ss;
+    private Package packageFound;
+    String trackingNumber;
+
+
     private JPanel panelSearch;
     private JTextField textFieldSearch;
     private JButton btnSearch;
     private JPanel panelSearchResults;
-    private ShippingStore ss;
-    private Package packageFound;
     private JButton btnClear;
     private JPanel panelClear;
     private JLabel labelSearchResults;
 
-    String trackingNumber;
 
     SearchPackage() {
         setSize(700, 150);
@@ -55,7 +60,6 @@ public class SearchPackage extends JFrame implements ActionListener {
         // search results
         labelSearchResults = new JLabel();
 
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setVisible(true);
@@ -69,17 +73,26 @@ public class SearchPackage extends JFrame implements ActionListener {
             }
             else {
                 trackingNumber = textFieldSearch.getText().trim();
-                System.out.println(trackingNumber);
+//                System.out.println(trackingNumber);
 
                 try {
+                    LOGGER.info("Searching for a package.");
                     packageFound = ss.findPackage(trackingNumber);
-                    packageFound.getPtn();
-                    labelSearchResults.setText("Search results: " + packageFound.getFormattedText());
+
+                    if (packageFound.equals(null)) {
+                    } else {
+                        packageFound.getPtn();
+                        labelSearchResults.setText("Search results: " + packageFound.getFormattedText());
+                        panelSearchResults.add(labelSearchResults);
+                        repaint();
+                        setVisible(true);
+                    }
+                } catch (NullPointerException npe) {
+                    labelSearchResults.setText("Search results: Package not found." );
                     panelSearchResults.add(labelSearchResults);
                     repaint();
                     setVisible(true);
-                } catch (NullPointerException npe) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Package not found. Please check the tracking number and try again.");
+                    LOGGER.severe("An attempt was made to access a none-existing package in the ShippingStore db.");
                 }
             }
         }
@@ -87,6 +100,7 @@ public class SearchPackage extends JFrame implements ActionListener {
         if (e.getSource().equals(btnClear)) {
             labelSearchResults.setText("");
             System.out.println("clicked");
+            LOGGER.info("User selects: Clear search results option.");
         }
     }
 }

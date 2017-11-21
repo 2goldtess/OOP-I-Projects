@@ -1,10 +1,8 @@
-Nov 21, 2017 10:49:59 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 12:57:01 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 10:50:01 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Deliver a Package
-Nov 21, 2017 10:50:02 AM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
-INFO: User selects: Show All Packages option
-Nov 21, 2017 10:50:04 AM shippingstore.shippingstore.gui.DeliverPackage$2 actionPerformed
-INFO: User selects: Show All User option
-Nov 21, 2017 10:51:01 AM shippingstore.shippingstore.gui.DeliverPackage$3 actionPerformed
-INFO: User selects: Cancel deliver package option
+Nov 21, 2017 12:57:04 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Search for a Package
+Nov 21, 2017 12:57:05 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
+SEVERE: An attempt was made to access a none-existing package in the ShippingStore db.
+Nov 21, 2017 12:57:10 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
+INFO: User selects: Clear search results option.

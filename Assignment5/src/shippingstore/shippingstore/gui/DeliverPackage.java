@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class DeliverPackage extends JFrame {
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-    
+
     DeliverPackage() {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
