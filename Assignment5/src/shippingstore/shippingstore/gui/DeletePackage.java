@@ -7,23 +7,28 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DeletePackage extends JFrame implements ActionListener {
-    private JTextField textFieldTrackingNumber;
-    private JButton btnDelete;
-    private JPanel panelDelete;
+
     private String trackingNumber;
     private ShippingStore ss;
     private boolean isDeleted;
 
+    private JTextField textFieldTrackingNumber;
+    private JButton btnDelete;
+    private JPanel panelButtons;
+    private JButton btnShowPackages;
+
+
+
     DeletePackage() {
         // default initial settings for the frame
-        setSize(425, 75);
+        setSize(600, 75);
         setTitle("Delete a Package");
         setLayout(new FormLayout());
 
         // initializing shipping store object;
         ss = new ShippingStore().readDatabase();
 
-        panelDelete = new JPanel();
+        panelButtons = new JPanel();
 
         //tracking number field
         add(new JLabel("  Tracking Number"));
@@ -33,21 +38,27 @@ public class DeletePackage extends JFrame implements ActionListener {
         btnDelete = new JButton("Delete Package");
         btnDelete.addActionListener(this);
 
-        // adding components to a panel
-        panelDelete.add(textFieldTrackingNumber);
-        panelDelete.add(btnDelete);
+        // show packages button
+        btnShowPackages = new JButton("Show All Packages");
+        btnShowPackages.addActionListener(this);
+
+        // adding components to delete panel
+        panelButtons.add(textFieldTrackingNumber);
+        panelButtons.add(btnDelete);
+        panelButtons.add(btnShowPackages);
 
         // adding panel to frame
-        add(panelDelete);
+        add(panelButtons);
+
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true);
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(btnDelete)); {
+        if(e.getSource().equals(btnDelete)) {
             if (textFieldTrackingNumber.getText().trim().equalsIgnoreCase("")) {
                 JOptionPane.showMessageDialog(new JFrame(), "Please enter a tracking number.");
             }
@@ -61,6 +72,11 @@ public class DeletePackage extends JFrame implements ActionListener {
                     JOptionPane.showMessageDialog(new JFrame(), "Package with the given tracking number (#" + trackingNumber + ") does not exist.");
                 ss.writeDatabase();
             }
+        }
+
+        if (e.getSource().equals(btnShowPackages)) {
+            ShowPackages sp = new ShowPackages();
+            sp.setLocation(this.getX(), this.getY() + 76);
         }
     }
 }
