@@ -1,4 +1,8 @@
-Nov 21, 2017 4:57:32 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 5:33:38 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 4:57:34 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Add a New Package
+Nov 21, 2017 5:33:44 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Deliver a Package
+Nov 21, 2017 5:33:44 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
+INFO: Generating packages table
+Nov 21, 2017 5:33:44 PM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
+INFO: User selects: Show All Packages option

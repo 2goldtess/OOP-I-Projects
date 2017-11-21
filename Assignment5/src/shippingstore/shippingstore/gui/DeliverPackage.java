@@ -7,10 +7,19 @@ import java.awt.event.*;
 import java.util.Date;
 import java.util.logging.Logger;
 
+/**
+ * DeliverPackage class is a subclass of JFrame class. It takes the users input entered into the text fields and using
+ * the information (if valid) to complete a transaction for a delivered package.
+ */
 public class DeliverPackage extends JFrame {
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+    /**
+     * Default Constructor for the DeliverPackage class. Builds the frame to allow the user to enter information for
+     * package who's transaction is to be completed. Also gives option to show current users in
+     * database and current packages.
+     */
     DeliverPackage() {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
@@ -82,27 +91,40 @@ public class DeliverPackage extends JFrame {
 
         deliverPackageFrame.pack();
         deliverPackageFrame.setVisible(true);
+        deliverPackageFrame.isAlwaysOnTop();
 
         showCurrentPackagesButton.addActionListener(new ActionListener() {
+            /**
+             * Shows current packages in database when the button is clicked.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 ShowPackages sp = new ShowPackages();
-                sp.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+192);
+                sp.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+187);
                 LOGGER.info("User selects: Show All Packages option");
             }
         });
 
         showCurrentUsersButton.addActionListener(new ActionListener() {
+            /**
+             * Shows the current users in the database when the button is clicked.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 ShowUsers su = new ShowUsers();
-                su.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+192);
+                su.setLocation(deliverPackageFrame.getX(), deliverPackageFrame.getY()+187);
                 LOGGER.info("User selects: Show All User option");
             }
         });
 
         finishButton.addActionListener(new ActionListener() {
+            /**
+             * Closes the frame and shows previous menu frame.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 deliverPackageFrame.dispose();
@@ -111,6 +133,12 @@ public class DeliverPackage extends JFrame {
         });
 
         completeTransactionButton.addActionListener(new ActionListener() {
+            /**
+             * Validates information entered to make sure it is valid. If valid it completes transaction
+             * and adds completed transaction to list of completed transactions and removes the package that was
+             * delivered from the packages list.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 boolean completeTransaction = true;
@@ -141,28 +169,34 @@ public class DeliverPackage extends JFrame {
                     }
 
                     if (ss.findPackage(trackingNumber) == null) {
-                        JOptionPane.showMessageDialog(new JFrame(), "Package not found. Please check the tracking number and try again.");
+                        JOptionPane.showMessageDialog(new JFrame(), "Package not found. Please check the " +
+                                "tracking number and try again.");
                         completeTransaction = false;
                     }
 
                     if (completeTransaction) {
                         try {
                             ss.addShppingTransaction(customerIdInt, employeeIdInt, trackingNumber, currentDate, currentDate, cost);
-                            LOGGER.info("Package delivered: Shipping transactions completed, the transactions was added to the transactions list.");
+                            LOGGER.info("Package delivered: Shipping transactions completed, the transactions was" +
+                                    " added to the transactions list.");
                             ss.deletePackage(trackingNumber);
-                            LOGGER.warning("Package with tracking number: '" + trackingNumber +"' was deleted from the packages list.");
+                            LOGGER.warning("Package with tracking number: '" + trackingNumber +"' was deleted from " +
+                                    "the packages list.");
                             ss.writeDatabase();
                             LOGGER.info("Saving changes to ShippingStore db.");
                         } catch (Exception e1) {
-                            JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to complete the transaction.");
+                            JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to " +
+                                    "complete the transaction.");
                             LOGGER.info( "An error occurred while attempting to complete the transaction.");
                         }
 
                         JOptionPane.showMessageDialog(new JFrame(), "Success: Transaction was completed.");
                     }
                 } catch (NumberFormatException nfe) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again.");
-                    LOGGER.severe("A NumberFormatException occurred while attempting to add save the package to the packages");
+                    JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. " +
+                            "Please check the information you entered and try again.");
+                    LOGGER.severe("A NumberFormatException occurred while attempting to add save the package to " +
+                            "the packages");
                 }
             }
         });

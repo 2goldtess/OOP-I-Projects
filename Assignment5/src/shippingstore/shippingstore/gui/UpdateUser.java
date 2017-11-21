@@ -65,7 +65,7 @@ public class UpdateUser extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 ShowUsers show = new ShowUsers();
-                show.setLocation(updateUserFrame.getX(), updateUserFrame.getY()+160);
+                show.setLocation(updateUserFrame.getX(), updateUserFrame.getY()+153);
             }
         });
 

@@ -1,12 +1,20 @@
-Nov 21, 2017 4:58:18 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 5:33:56 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 5:02:28 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All packages
-Nov 21, 2017 5:02:28 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
-INFO: Generating packages table
-Nov 21, 2017 5:02:31 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 5:33:59 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Show All Transactions
+Nov 21, 2017 5:33:59 PM shippingstore.shippingstore.gui.ShowTransactions addRowToJTable
+INFO: Generating transactions table.
+Nov 21, 2017 5:34:09 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Deliver a Package
-Nov 21, 2017 5:02:36 PM shippingstore.shippingstore.gui.DeliverPackage$3 actionPerformed
+Nov 21, 2017 5:34:10 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
+INFO: Generating packages table
+Nov 21, 2017 5:34:10 PM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
+INFO: User selects: Show All Packages option
+Nov 21, 2017 5:34:12 PM shippingstore.shippingstore.gui.ShowUsers addRowToJTable
+INFO: Generating users table
+Nov 21, 2017 5:34:12 PM shippingstore.shippingstore.gui.DeliverPackage$2 actionPerformed
+INFO: User selects: Show All User option
+Nov 21, 2017 5:34:16 PM shippingstore.shippingstore.gui.DeliverPackage$4 actionPerformed
+SEVERE: A NumberFormatException occurred while attempting to add save the package to the packages
+Nov 21, 2017 5:34:17 PM shippingstore.shippingstore.gui.DeliverPackage$3 actionPerformed
 INFO: User selects: Cancel deliver package option
-Nov 21, 2017 5:03:47 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Add a New User
