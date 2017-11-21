@@ -1,4 +1,16 @@
-Nov 21, 2017 9:48:28 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 10:23:43 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 9:48:33 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 10:23:46 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Delete a Package
+Nov 21, 2017 10:23:51 AM shippingstore.shippingstore.gui.DeletePackage actionPerformed
+INFO: Saving changes to ShippingStore db
+Nov 21, 2017 10:23:52 AM shippingstore.shippingstore.gui.DeletePackage actionPerformed
+INFO: User selects: Show All Packages option
+Nov 21, 2017 10:24:04 AM shippingstore.shippingstore.gui.DeletePackage actionPerformed
+INFO: Package with tracking number: 0WRVUwas deleted from the packages list
+Nov 21, 2017 10:24:05 AM shippingstore.shippingstore.gui.DeletePackage actionPerformed
+INFO: Saving changes to ShippingStore db
+Nov 21, 2017 10:24:07 AM shippingstore.shippingstore.gui.DeletePackage actionPerformed
+INFO: Saving changes to ShippingStore db
+Nov 21, 2017 10:24:12 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Show All packages

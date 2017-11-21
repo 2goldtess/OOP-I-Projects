@@ -1,6 +1,4 @@
-Nov 21, 2017 9:47:50 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 9:48:28 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 9:47:53 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Show All packages
-Nov 21, 2017 9:47:57 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 9:48:33 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Delete a Package

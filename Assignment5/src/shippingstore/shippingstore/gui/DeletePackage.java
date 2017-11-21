@@ -5,6 +5,7 @@ import shippingstore.ShippingStore;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
 
 public class DeletePackage extends JFrame implements ActionListener {
 
@@ -17,6 +18,7 @@ public class DeletePackage extends JFrame implements ActionListener {
     private JPanel panelButtons;
     private JButton btnShowPackages;
 
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
 
     DeletePackage() {
@@ -66,17 +68,26 @@ public class DeletePackage extends JFrame implements ActionListener {
                 trackingNumber = textFieldTrackingNumber.getText();
                 isDeleted = ss.deletePackage(trackingNumber);
 
-                if (isDeleted)
+                if (isDeleted) {
+                    LOGGER.info("Package with tracking number: '" + trackingNumber + "' was deleted from the packages list");
                     JOptionPane.showMessageDialog(new JFrame(), "Package was deleted");
+                }
                 else
                     JOptionPane.showMessageDialog(new JFrame(), "Package with the given tracking number (#" + trackingNumber + ") does not exist.");
-                ss.writeDatabase();
+                try {
+                    ss.writeDatabase();
+                    LOGGER.info("Saving changes to ShippingStore db");
+                } catch (Exception e1) {
+                    LOGGER.severe("A error occurred while attempting to save the changes made to ShippingStore db");
+                }
+
             }
         }
 
         if (e.getSource().equals(btnShowPackages)) {
             ShowPackages sp = new ShowPackages();
             sp.setLocation(this.getX(), this.getY() + 76);
+            LOGGER.info("User selects: Show All Packages option");
         }
     }
 }
