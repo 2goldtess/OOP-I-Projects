@@ -73,8 +73,8 @@ public class DeliverPackage extends JFrame {
 
         JPanel deliverPackageButtonPanel = new JPanel(new GridBagLayout());
         deliverPackageButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        JButton nextButton = new JButton("Next");
-        JButton cancelButton = new JButton("Cancel");
+        JButton nextButton = new JButton("Complete Transaction");
+        JButton cancelButton = new JButton("Done");
         JButton showCurrentUsersButton = new JButton("Show Current Users");
         JButton showCurrentPackagesButton = new JButton("Show Current Packages");
         deliverPackageButtonPanel.add(showCurrentPackagesButton);
@@ -117,63 +117,52 @@ public class DeliverPackage extends JFrame {
                 String trackingNumber = trackingNumberField.getText();
                 String transactionCost = transactionCostField.getText();
 
-                Integer employeeIdInt = Integer.parseInt(employeeId);
-                Integer customerIdInt = Integer.parseInt(customerId);
-                Float cost = Float.parseFloat(transactionCost);
+                try {
 
-                if(!ss.userExists(employeeIdInt)) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Employee does not exist.");
-                    completeTransaction = false;
-                }
 
-                if(!ss.userExists(customerIdInt)) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Customer does not exist.");
-                    completeTransaction = false;
-                }
+                    Integer employeeIdInt = Integer.parseInt(employeeId);
+                    Integer customerIdInt = Integer.parseInt(customerId);
+                    Float cost = Float.parseFloat(transactionCost);
 
-                if (cost < 0.0f) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Price cannot be negative.");
-                    completeTransaction = false;
-                }
+                    if (!ss.userExists(employeeIdInt)) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Employee does not exist.");
+                        completeTransaction = false;
+                    }
 
-                if(ss.findPackage(trackingNumber) == null) {
-                    JOptionPane.showMessageDialog(new JFrame(), "Package not found. Please check the tracking number and try again.");
-                    completeTransaction = false;
-                }
+                    if (!ss.userExists(customerIdInt)) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Customer does not exist.");
+                        completeTransaction = false;
+                    }
 
-                if(completeTransaction) {
-                    ss.addShppingTransaction(customerIdInt, employeeIdInt, trackingNumber, currentDate, currentDate, cost);
-                    ss.deletePackage(trackingNumber);
-                    ss.writeDatabase();
+                    if (cost < 0.0f) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Price cannot be negative.");
+                        completeTransaction = false;
+                    }
 
-                    JFrame successWindow = new JFrame();
-                    JLabel successLabel = new JLabel("Transaction Successfully Completed!");
-                    JButton okButton = new JButton("Ok");
-                    okButton.setSize(30, 30);
+                    if (ss.findPackage(trackingNumber) == null) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Package not found. Please check the tracking number and try again.");
+                        completeTransaction = false;
+                    }
 
-                    JPanel successPanel = new JPanel(new GridBagLayout());
-                    GridBagConstraints c = new GridBagConstraints();
-
-                    c.gridx = 0;
-                    c.gridy = 0;
-                    successPanel.add(successLabel, c);
-
-                    c.gridx = 0;
-                    c.gridy = 1;
-                    successPanel.add(okButton, c);
-
-                    successWindow.add(successPanel, BorderLayout.CENTER);
-                    successWindow.pack();
-                    successWindow.setVisible(true);
-                    okButton.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            successWindow.dispose();
+                    if (completeTransaction) {
+                        try {
+                            ss.addShppingTransaction(customerIdInt, employeeIdInt, trackingNumber, currentDate, currentDate, cost);
+                            ss.deletePackage(trackingNumber);
+                            ss.writeDatabase();
+                        } catch (Exception e1) {
+                            JOptionPane.showMessageDialog(new JFrame(), "An error occurred while completing the transaction.");
                         }
-                    });
+
+                        JOptionPane.showMessageDialog(new JFrame(), "Success: Transaction was completed.");
+
+                        //deliverPackageFrame.dispose();
+
+                    }
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again.");
                 }
-            deliverPackageFrame.dispose();
             }
+
         });
 
     }
