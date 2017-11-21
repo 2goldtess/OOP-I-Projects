@@ -7,12 +7,21 @@ import java.awt.event.*;
 import java.util.logging.Logger;
 
 
+/**
+ * AddUser is a subclass of JFrame Class. It creates a new frame when the user selects the 'Add a New User menu.
+ * It adds a new user to the current shipping store database if valid information is provided.
+ */
 public class AddUser extends JFrame {
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     ShippingStore ss;
 
+    /**
+     * Default constructor for the AddUser class. Creates frame that allows user to choose if user to be added
+     * will be a customer or employee. Based on the option chosen the appropriated form for adding the specified user
+     * is created for the frame.
+     */
     AddUser() {
         ss = new ShippingStore().readDatabase();
 
@@ -22,13 +31,12 @@ public class AddUser extends JFrame {
         addUserFrame.setLayout(new BorderLayout());
         addUserFrame.setResizable(false);
 
-        //create a panel for the Top of the menu
+        //create a panel for the top of the menu
         JPanel titlePanel = new JPanel(new GridBagLayout());
 
         GridBagConstraints c = new GridBagConstraints();
 
         JLabel textLabel = new JLabel("Add User Menu");
-
 
         JLabel instructionLabel = new JLabel("<html>Which type of user would<br>   you like to add?</html>");
         c.gridx = 0;
@@ -59,6 +67,10 @@ public class AddUser extends JFrame {
 
         //add listeners for the two buttons
         customerButton.addActionListener(new ActionListener() {
+            /**
+             * Opens new frame that allows user to input information for a new customer.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 LOGGER.info("User selects: Add a New Customer menu option");
@@ -136,6 +148,11 @@ public class AddUser extends JFrame {
                 addCustomerFrame.setVisible(true);
 
                 addCustomerButton.addActionListener(new ActionListener() {
+                    /**
+                     * Validates input information. If not valid notifies user and allow user
+                     * to type in data again. If valid, adds customer to database.
+                     * @param e
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String firstName = firstNameField.getText();
@@ -156,24 +173,33 @@ public class AddUser extends JFrame {
                                         LOGGER.info("New customer added to the user list");
                                         ss.writeDatabase();
                                         LOGGER.info("Saving changes to ShippingStore db");
-                                        JOptionPane.showMessageDialog(new JFrame(), "Success: New Customer added to the database");
+                                        JOptionPane.showMessageDialog(new JFrame(), "Success: New Customer " +
+                                                "added to the database");
                                     } catch (Exception exception) {
-                                        LOGGER.severe("An error occurred while attempting to save the customer to the user list");
+                                        LOGGER.severe("An error occurred while attempting to save the customer " +
+                                                "to the user list");
                                     }
                                 } else {
-                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer address. (Follow this format: 123 East St, 78666 TX)");
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for " +
+                                                "customer address. (Follow this format: 123 East St, 78666 TX)");
                                 }
                                 } else {
-                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone number. (Follow this format: 221-129-8762)");
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone number. " +
+                                        "(Follow this format: 221-129-8762)");
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (Enter alpha characters only)");
+                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name " +
+                                    "(Enter alpha characters only)");
                         }
                     }
                 });
 
                 cancelButton.addActionListener(new ActionListener() {
+                    /**
+                     * Closes current frame and returns to previous frame if it was still open.
+                     * @param e
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         addCustomerFrame.dispose();
@@ -182,6 +208,10 @@ public class AddUser extends JFrame {
             }
         });
         employeeButton.addActionListener(new ActionListener() {
+            /**
+             * Opens new frame that allows user to input information for a new employee.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 LOGGER.info("User selects: Add a New Employee menu option");
@@ -268,6 +298,11 @@ public class AddUser extends JFrame {
                 addEmployeeFrame.setVisible(true);
 
                 nextButton.addActionListener(new ActionListener() {
+                    /**
+                     * Validates input information. If not valid notifies user and allow user
+                     * to type in data again. If valid, adds employee to database.
+                     * @param e
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String firstName = firstNameField.getText();
@@ -297,31 +332,43 @@ public class AddUser extends JFrame {
                                                 LOGGER.info("New employee added to the user list");
                                                 ss.writeDatabase();
                                                 LOGGER.info("Saving changes to ShippingStore db");
-                                                JOptionPane.showMessageDialog(new JFrame(), "Success: New employee added to the database");
+                                                JOptionPane.showMessageDialog(new JFrame(), "Success: New " +
+                                                        "employee added to the database");
                                                 addEmployeeFrame.dispose();
                                             } catch (Exception e3) {
-                                                JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to save the information.");
-                                                LOGGER.severe("An error occurred while attempting to save the employee to the user list");
+                                                JOptionPane.showMessageDialog(new JFrame(), "An error occurred " +
+                                                        "while attempting to save the information.");
+                                                LOGGER.severe("An error occurred while attempting to save the " +
+                                                        "employee to the user list");
                                             }
 
                                         } else {
-                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for bank account number. (Enter numeric values only)");
+                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for bank " +
+                                                    "account number. (Enter numeric values only)");
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for salary data number. (Enter numeric values only)");
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for salary " +
+                                                "data number. (Enter numeric values only)");
                                     }
                                 } else {
-                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social security number. (Enter exactly 9-digits)");
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social " +
+                                            "security number. (Enter exactly 9-digits)");
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee name. (Enter alpha characters only)");
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee name. " +
+                                        "(Enter alpha characters only)");
                             }
                         }catch (NumberFormatException nfe) {
-                            JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again");
+                            JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected." +
+                                    " Please check the information you entered and try again");
                         }
                     }
                 });
                 cancelButton.addActionListener(new ActionListener() {
+                    /**
+                     * Closes current frame and returns to previous frame if it was still open.
+                     * @param e
+                     */
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         addEmployeeFrame.dispose();
@@ -329,6 +376,5 @@ public class AddUser extends JFrame {
                 });
             }
         });
-
     }
 }

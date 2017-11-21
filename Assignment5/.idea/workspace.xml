@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AddPackage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddPackage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4252">
-              <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="2718">
+              <caret line="194" column="103" lean-forward="false" selection-start-line="194" selection-start-column="103" selection-end-line="194" selection-end-column="103" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,31 +29,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/MainApp.java">
+      <file leaf-file-name="AddUser.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2822">
-              <caret line="535" column="27" lean-forward="false" selection-start-line="535" selection-start-column="27" selection-end-line="535" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/Customer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShowPackages.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowPackages.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-104">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="-3861">
+              <caret line="115" column="82" lean-forward="true" selection-start-line="115" selection-start-column="68" selection-end-line="115" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,53 +44,9 @@
       <file leaf-file-name="UpdateUser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/UpdateUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="286" column="87" lean-forward="false" selection-start-line="286" selection-start-column="87" selection-end-line="286" selection-end-column="87" />
+            <state relative-caret-position="4308">
+              <caret line="295" column="42" lean-forward="true" selection-start-line="295" selection-start-column="42" selection-end-line="295" selection-end-column="42" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShippingStore.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="263" column="24" lean-forward="false" selection-start-line="263" selection-start-column="16" selection-end-line="263" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShowTransactions.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowTransactions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logging.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/Logging.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -118,8 +54,8 @@
       <file leaf-file-name="ShippingStoreGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="80" column="50" lean-forward="false" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
+            <state relative-caret-position="255">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -156,8 +92,8 @@
       <find>false</find>
       <find>update</find>
       <find>user</find>
-      <find>employee</find>
       <find>findUser</find>
+      <find>employee</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -179,7 +115,6 @@
         <option value="$PROJECT_DIR$/src/shippingstore/Drum.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/Envelope.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/Logger.java" />
-        <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/Logging.txt" />
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/DeletePackage.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/DeliverPackage.java" />
@@ -195,6 +130,7 @@
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowTransactions.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreGUI.java" />
         <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java" />
+        <option value="$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java" />
       </list>
     </option>
   </component>
@@ -770,42 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="263" column="24" lean-forward="false" selection-start-line="263" selection-start-column="16" selection-end-line="263" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/UpdateUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="286" column="87" lean-forward="false" selection-start-line="286" selection-start-column="87" selection-end-line="286" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/Logging.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/LookAndFeel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -824,6 +724,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/Logging.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShowTransactions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -832,29 +740,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreGUI.java">
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/ShippingStore.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="80" column="50" lean-forward="false" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
+        <state relative-caret-position="172">
+          <caret line="263" column="24" lean-forward="false" selection-start-line="263" selection-start-column="16" selection-end-line="263" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/MainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2822">
-          <caret line="535" column="27" lean-forward="false" selection-start-line="535" selection-start-column="27" selection-end-line="535" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shippingstore/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,10 +760,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/MainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2822">
+          <caret line="535" column="27" lean-forward="false" selection-start-line="535" selection-start-column="27" selection-end-line="535" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddPackage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4252">
-          <caret line="46" column="4" lean-forward="false" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+        <state relative-caret-position="2718">
+          <caret line="194" column="103" lean-forward="false" selection-start-line="194" selection-start-column="103" selection-end-line="194" selection-end-column="103" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/ShippingStoreGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/UpdateUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4308">
+          <caret line="295" column="42" lean-forward="true" selection-start-line="295" selection-start-column="42" selection-end-line="295" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shippingstore/shippingstore/gui/AddUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3861">
+          <caret line="115" column="82" lean-forward="true" selection-start-line="115" selection-start-column="68" selection-end-line="115" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

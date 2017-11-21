@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.*;
 
+
 public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowListener {
 
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",

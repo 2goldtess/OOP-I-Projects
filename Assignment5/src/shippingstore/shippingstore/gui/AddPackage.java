@@ -10,7 +10,7 @@ import java.util.logging.*;
 
 
 /**
- * AddPackage is a subclass of JFrame class. It creates a new frames when the user selects the 'Add a New Package menu
+ * AddPackage is a subclass of JFrame class. It creates a new frame when the user selects the 'Add a New Package menu
  * option and, if valid data is provided, it adds a new package to shipping store database.
  */
 public class AddPackage extends JFrame implements ItemListener, ActionListener {
@@ -44,7 +44,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private String mailingClass;
     private String otherdetails1;
     private String otherdetails2;
-    
+
     /**
      * Default constructor for AddPackage class. Generates a random new Tracking Number for user and creates
      * drop boxes for user to choose different Package type, Specification, and Mailing Class. Based on package
@@ -190,7 +190,9 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
 
     /**
      * Validates information of package being entered. If valid, adds package to database. If not valid, notifies user
-     * to updated the information and try again.
+     * to updated the information and try again. It also reacts to the user event when user clicks the 'reset button'.
+     * If reset button is click it resets the form and generates and auto-fill the tracking number field. If the user
+     * clicks the 'show all packages' button it initializes that class and presents the packages table.
      * @param e
      */
     @Override
