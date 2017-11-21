@@ -38,9 +38,10 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
     private String otherdetails2;
 
     ArrayList<Package> packages;
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
 
     AddPackage()  {
-
         setSize(625, 225);
         setTitle("Add a New Package");
         setLayout(new FormLayout());

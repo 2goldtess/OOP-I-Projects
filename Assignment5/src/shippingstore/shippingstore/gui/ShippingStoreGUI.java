@@ -15,19 +15,19 @@ import java.util.logging.*;
 
 public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowListener {
 
-    ShippingStore ss;
-    private JPanel panelMenu;
-    private JList  listMenu;
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
             "Delete a Package", "Search for a Package", "Show All Users",
             "Add a New User", "Update an Existing User", "Deliver a Package",
             "Show All Transactions", "Save & Exit Program") ;
 
     private final DefaultListModel menuModel;
-    private ListSelectionModel listSelectionModel;
-    private static final String dirname = System.getProperty("user.dir");
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
+
+    ShippingStore ss;
+    private JPanel panelMenu;
+    private JList  listMenu;
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -36,20 +36,8 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 try {
                     storeLogger.setup();
                 } catch (IOException e) {
+                    System.out.println("An error occurred while configuring the store logger");
                 }
-//                Logger logger = Logger.getLogger(AddPackage.class.getName());
-//                ConsoleHandler consoleHandler = new ConsoleHandler();
-//                consoleHandler.setFormatter(new SimpleFormatter());
-//
-//                logger.addHandler(consoleHandler);
-//
-//                try {
-//                     FileHandler fileHandler = new FileHandler(dirname+"/src/shippingstore/shippingstore.log");
-//                     fileHandler.setFormatter(new SimpleFormatter());
-//                     logger.addHandler(fileHandler);
-//                } catch (IOException ioe) { }
-//
-//                logger.log(Level.SEVERE, "testing");
 
                 ShippingStoreGUI app = new ShippingStoreGUI();
                 app.setVisible(true);
@@ -59,7 +47,8 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
 
 
     private ShippingStoreGUI() {
-        LOGGER.info("App is running");
+        LOGGER.info("App is now running");
+
         // setting up main window
         setTitle("Shipping Store");
         setSize(300, 250);
@@ -85,10 +74,8 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
         listMenu.setModel(menuModel);
         listMenu.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listMenu.setLayoutOrientation(JList.VERTICAL);
-        //listMenu.addListSelectionListener(this);
         listMenu.addMouseListener(this);
         listMenu.setSelectedIndex(-1);
-//        listMenu.setVisibleRowCount(2);
 
         // adding list of menu options to scrollable sidebar
         JScrollPane listMenuScroller = new JScrollPane(listMenu);
@@ -111,51 +98,61 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
         switch (listMenu.getSelectedIndex()) {
             case 0:
                 //user selects 'show all packages'
+                LOGGER.info("User selects: Show All packages");
                 ShowPackages sp = new ShowPackages();
                 sp.setLocation(this.getX(), this.getY());
-                LOGGER.info("Showing packages");
                 break;
             case 1:
                 //user selects 'add a new package'
+                LOGGER.info("User selects: Add a New Package");
                 AddPackage ap = new AddPackage();
                 ap.setLocation(this.getX(), this.getY());
                 break;
             case 2:
                 //user selects 'delete a package'
+                LOGGER.info("User selects: Delete a Package");
                 DeletePackage dp = new DeletePackage();
                 dp.setLocation(this.getX(), this.getY());
                 break;
             case 3:
                 //user selects 'search for a package'
+                LOGGER.info("User selects: Search for a Package");
                 SearchPackage searchPackage = new SearchPackage();
                 searchPackage.setLocation(this.getX(), this.getY());
                 break;
             case 4:
                 //user selects 'show all users
+                LOGGER.info("User selects: Show All Users");
                 ShowUsers su = new ShowUsers();
                 su.setLocation(this.getX(), this.getY());
                 break;
             case 5:
                 //user selects 'add a new user
+                LOGGER.info("User selects: Add a New User");
                 AddUser au = new AddUser();
                 au.setLocation(this.getX(), this.getY());
                 break;
             case 6:
                 //user selects 'update an existing user
+                LOGGER.info("User selects: Update an Existing User");
                 UpdateUser uu = new UpdateUser();
                 uu.setLocation(this.getX(), this.getY());
                 break;
             case 7:
                 //user selects 'deliver a package
+                LOGGER.info("User selects: Deliver a Package");
                 DeliverPackage deliverP = new DeliverPackage();
                 deliverP.setLocation(this.getX(), this.getY());
                 break;
             case 8:
                 //user selects 'show all transactions
+                LOGGER.info("User selects: Show All Transactions");
                 showTransactions st = new showTransactions();
                 st.setLocation(this.getX(), this.getY());
                 break;
             case 9:
+                LOGGER.info("User selects: Save & Exit Program");
+                LOGGER.warning("Exiting Program");
                 Runtime.getRuntime().exit(0);
                 break;
         }
@@ -225,65 +222,3 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
 
 
 
-
-//    @Override
-//    public void valueChanged(ListSelectionEvent lse) {
-//        if (!lse.getValueIsAdjusting()) {
-//            switch (listMenu.getSelectedIndex()){
-//                case 0:
-//                    // System.out.println(listMenu.getSelectedIndex());
-//                    //user selects 'show all packages'
-//                    ShowPackages sp = new ShowPackages();
-//                    sp.setLocation(this.getX(), this.getY());
-//                    break;
-//                case 1:
-//                    //user selects 'add a new package'
-//                    AddPackage ap = new AddPackage();
-//                    ap.setLocation(this.getX(), this.getY());
-//                    break;
-//                case 2:
-//                    //user selects 'delete a package'
-//                    DeletePackage dp = new DeletePackage();
-//                    dp.setLocation(this.getX(), this.getY());
-//                    break;
-//                case 3:
-//                    //user selects 'search for a package'
-//                    SearchPackage searchPackage = new SearchPackage();
-//                    searchPackage.setLocation(this.getX(), this.getY());
-//                    break;
-//                case 4:
-//                    //user selects 'show all users
-//                    ShowUsers su = new ShowUsers();
-//                    su.setLocation(this.getX(), this.getY());
-//                    System.out.println(listMenu.getSelectedIndex());
-//                    break;
-//                case 5:
-//                    //user selects 'add a new user
-//                    AddUser au = new AddUser();
-//                    au.setLocation(this.getX(), this.getY());
-//                    break;
-//                case 6:
-//                    //user selects 'update an existing user
-//                    UpdateUser uu = new UpdateUser();
-//                    uu.setLocation(this.getX(), this.getY());
-//                    System.out.println(listMenu.getSelectedIndex());
-//                    break;
-//                case 7:
-//                    //user selects 'deliver a package
-//                    DeliverPackage deliverP = new DeliverPackage();
-//                    deliverP.setLocation(this.getX(), this.getY());
-//                    System.out.println(listMenu.getSelectedIndex());
-//                    break;
-//                case 8:
-//                    //user selects 'show all transactions
-//                    showTransactions st = new showTransactions();
-//                    st.setLocation(this.getX(),this.getY());
-//                    System.out.println(listMenu.getSelectedIndex());
-//                    break;
-//                case 9:
-//                    ss.writeDatabase();
-//                    this.dispose();
-//                    break;
-//            }
-//        }
-//    }
