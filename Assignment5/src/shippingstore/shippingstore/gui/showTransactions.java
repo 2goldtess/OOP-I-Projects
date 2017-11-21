@@ -10,9 +10,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class showTransactions extends JFrame {
-        //JFrame transactionFrame = new JFrame();
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
         JTable transactionsTable;
         String[] columnNames = {"Customer ID", "Employee ID", "Tracking Number", "Shipping Date", "Delivery Date", "Price"};
@@ -40,29 +41,13 @@ public class showTransactions extends JFrame {
 
             addRowToJTable();
 
-//            JPanel buttonPanel = new JPanel();
-//            buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-//            JButton okButton = new JButton("Ok");
-//            okButton.setSize(30, 30);
-//            buttonPanel.add(okButton);
-
             add(new JScrollPane(transactionsTable));
-           // add(buttonPanel, BorderLayout.SOUTH);
 
             setVisible(true);
-
-
-//
-//            okButton.addActionListener(new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    transactionFrame.dispose();
-//                }
-//            });
-
         }
 
         public void addRowToJTable() {
+            LOGGER.info("Generating transactions table.");
 
             DefaultTableModel tableModel = (DefaultTableModel) transactionsTable.getModel();
             Object rowData[] = new Object[6];

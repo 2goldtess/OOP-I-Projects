@@ -43,8 +43,8 @@ public class ShowPackages extends JFrame{
     }
 
     public void addRowToJTable() {
-
         LOGGER.info("Generating packages table");
+
         DefaultTableModel tableModel = (DefaultTableModel) packagesTable.getModel();
         Object rowData[] = new Object[5];
 

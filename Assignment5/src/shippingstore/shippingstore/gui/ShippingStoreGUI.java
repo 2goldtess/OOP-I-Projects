@@ -22,6 +22,7 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
 
     private final DefaultListModel menuModel;
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+    private final static int windowOffSet = 302;
 
 
     ShippingStore ss;

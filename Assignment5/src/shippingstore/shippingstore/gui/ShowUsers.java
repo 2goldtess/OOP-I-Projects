@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class ShowUsers extends JFrame {
-    //JFrame tableFrame = new JFrame();
 
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -23,7 +22,7 @@ public class ShowUsers extends JFrame {
 
 
     ShowUsers() {
-        setSize(905, 500);
+        setSize(920, 500);
         setTitle("Show All Users");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -40,28 +39,13 @@ public class ShowUsers extends JFrame {
 
         addRowToJTable();
 
-//        JPanel buttonPanel = new JPanel();
-//        buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-//        JButton okButton = new JButton("Ok");
-//        okButton.setSize(30, 30);
-//        buttonPanel.add(okButton);
-
         add(new JScrollPane(usersTable));
-        //tableFrame.add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
-
-
-//        okButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                tableFrame.dispose();
-//            }
-//        });
-
     }
 
     public void addRowToJTable() {
+        LOGGER.info("Generating users table");
 
         DefaultTableModel tableModel = (DefaultTableModel) usersTable.getModel();
         Object rowData[] = new Object[4];
