@@ -1,19 +1,19 @@
 package shippingstore.shippingstore.gui;
 
-import oracle.jvm.hotspot.jfr.JFR;
 import shippingstore.ShippingStore;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
-
+import java.util.logging.Logger;
 
 
 public class AddUser extends JFrame {
-    //user selects 'add a new user
+
+    private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    ShippingStore ss;
 
     AddUser() {
-        ShippingStore ss;
         ss = new ShippingStore().readDatabase();
 
         JFrame addUserFrame = new JFrame("Add a New User");
@@ -61,6 +61,7 @@ public class AddUser extends JFrame {
         customerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                LOGGER.info("User selects: Add a New Customer menu option");
                 //create frame
                 JFrame addCustomerFrame = new JFrame("Add a New Customer");
                 addCustomerFrame.setSize(400, 400);
@@ -125,16 +126,16 @@ public class AddUser extends JFrame {
                 //create next and cancel buttons
                 JPanel buttonPanel = new JPanel();
                 buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-                JButton nextButton = new JButton("Add Customer");
+                JButton addCustomerButton = new JButton("Add Customer");
                 JButton cancelButton = new JButton("Cancel");
                 buttonPanel.add(cancelButton);
-                buttonPanel.add(nextButton);
+                buttonPanel.add(addCustomerButton);
                 addCustomerFrame.add(buttonPanel, BorderLayout.SOUTH);
 
                 addCustomerFrame.pack();
                 addCustomerFrame.setVisible(true);
 
-                nextButton.addActionListener(new ActionListener() {
+                addCustomerButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         String firstName = firstNameField.getText();
@@ -152,10 +153,12 @@ public class AddUser extends JFrame {
                                 if (address.matches("[\\d]+[A-Za-z0-9\\s,.]+?[a-zA-Z]+[\\s]+[\\d{5}]+")) {
                                     try {
                                         ss.addCustomer(firstName, lastName, phoneNumber, address);
+                                        LOGGER.info("New customer added to the user list");
                                         ss.writeDatabase();
+                                        LOGGER.info("Saving changes to ShippingStore db");
                                         JOptionPane.showMessageDialog(new JFrame(), "Success: New Customer added to the database");
                                     } catch (Exception exception) {
-
+                                        LOGGER.severe("An error occurred while attempting to save the customer to the user list");
                                     }
                                 } else {
                                         JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer address. (Follow this format: 123 East St, 78666 TX)");
@@ -167,37 +170,6 @@ public class AddUser extends JFrame {
                         } else {
                             JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (Enter alpha characters only)");
                         }
-
-//                        JFrame successWindow = new JFrame();
-//                        JLabel successLabel = new JLabel("Customer successfully added!");
-//                        JButton okButton = new JButton("Ok");
-//                        okButton.setSize(30, 30);
-//
-//                        JPanel successPanel = new JPanel(new GridBagLayout());
-//                        GridBagConstraints c = new GridBagConstraints();
-//
-//                        c.gridx = 0;
-//                        c.gridy = 0;
-//                        successPanel.add(successLabel, c);
-//
-//                        c.gridx = 0;
-//                        c.gridy = 1;
-//                        successPanel.add(okButton, c);
-//
-//                        successWindow.add(successPanel, BorderLayout.CENTER);
-//                        successWindow.pack();
-//                        successWindow.setVisible(true);
-//
-//                        okButton.addActionListener(new ActionListener() {
-//                            @Override
-//                            public void actionPerformed(ActionEvent e) {
-//                                successWindow.dispose();
-//                            }
-//                        });
-//
-//                        addCustomerFrame.dispose();
-//                        addUserFrame.dispose();
-
                     }
                 });
 
@@ -212,6 +184,8 @@ public class AddUser extends JFrame {
         employeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                LOGGER.info("User selects: Add a New Employee menu option");
+
                 JFrame addEmployeeFrame = new JFrame("Add a New Employee");
                 JPanel titlePanel = new JPanel();
                 JLabel titleLabel = new JLabel("Add Employee Menu");
@@ -320,11 +294,14 @@ public class AddUser extends JFrame {
                                         if (bankNumber.matches("[0-9]")) {
                                             try {
                                                 ss.addEmployee(firstName, lastName, socialInt, salaryFloat, bankNumberInt);
+                                                LOGGER.info("New employee added to the user list");
                                                 ss.writeDatabase();
+                                                LOGGER.info("Saving changes to ShippingStore db");
                                                 JOptionPane.showMessageDialog(new JFrame(), "Success: New employee added to the database");
                                                 addEmployeeFrame.dispose();
                                             } catch (Exception e3) {
                                                 JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to save the information.");
+                                                LOGGER.severe("An error occurred while attempting to save the employee to the user list");
                                             }
 
                                         } else {
@@ -342,35 +319,6 @@ public class AddUser extends JFrame {
                         }catch (NumberFormatException nfe) {
                             JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again");
                         }
-//
-//                        JFrame successWindow = new JFrame();
-//                        JLabel successLabel = new JLabel("Employee successfully added!");
-//                        JButton okButton = new JButton("Ok");
-//                        okButton.setSize(30, 30);
-//
-//                        JPanel successPanel = new JPanel(new GridBagLayout());
-//                        GridBagConstraints c = new GridBagConstraints();
-//
-//                        c.gridx = 0;
-//                        c.gridy = 0;
-//                        successPanel.add(successLabel, c);
-//
-//                        c.gridx = 0;
-//                        c.gridy = 1;
-//                        successPanel.add(okButton, c);
-//
-//                        successWindow.add(successPanel, BorderLayout.CENTER);
-//                        successWindow.pack();
-//                        successWindow.setVisible(true);
-//
-//                        okButton.addActionListener(new ActionListener() {
-//                            @Override
-//                            public void actionPerformed(ActionEvent e) {
-//                                successWindow.dispose();
-//                            }
-//                        });
-//
-//                        addUserFrame.dispose();
                     }
                 });
                 cancelButton.addActionListener(new ActionListener() {

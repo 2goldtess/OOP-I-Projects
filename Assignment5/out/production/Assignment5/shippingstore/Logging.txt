@@ -1,4 +1,8 @@
-Nov 21, 2017 8:57:17 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 9:25:44 AM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 8:57:21 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+Nov 21, 2017 9:25:49 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
 INFO: User selects: Add a New Package
+Nov 21, 2017 9:25:53 AM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Add a New User
+Nov 21, 2017 9:25:54 AM shippingstore.shippingstore.gui.AddUser$1 actionPerformed
+INFO: User selects: Add a New Customer menu option

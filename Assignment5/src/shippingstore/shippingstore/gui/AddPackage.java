@@ -234,7 +234,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
 
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(new JFrame(), errorMessage);
-                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package");
+                        LOGGER.severe("A NumberFormatException occurred while attempting to add save the package to the packages");
                     }
                     break;
             }
