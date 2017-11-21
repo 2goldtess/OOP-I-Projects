@@ -73,7 +73,6 @@ public class SearchPackage extends JFrame implements ActionListener {
             }
             else {
                 trackingNumber = textFieldSearch.getText().trim();
-//                System.out.println(trackingNumber);
 
                 try {
                     LOGGER.info("Searching for a package.");
@@ -99,7 +98,6 @@ public class SearchPackage extends JFrame implements ActionListener {
 
         if (e.getSource().equals(btnClear)) {
             labelSearchResults.setText("");
-            System.out.println("clicked");
             LOGGER.info("User selects: Clear search results option.");
         }
     }

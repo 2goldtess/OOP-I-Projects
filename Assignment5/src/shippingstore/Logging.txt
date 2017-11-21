@@ -1,12 +1,6 @@
-Nov 21, 2017 12:58:41 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 1:03:04 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 12:58:43 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Search for a Package
-Nov 21, 2017 12:58:45 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
-INFO: Searching for a package.
-Nov 21, 2017 12:58:45 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
-SEVERE: An attempt was made to access a none-existing package in the ShippingStore db.
-Nov 21, 2017 12:58:48 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
-INFO: Searching for a package.
-Nov 21, 2017 12:58:49 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
-INFO: User selects: Clear search results option.
+Nov 21, 2017 1:03:09 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Show All packages
+Nov 21, 2017 1:03:09 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
+INFO: Generating packages table
