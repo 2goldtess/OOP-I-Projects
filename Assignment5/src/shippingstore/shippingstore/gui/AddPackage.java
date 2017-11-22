@@ -10,6 +10,8 @@ import java.util.logging.*;
 
 
 /**
+ * @author Zac Golla and Kentessa Fanfair
+ *
  * AddPackage is a subclass of JFrame class. It creates a new frame when the user selects the 'Add a New Package menu
  * option and, if valid data is provided, it adds a new package to shipping store database. It also allows the user to
  * select an option to view the list of packages held in the database. It also logs key user interactions with the class

@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 /**
+ * @author Zac Golla and Kentessa Fanfair
+ *
  * DeliverPackage class is a subclass of JFrame class. It takes the users input entered into the text fields and using
  * the information (if valid) to complete a transaction for a delivered package. It also logs key user
  * interactions with the class to a file.

@@ -12,6 +12,12 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+/**
+ * @author Zac Golla and Kentessa Fanfair
+ *
+ * showTransactions is a subclass of the JFrame class. It shows all current and completed
+ * transactions in the shipping store database.
+ */
 public class ShowTransactions extends JFrame {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
@@ -21,6 +27,11 @@ public class ShowTransactions extends JFrame {
 
     ShippingStore ss;
 
+
+    /**
+     * Default constructor for the showTransactions class. Places database transaction info into table
+     * and shows table. Initialized all components and adds them to main frame.
+     */
     ShowTransactions() {
         setSize(985, 500);
         setTitle("Transaction List");
@@ -46,6 +57,10 @@ public class ShowTransactions extends JFrame {
         setVisible(true);
     }
 
+
+    /**
+     * Populated the data from each transaction onto the table in a formatted way.
+     */
     public void addRowToJTable() {
         LOGGER.info("Generating transactions table.");
 

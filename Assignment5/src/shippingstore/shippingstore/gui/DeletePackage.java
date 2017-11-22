@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 
 /**
+ * @author Zac Golla and Kentessa Fanfair
+ *
  * DeletePackage is a subclass of JFrame class and deletes package from the  packages list based on the
  * tracking number provided by the user.
  */

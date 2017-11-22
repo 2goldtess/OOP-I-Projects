@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 
 /**
+ * @author Zac Golla and Kentessa Fanfair
+ *
  * showPackages is a subclass of the JFrame class. It shows all current and undelivered packages in the shipping store
  * database.
  *

@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 
 
 /**
+ * @author Zac Golla and Kentessa Fanfair
+ *
  * SearchPackage class is subclass of JFrame class. It creates the frame of the GUI that
  * allows the user uses to search for a package in the database. It also logs most of the user interactions with the
  * class. It also logs key user interactions with the class to a file.
