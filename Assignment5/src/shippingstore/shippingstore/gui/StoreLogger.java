@@ -28,7 +28,7 @@ public class StoreLogger {
                                            // set to true if you want the logging to print to the console.
 
         logger.setLevel(Level.INFO);
-        fileTxt = new FileHandler("Logging.txt");
+        fileTxt = new FileHandler("ShippingStoreLogs.txt");
 
          // create a TXT formatter
         formatterTxt = new SimpleFormatter();

@@ -222,6 +222,11 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
                 return;
             }
 
+            if (type == "" || specification == "" || mailingClass == "" || otherdetails1 == "" || otherdetails2 == "") {
+                JOptionPane.showMessageDialog(new JFrame(), errorMessage);
+                return;
+            }
+
             switch (comboBoxPackageType.getSelectedIndex()) {
                 case 0:
                     try {

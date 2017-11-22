@@ -65,7 +65,6 @@ public class DeletePackage extends JFrame implements ActionListener {
 
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        //setAlwaysOnTop(true);
         setVisible(true);
     }
 

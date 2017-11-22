@@ -94,7 +94,6 @@ public class DeliverPackage extends JFrame {
 
         deliverPackageFrame.pack();
         deliverPackageFrame.setVisible(true);
-        deliverPackageFrame.isAlwaysOnTop();
 
         showCurrentPackagesButton.addActionListener(new ActionListener() {
             /**

@@ -79,7 +79,6 @@ public class SearchPackage extends JFrame implements ActionListener {
         labelSearchResults = new JLabel();
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
         setVisible(true);
     }
 
