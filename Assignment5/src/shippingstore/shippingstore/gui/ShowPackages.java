@@ -9,15 +9,27 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+
+/**
+ * showPackages is a subclass of the JFrame class. It shows all current and undelivered packages in the shipping store
+ * database.
+ *
+ * */
 public class ShowPackages extends JFrame{
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    ShippingStore ss;
 
     JTable packagesTable;
     String[] columnNames = {"Tracking #", "Package Type", "Specification", "Mailing Class", "Other Details"};
     ArrayList<Package> packages;
 
-    ShippingStore ss;
 
+
+    /**
+     * Default constructor for the showTransactions class. Generated the table and necessary components for the frame
+     * Places data from the packages list info into table and displays the table to the user.
+     */
     ShowPackages() {
         setSize(1075, 500);
         setTitle("Package List");
@@ -37,11 +49,14 @@ public class ShowPackages extends JFrame{
 
         addRowToJTable();
 
-
         add(new JScrollPane(packagesTable));
         setVisible(true);
     }
 
+
+    /**
+     * Reads the data of each Package into the table in the specified format.
+     */
     public void addRowToJTable() {
         LOGGER.info("Generating packages table");
 
@@ -59,12 +74,25 @@ public class ShowPackages extends JFrame{
             }
     }
 
+
+    /**
+     * Separates each point of the string at a space to several to separate sub-strings.
+     * @param line
+     * @param index
+     * @return
+     */
     public String splitFormattedText(String line, int index) {
         String temp[] = line.trim().split(" ");
 
         return temp[index];
     }
 
+
+    /**
+     * Adds additional information needed for each package based on package type.
+     * @param p
+     * @return
+     */
     public String getOtherPackageInfo(Package p) {
         if (p instanceof Crate) {
             return "Load Weight: " + ((Crate) p).getLoadWeight() + ", Content: " + ((Crate) p).getContent();

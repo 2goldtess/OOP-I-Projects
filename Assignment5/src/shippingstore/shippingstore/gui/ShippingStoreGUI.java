@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.logging.*;
 
 /**
+ *  @author Zac Golla and Kentessa Fanfair
+ *
  * ShippingStoreGUI is a subclass of JFrame. It is the main frame (main gui) for the shipping store. It manages and
  * handles menu requests made by the user. When the user clicks a specific menu option, the event is monitored and a new
  * frame is created based on their choice.
