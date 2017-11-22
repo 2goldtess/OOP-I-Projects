@@ -11,22 +11,36 @@ import java.awt.event.*;
 import java.util.logging.Logger;
 
 
+
+/**
+ * @author Zac Golla and Kentessa Fanfair
+ *
+ * UpdateUser is a subclass of the JFrame it class. It updates the information of a user based
+ * on user ID number provided.
+ */
 public class UpdateUser extends JFrame {
     private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     private  String userId;
 
+
+    /**
+     * Default constructor for UpdateUser. Creates the initial frame that allows user to input
+     * user ID number to be updated. Also gives ability to show current Users in database. It also populated the text
+     * field with current information that was stored.
+     */
     UpdateUser() {
         ShippingStore ss;
         ss = new ShippingStore().readDatabase();
 
-        JFrame updateUserFrame = new JFrame("Shipping Store Database");
+        JFrame updateUserFrame = new JFrame("Update a User");
         GridBagConstraints c = new GridBagConstraints();
 
         c.insets = new Insets(5, 5, 5, 5);
         JPanel userFrameTitlePanel = new JPanel(new GridBagLayout());
         JLabel userFrameTitle = new JLabel("Update User Menu");
-        JLabel userFrameInstructions = new JLabel("<html>Please search for the user who's <br>details are to be updated by User ID<html>");
+        JLabel userFrameInstructions = new JLabel("<html>Please search for the user who's <br>details are to be" +
+                " updated by User ID<html>");
         c.gridx = 0;
         c.gridy = 0;
         userFrameTitlePanel.add(userFrameTitle, c);
@@ -61,6 +75,10 @@ public class UpdateUser extends JFrame {
         updateUserFrame.setVisible(true);
 
         showCurrentUsersButton.addActionListener(new ActionListener() {
+            /**
+             * Show list of users when button is clicked
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -70,12 +88,22 @@ public class UpdateUser extends JFrame {
         });
 
         cancelButton.addActionListener(new ActionListener() {
+            /**
+             * Event of Action Listener for cancel button. Cancel button disposes current frame and
+             * gives user the ability to chose a different menu option.
+             * @param e
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 updateUserFrame.dispose();
             }
         });
 
+        /**
+         * The next button builds compares user ID to whether it is either a customer
+         * or employee and loads the correct corresponding frame that is necessary.
+         * @param e
+         */
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,7 +113,8 @@ public class UpdateUser extends JFrame {
 
 
                 if (!ss.userExists(userIdInt)) {
-                    JOptionPane.showMessageDialog(new JFrame(), "User not found. Please check the user id and try again");
+                    JOptionPane.showMessageDialog(new JFrame(), "User not found. Please check the user id " +
+                            "and try again");
 
                 }
                 else if (ss.isCustomer(userIdInt)) {
@@ -170,6 +199,11 @@ public class UpdateUser extends JFrame {
                     addCustomerFrame.setVisible(true);
 
                     nextButton.addActionListener(new ActionListener() {
+                        /**
+                         * Validates user information if customer when next button is pressed. If input passes
+                         * validation it updates user with corresponding user ID.
+                         * @param e
+                         */
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             String firstName = firstNameField.getText();
@@ -189,25 +223,33 @@ public class UpdateUser extends JFrame {
                                             ss.updateCustomer(userIdInt, firstName, lastName, phoneNumber, address);
                                             ss.writeDatabase();
                                             addCustomerFrame.dispose();
-                                            JOptionPane.showMessageDialog(new JFrame(), "Success: Customer information was updated.");
+                                            JOptionPane.showMessageDialog(new JFrame(), "Success: Customer " +
+                                                    "information was updated.");
                                         } catch (Exception exception) {
 
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer address. (Follow this format: 123 East St, 78666 TX)");
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for " +
+                                                "customer address. (Follow this format: 123 East St, 78666 TX)");
                                     }
                                 } else {
-                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone number. (Follow this format: 221-129-8762)");
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for phone " +
+                                            "number. (Follow this format: 221-129-8762)");
                                 }
 
                             } else {
-                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name (Enter alpha characters only)");
+                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for customer name " +
+                                        "(Enter alpha characters only)");
                             }
                         }
 
                         });
 
                     cancelButton.addActionListener(new ActionListener() {
+                        /**
+                         * Closes add customer frame and returns to showing previous frame.
+                         * @param e
+                         */
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             addCustomerFrame.dispose();
@@ -228,7 +270,7 @@ public class UpdateUser extends JFrame {
 
                     c.insets = new Insets(5, 5, 5, 5);
 
-//                    // get user information
+                    // get user information
                     User user = ss.findUser(userIdInt);
 
                     //first name
@@ -256,7 +298,7 @@ public class UpdateUser extends JFrame {
                     centerPanel.add(lastNameField, c);
 
                     //social
-                    JLabel socialLabel = new JLabel("<html>Social:<br>(must be 9 digits)<html>");
+                    JLabel socialLabel = new JLabel("Social (must be 9 digits): ");
                     JTextField socialField = new JTextField();
                     socialField.setPreferredSize(new Dimension(120, 20));
                     socialField.setText(((Employee) user).getSocialSecurityNumber() + "");
@@ -281,7 +323,7 @@ public class UpdateUser extends JFrame {
                     updateEmployeeFrame.add(centerPanel, BorderLayout.WEST);
 
                     //bank number
-                    JLabel bankNumberLabel = new JLabel("Bank #: ");
+                    JLabel bankNumberLabel = new JLabel("Bank # (must be less than 10-digits) : ");
                     JTextField bankNumberField = new JTextField();
                     bankNumberField.setPreferredSize(new Dimension(120, 20));
                     bankNumberField.setText(((Employee) user).getBankAccountNumber() + "");
@@ -306,6 +348,11 @@ public class UpdateUser extends JFrame {
                     updateEmployeeFrame.setVisible(true);
 
                     nextButton.addActionListener(new ActionListener() {
+                        /**
+                         * Validates user information if employee when next button is pressed. If input passes
+                         * validation it updates user with corresponding user ID.
+                         * @param e
+                         */
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             String firstName = firstNameField.getText();
@@ -326,37 +373,48 @@ public class UpdateUser extends JFrame {
                                     if (social.matches("[0-9]{9}")) {
 
                                         //validate salary data
-                                        if (salary.matches("[0-9]*$")) {
+                                        if (salary.matches("[-+]?[0-9]*\\.?[0-9]+")) {
 
                                             //validate bank# data
-                                            if (bankNumber.matches("[0-9]")) {
+                                            if (bankNumber.matches("[0-9]{1,10}")) {
                                                 try {
                                                     ss.updateEmployee(userIdInt, firstName, lastName, socialInt, salaryFloat, bankNumberInt);
                                                     ss.writeDatabase();
-                                                    JOptionPane.showMessageDialog(new JFrame(), "Success: Employee information was  updated");
+                                                    JOptionPane.showMessageDialog(new JFrame(), "Success: " +
+                                                            "Employee information was  updated");
                                                     updateEmployeeFrame.dispose();
                                                 } catch (Exception e3) {
-                                                    JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to save the information.");
+                                                    JOptionPane.showMessageDialog(new JFrame(), "An error" +
+                                                            " occurred while attempting to save the information.");
                                                 }
 
                                             } else {
-                                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for bank account number. (Enter numeric values only)");
+                                                JOptionPane.showMessageDialog(new JFrame(), "Invalid entry " +
+                                                        "for bank account number. (Enter numeric values only)");
                                             }
                                         } else {
-                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for salary data number. (Enter numeric values only)");
+                                            JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for" +
+                                                    " salary data number. (Enter numeric values only)");
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social security number. (Enter exactly 9-digits)");
+                                        JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for social " +
+                                                "security number. (Enter exactly 9-digits)");
                                     }
                                 } else {
-                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee name. (Enter alpha characters only)");
+                                    JOptionPane.showMessageDialog(new JFrame(), "Invalid entry for employee " +
+                                            "name. (Enter alpha characters only)");
                                 }
                             }catch (NumberFormatException nfe) {
-                                JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry detected. Please check the information you entered and try again");
+                                JOptionPane.showMessageDialog(new JFrame(), "Empty Field or Invalid Entry " +
+                                        "detected. Please check the information you entered and try again");
                             }
                         }
                     });
                     cancelButton.addActionListener(new ActionListener() {
+                        /**
+                         * Closes add employee frame and returns to showing previous frame.
+                         * @param e
+                         */
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             updateEmployeeFrame.dispose();
@@ -364,6 +422,10 @@ public class UpdateUser extends JFrame {
                     });
 
                     cancelButton.addActionListener(new ActionListener() {
+                        /**
+                         * Closes add user frame and returns to showing original menu options.
+                         * @param e
+                         */
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             updateUserFrame.dispose();

@@ -76,13 +76,14 @@ public class Box extends Package {
      */
     @Override
     public String getFormattedText() {
-//        return String.format("| %12s | %12s | %13s | %13s | Dimension: %10d, Volume: %10d    | %n",
-//                "Box", ptn, specification, mailingClass, dimension, volume);
-
         return String.format("%s %s %s %s Dimension: %d, Volume: %d %n",
                 "Box", ptn, specification, mailingClass, dimension, volume);
     }
 
+    /**
+     * Overrides default to string method
+     * @return string containing package information
+     */
     @Override
     public String toString() {
         return "Envelope{" + "ptn=" + ptn + ", specification=" + specification +

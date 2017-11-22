@@ -254,7 +254,7 @@ public class AddUser extends JFrame {
                 centerPanel.add(lastNameField, c);
 
                 //social
-                JLabel socialLabel = new JLabel("<html>Social:<br>(must be 9 digits)<html>");
+                JLabel socialLabel = new JLabel("Social(must be 9-digits): ");
                 JTextField socialField = new JTextField();
                 socialField.setPreferredSize(new Dimension(120, 20));
                 c.gridx = 0;
@@ -277,7 +277,7 @@ public class AddUser extends JFrame {
                 addEmployeeFrame.add(centerPanel, BorderLayout.WEST);
 
                 //bank number
-                JLabel bankNumberLabel = new JLabel("Bank #: ");
+                JLabel bankNumberLabel = new JLabel("Bank # (must be less than 10-digits): ");
                 JTextField bankNumberField = new JTextField();
                 bankNumberField.setPreferredSize(new Dimension(120, 20));
                 c.gridx = 0;
@@ -326,10 +326,10 @@ public class AddUser extends JFrame {
                                 if (social.matches("[0-9]{9}")) {
 
                                     //validate salary data
-                                    if (salary.matches("[0-9]*$")) {
+                                    if (salary.matches("[-+]?[0-9]*\\.?[0-9]+")) {
 
                                         //validate bank# data
-                                        if (bankNumber.matches("[0-9]")) {
+                                        if (bankNumber.matches("[0-9]{1,10}")) {
                                             try {
                                                 ss.addEmployee(firstName, lastName, socialInt, salaryFloat, bankNumberInt);
                                                 LOGGER.info("New employee added to the user list");

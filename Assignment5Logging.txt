@@ -1,0 +1,8 @@
+Nov 21, 2017 6:24:29 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+INFO: App is now running
+Nov 21, 2017 6:24:31 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Search for a Package
+Nov 21, 2017 6:24:36 PM shippingstore.shippingstore.gui.SearchPackage actionPerformed
+INFO: User selects: Clear search results option.
+Nov 21, 2017 6:24:38 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Add a New Package

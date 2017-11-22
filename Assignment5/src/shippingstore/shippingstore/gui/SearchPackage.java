@@ -32,6 +32,7 @@ public class SearchPackage extends JFrame implements ActionListener {
     private JButton btnClear;
     private JPanel panelClear;
     private JLabel labelSearchResults;
+    private JButton showAllPackages;
 
 
     /**
@@ -69,6 +70,11 @@ public class SearchPackage extends JFrame implements ActionListener {
         add(new JLabel(""));
         add(panelClear);
 
+        // show all packages btn
+        showAllPackages = new JButton("Show All Packages");
+        showAllPackages.addActionListener(this);
+        panelSearch.add(showAllPackages);
+
         // search results
         labelSearchResults = new JLabel();
 
@@ -81,7 +87,9 @@ public class SearchPackage extends JFrame implements ActionListener {
     /**
      * Shows package of tracking number entered (if the package exist). It the package does not exist, it returns a
      * message stating that to the user. Catches exception if tracking number DNE. When the clear button is selected
-     * the search results are cleared.
+     * the search results are cleared. If the show all packages button is click the listener shows the table of all
+     * packages (useful for quick reference to get a tracking number to look up and if table does not show additional
+     * details, then the search results will contain all information about the package).
      * @param e
      */
     @Override
@@ -118,6 +126,13 @@ public class SearchPackage extends JFrame implements ActionListener {
         if (e.getSource().equals(btnClear)) {
             labelSearchResults.setText("");
             LOGGER.info("User selects: Clear search results option.");
+        }
+
+        if (e.getSource().equals(showAllPackages)) {
+            ShowPackages sp = new ShowPackages();
+            sp.setLocation(this.getX(), this.getY()+150);
+            LOGGER.info("User selects: Show all packages option.");
+
         }
     }
 }

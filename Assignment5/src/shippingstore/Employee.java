@@ -99,6 +99,10 @@ public class Employee extends User {
                 "Employee", id, firstName, lastName, socialSecurityNumber, monthlySalary, bankAccountNumber);
     }
 
+    /**
+     * Overrides default to string method
+     * @return string containing employee information
+     */
     @Override
     public String toString() {
         return "Employee{" + "id=" + id + ", firstName=" + firstName

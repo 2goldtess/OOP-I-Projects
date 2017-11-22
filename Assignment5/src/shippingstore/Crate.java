@@ -77,12 +77,14 @@ public class Crate extends Package {
      */
     @Override
     public String getFormattedText() {
-//        return String.format("| %12s | %12s | %13s | %13s | Load Weight: %10f, Content: %10s | %n",
-//                "Crate", ptn, specification, mailingClass, loadWeight, content);
         return String.format("%s %s %s %s Load-Weight: %.2f, Content: %s %n",
                 "Crate", ptn, specification, mailingClass, loadWeight, content);
     }
 
+    /**
+     * Overrides default to string method
+     * @return string containing package information
+     */
     @Override
     public String toString() {
         return "Envelope{" + "ptn=" + ptn + ", specification=" + specification +

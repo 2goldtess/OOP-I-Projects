@@ -136,6 +136,10 @@ public class Transaction implements Serializable {
         this.price = price;
     }
 
+    /**
+     * Overrides default to string method
+     * @return string containing transaction information
+     */
     @Override
     public String toString() {
         return "Transaction{" + "customerId=" + customerId + ", employeeId="

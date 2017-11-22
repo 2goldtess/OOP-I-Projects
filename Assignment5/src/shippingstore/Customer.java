@@ -78,6 +78,10 @@ public class Customer extends User {
                 "Customer", id, firstName, lastName, phoneNumber, address);
     }
 
+    /**
+     * Overrides default to string method
+     * @return string containing customer information
+     */
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName 
