@@ -117,7 +117,7 @@ public class SearchPackage extends JFrame implements ActionListener {
                     panelSearchResults.add(labelSearchResults);
                     repaint();
                     setVisible(true);
-                    LOGGER.severe("An attempt was made to access a none-existing package in the ShippingStore db.");
+                    LOGGER.warning("An attempt was made to access a none-existing package in the ShippingStore db.");
                 }
             }
         }

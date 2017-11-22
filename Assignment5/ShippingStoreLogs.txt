@@ -1,20 +1,28 @@
-Nov 21, 2017 7:43:53 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
+Nov 21, 2017 8:04:36 PM shippingstore.shippingstore.gui.ShippingStoreGUI <init>
 INFO: App is now running
-Nov 21, 2017 7:43:56 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
-INFO: User selects: Add a New Package
-Nov 21, 2017 7:44:02 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-SEVERE: A NumberFormatException occurred while attempting to add save the package
-Nov 21, 2017 7:44:02 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-INFO: Saving changes to ShippingStore db
-Nov 21, 2017 7:44:11 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-SEVERE: A NumberFormatException occurred while attempting to add save the package
-Nov 21, 2017 7:44:11 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-INFO: Saving changes to ShippingStore db
-Nov 21, 2017 7:44:15 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-SEVERE: A NumberFormatException occurred while attempting to add save the package
-Nov 21, 2017 7:44:15 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-INFO: Saving changes to ShippingStore db
-Nov 21, 2017 7:44:21 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-INFO: New package of type Box added to the packages list
-Nov 21, 2017 7:44:21 PM shippingstore.shippingstore.gui.AddPackage actionPerformed
-INFO: Saving changes to ShippingStore db
+Nov 21, 2017 8:04:39 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Update an Existing User
+Nov 21, 2017 8:04:41 PM shippingstore.shippingstore.gui.UpdateUser$3 actionPerformed
+WARNING: A method was called on a null object
+Nov 21, 2017 8:04:58 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Deliver a Package
+Nov 21, 2017 8:05:02 PM shippingstore.shippingstore.gui.ShowPackages addRowToJTable
+INFO: Generating packages table
+Nov 21, 2017 8:05:02 PM shippingstore.shippingstore.gui.DeliverPackage$1 actionPerformed
+INFO: User selects: Show All Packages option
+Nov 21, 2017 8:05:15 PM shippingstore.shippingstore.gui.DeliverPackage$4 actionPerformed
+INFO: Package delivered: Shipping transactions completed, the transactions was added to the transactions list.
+Nov 21, 2017 8:05:15 PM shippingstore.shippingstore.gui.DeliverPackage$4 actionPerformed
+INFO: Package with tracking number: 'EOMUC' was deleted from the packages list.
+Nov 21, 2017 8:05:15 PM shippingstore.shippingstore.gui.DeliverPackage$4 actionPerformed
+INFO: Saving changes to ShippingStore db.
+Nov 21, 2017 8:05:16 PM shippingstore.shippingstore.gui.DeliverPackage$3 actionPerformed
+INFO: User selects: Cancel deliver package option
+Nov 21, 2017 8:05:18 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Show All Transactions
+Nov 21, 2017 8:05:18 PM shippingstore.shippingstore.gui.ShowTransactions addRowToJTable
+INFO: Generating transactions table.
+Nov 21, 2017 8:05:22 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: User selects: Save & Exit Program
+Nov 21, 2017 8:05:22 PM shippingstore.shippingstore.gui.ShippingStoreGUI mouseClicked
+INFO: Exiting Program

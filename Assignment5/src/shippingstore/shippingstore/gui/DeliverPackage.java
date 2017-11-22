@@ -182,14 +182,14 @@ public class DeliverPackage extends JFrame {
                             LOGGER.info("Package delivered: Shipping transactions completed, the transactions was" +
                                     " added to the transactions list.");
                             ss.deletePackage(trackingNumber);
-                            LOGGER.warning("Package with tracking number: '" + trackingNumber +"' was deleted from " +
+                            LOGGER.info("Package with tracking number: '" + trackingNumber +"' was deleted from " +
                                     "the packages list.");
                             ss.writeDatabase();
                             LOGGER.info("Saving changes to ShippingStore db.");
                         } catch (Exception e1) {
                             JOptionPane.showMessageDialog(new JFrame(), "An error occurred while attempting to " +
                                     "complete the transaction.");
-                            LOGGER.info( "An error occurred while attempting to complete the transaction.");
+                            LOGGER.severe( "An error occurred while attempting to complete the transaction.");
                         }
 
                         JOptionPane.showMessageDialog(new JFrame(), "Success: Transaction was completed.");

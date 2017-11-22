@@ -174,7 +174,7 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
                 break;
             case 9:
                 LOGGER.info("User selects: Save & Exit Program");
-                LOGGER.warning("Exiting Program");
+                LOGGER.info("Exiting Program");
                 Runtime.getRuntime().exit(0);
                 break;
         }

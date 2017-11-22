@@ -281,7 +281,7 @@ public class AddPackage extends JFrame implements ItemListener, ActionListener {
             LOGGER.info("Saving changes to ShippingStore db");
         }
         if (e.getSource() == btnReset) {
-            LOGGER.warning("Resetting 'Add a New Package' form");
+            LOGGER.info("Resetting 'Add a New Package' form");
 
             textFieldTrackingNumber.setText(randomlyGeneratedTrackingNumber());
             comboBoxPackageType.setSelectedIndex(-1);
