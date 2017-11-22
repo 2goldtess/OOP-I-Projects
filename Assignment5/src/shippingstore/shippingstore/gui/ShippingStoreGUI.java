@@ -13,7 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.*;
 
-
+/**
+ * ShippingStoreGUI is a subclass of JFrame. It is the main frame (main gui) for the shipping store. It manages and
+ * handles menu requests made by the user. When the user clicks a specific menu option, the event is monitored and a new
+ * frame is created based on their choice.
+ */
 public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowListener {
 
     private static final List<String> menuOptions = Arrays.asList("Show All Packages", "Add a New Package",
@@ -29,6 +33,12 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
     private JPanel panelMenu;
     private JList  listMenu;
 
+    /**
+     * Creates and initializes a StoreLogger object that logs the user's interaction with the class. It also creates
+     * and initialize a new ShippingStoreGUI. It so calls the initLookAndFeel method that setups up the look and feel of
+     * the app.
+     * @param args
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -47,6 +57,10 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
         });
     }
 
+    /**
+     * Default constructor for ShippingStoreGUI. It sets the default settings for the frame and creates, initialize, and
+     * add all the defined components to the frame for the GUI.
+     */
     private ShippingStoreGUI() {
         LOGGER.info("App is now running");
 
@@ -94,6 +108,11 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
         add(panelMenu, BorderLayout.CENTER);
     }
 
+    /**
+     * This method responds to mouse click events. Based on when the user clicks the screen if a particular part of the
+     * menu was clicked that even generates a new frame pertaining to the menu option.
+     * @param e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         switch (listMenu.getSelectedIndex()) {
@@ -159,57 +178,102 @@ public class ShippingStoreGUI  extends JFrame implements MouseListener, WindowLi
         }
     }
 
+    /**
+     * Listener for mousePressed events
+     * @param e
+     */
     @Override
     public void mousePressed(MouseEvent e) {
 
     }
 
+    /**
+     * Listener for mousePressed events
+     * @param e
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
 
     }
 
+    /**
+     * Listener for mouseEntered events
+     * @param e
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
 
+    /**
+     * Listener for mouseExited events
+     * @param e
+     */
     @Override
     public void mouseExited(MouseEvent e) {
 
     }
 
+    /**
+     * Listener for windowOpened events
+     * @param e
+     */
     @Override
     public void windowOpened(WindowEvent e) {
 
     }
 
+    /**
+     * Listener for windowClosing events. When a window closing event is detected, the shipping stored db is read for
+     * changes made and subsequently saved.
+     * @param e
+     */
     @Override
     public void windowClosing(WindowEvent e) {
         ss.readDatabase();
         ss.writeDatabase();
     }
 
+    /**
+     * Listener for windowClosed events
+     * @param e
+     */
     @Override
     public void windowClosed(WindowEvent e) {
 
     }
 
+    /**
+     * Listener for windowIconified events
+     * @param e
+     */
     @Override
     public void windowIconified(WindowEvent e) {
 
     }
 
+    /**
+     * Listener for windowDeiconified events
+     * @param e
+     */
     @Override
     public void windowDeiconified(WindowEvent e) {
 
     }
 
+    /**
+     * Listener for windowActivated events
+     * @param e
+     */
     @Override
     public void windowActivated(WindowEvent e) {
 
     }
 
+    /**
+     * Listener for windowDeactivated events
+     * @param e
+     */
     @Override
     public void windowDeactivated(WindowEvent e) {
 
