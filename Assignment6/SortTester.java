@@ -1,21 +1,27 @@
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
+
 
 /**
  *
  * @author vangelis
  */
 public class SortTester {
+    static final int AVAILABLEPROCESSORS = Runtime.getRuntime().availableProcessors();
+    //static final int arraySizes[] = {1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000, 512000 };
+    static  final  int RUNTIME = 11;
 
     public static void main(String[] args) {
         runSortTester();
     }
 
     public static void runSortTester() {
-        int LENGTH = 100000;   // length of array to sort
-        Integer[] a = createRandomArray(LENGTH);
+        int LENGTH = 1000;   // length of array to sort
+        Integer[] randomArrays = null;
+
 
         Comparator<Integer> comp = new Comparator<Integer>() {
             public int compare(Integer d1, Integer d2) {
@@ -23,18 +29,22 @@ public class SortTester {
             }
         };
 
-        // run the algorithm and time how long it takes to sort the elements
-        long startTime = System.currentTimeMillis();
-        MergeSorter.sort(a, comp);
-        long endTime = System.currentTimeMillis();
 
-        if (!isSorted(a, comp)) {
-            throw new RuntimeException("not sorted afterward: " + Arrays.toString(a));
+        for (int i = 0; i < RUNTIME; i++) {
+            randomArrays = createRandomArray(LENGTH);
+
+            // run the algorithm and time how long it takes to sort the elements
+            long startTime = System.currentTimeMillis();
+            MergeSorter.sort(randomArrays, comp);
+            long endTime = System.currentTimeMillis();
+
+            System.out.printf("%10d elements  =>  %6d ms \n", LENGTH, endTime - startTime);
+            LENGTH = LENGTH * 2;
         }
 
-        System.out.printf("%10d elements  =>  %6d ms \n", LENGTH, endTime - startTime);
-        System.out.println(Runtime.getRuntime().availableProcessors());
-
+        if (!isSorted(randomArrays, comp)) {
+            throw new RuntimeException("not sorted afterward: " + Arrays.toString(randomArrays));
+        }
     }
 
     /**
