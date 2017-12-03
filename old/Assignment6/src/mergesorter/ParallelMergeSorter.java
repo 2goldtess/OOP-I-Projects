@@ -1,10 +1,21 @@
+package src.mergesorter;
 
 import java.util.*;
 
 /**
  * This class carries out the merge sort algorithm.
  */
-public class MergeSorter {
+public class ParallelMergeSorter {
+
+    private static final int AVAILABLEPROCESSORS = Runtime.getRuntime().availableProcessors();
+    private static int AVAILABLETHREADS = AVAILABLEPROCESSORS;
+    private  Thread thread;
+    private  String threadName;
+
+    ParallelMergeSorter(String threadName) {
+        this.threadName = threadName;
+        System.out.printf("%s threads:  %n", threadName);
+    }
 
     /**
      * Sorts an array, using the merge sort algorithm.
@@ -13,7 +24,7 @@ public class MergeSorter {
      * @param comp the comparator to compare array elements
      */
     public static <E> void sort(E[] a, Comparator<? super E> comp) {
-        mergeSort(a, 0, a.length - 1, comp);
+        parallelMergeSort(a, 0, a.length - 1, comp);
     }
 
     /**
@@ -24,16 +35,49 @@ public class MergeSorter {
      * @param to the last index of the range to sort
      * @param comp the comparator to compare array elements
      */
-    private static <E> void mergeSort(E[] a, int from, int to,
-            Comparator<? super E> comp) {
-        if (from == to) {
-            return;
-        }
-        int mid = (from + to) / 2;
-        // Sort the first and the second half
-        mergeSort(a, from, mid, comp);
-        mergeSort(a, mid + 1, to, comp);
-        merge(a, from, mid, to, comp);
+    private static <E> void parallelMergeSort(E[] a, int from, int to,
+                                      Comparator<? super E> comp) {
+
+            if (from == to) {
+                return;
+            }
+
+
+            if (AVAILABLETHREADS <= 1)
+                MergeSorter.mergeSort(a, from, to, comp);
+            else {
+
+                int mid = (from + to) / 2;
+
+                //  Runnable r = new Runnable() {
+                //    @Override
+                //    public void run() {
+                // Sort the first and the second half
+                parallelMergeSort(a, from, mid, comp);
+                //    }
+                // };
+
+                // Runnable r2 = new Runnable() {
+                //  @Override
+                //  public void run() {
+                parallelMergeSort(a, mid + 1, to, comp);
+
+                //  }
+                //  };
+
+
+                merge(a, from, mid, to, comp);
+
+                // Thread t1 = new Thread(r, "thread 1");
+                // Thread t2 = new Thread(r2);
+
+                //  t1.start();
+                // t2.start();
+
+                //  AVAILABLETHREADS -= 2;
+//            System.out.println(THREADSREMAINING);
+
+            }
     }
 
     /**
@@ -47,9 +91,9 @@ public class MergeSorter {
      */
     @SuppressWarnings("unchecked")
     private static <E> void merge(E[] a,
-            int from, int mid, int to, Comparator<? super E> comp) {
+                                  int from, int mid, int to, Comparator<? super E> comp) {
         int n = to - from + 1;
-         // Size of the range to be merged
+        // Size of the range to be merged
 
         // Merge both halves into a temporary array b
         Object[] b = new Object[n];
@@ -59,7 +103,7 @@ public class MergeSorter {
         int i2 = mid + 1;
         // Next element to consider in the second range
         int j = 0;
-         // Next open position in b
+        // Next open position in b
 
         // As long as neither i1 nor i2 past the end, move
         // the smaller element into b
@@ -95,4 +139,6 @@ public class MergeSorter {
             a[from + j] = (E) b[j];
         }
     }
+
+
 }
