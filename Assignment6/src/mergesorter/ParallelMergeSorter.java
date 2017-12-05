@@ -8,18 +8,17 @@ public class ParallelMergeSorter {
      * Sorts an array, using the merge sort algorithm.
      * @param a the array to sort
      * @param comp the comparator to compare array elements
+     * @param additionalThreads the number of threads allotted for the current iteration
      */
-    public static <E> void sort(E[] a, Comparator<? super E> comp, int availableThreads) {
-        mergeSort(a, 0, a.length - 1, comp, availableThreads);
+    public static <E> void sort(E[] a, Comparator<? super E> comp, int additionalThreads) {
+        mergeSort(a, 0, a.length - 1, comp, additionalThreads);
     }
 
     private static <E> void mergeSort(E[] a, int from, int to, Comparator<? super E> comp, int availableThreads) {
 
-//        System.out.println(Thread.currentThread().getName());
 
-        if (from == to) { // or from.length < 1?
+        if (from == to)
             return;
-        }
 
         if (availableThreads <= 1) {
             MergeSorter.mergeSort(a, from, to, comp);

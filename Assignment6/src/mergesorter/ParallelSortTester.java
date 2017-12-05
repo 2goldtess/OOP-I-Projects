@@ -6,19 +6,16 @@ import java.util.Comparator;
 class ParallelSortTester extends Thread {
 
     static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
-
     static final int ROUNDS = 15;
+
     int LENGTH = 1000;   // length of array to sort for first iteration
     Integer[] randomArrays = null;
 
-
-//    ParallelSortTester(String threadName) {
-//        super(threadName);
-//    }
-
-
-
-
+    /**
+     * This method overrides the thread method inherited from the Thread class. For each round an array of random
+     * numbers are created and passed to the ParallelMergeSort class which sorts the array at different speeds based on
+     * the number of available processors issued to the calling method.
+     */
     @Override
     public void run() {
 
@@ -27,7 +24,6 @@ class ParallelSortTester extends Thread {
                 return d1.compareTo(d2);
             }
         };
-
 
         for (int k = 1; k <= AVAILABLE_PROCESSORS; k *= 2 ) {
 
