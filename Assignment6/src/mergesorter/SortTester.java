@@ -1,9 +1,8 @@
 package mergesorter;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
-
-
 
 
 /**
@@ -11,32 +10,40 @@ import java.util.Random;
  * @author vangelis
  */
 public class SortTester {
+
+    /**
+     * This is the main method. It is used to test the ParallelMergeSorter class
+     * @param args
+     */
     public static void main(String[] args) {
         ParallelSortTester parallelSortTester = new ParallelSortTester();
         parallelSortTester.start();
     }
 
-//    public static void runSortTester() {
-//        int LENGTH = 100000;   // length of array to sort
-//        Integer[] a = createRandomArray(LENGTH);
-//
-//        Comparator<Integer> comp = new Comparator<Integer>() {
-//            public int compare(Integer d1, Integer d2) {
-//                return d1.compareTo(d2);
-//            }
-//        };
-//
-//        // run the algorithm and time how long it takes to sort the elements
-//        long startTime = System.currentTimeMillis();
-//        MergeSorter.sort(a, comp);
-//        long endTime = System.currentTimeMillis();
-//
-//        if (!isSorted(a, comp)) {
-//            throw new RuntimeException("not sorted afterward: " + Arrays.toString(a));
-//        }
-//
-//        System.out.printf("%10d elements  =>  %6d ms \n", LENGTH, endTime - startTime);
-//    }
+    /**
+     * This method is used to tests MergeSorter class using a single thread
+     */
+    public static void runSortTester() {
+        int LENGTH = 100000;   // length of array to sort
+        Integer[] a = createRandomArray(LENGTH);
+
+        Comparator<Integer> comp = new Comparator<Integer>() {
+            public int compare(Integer d1, Integer d2) {
+                return d1.compareTo(d2);
+            }
+        };
+
+        // run the algorithm and time how long it takes to sort the elements
+        long startTime = System.currentTimeMillis();
+        MergeSorter.sort(a, comp);
+        long endTime = System.currentTimeMillis();
+
+        if (!isSorted(a, comp)) {
+            throw new RuntimeException("not sorted afterward: " + Arrays.toString(a));
+        }
+
+        System.out.printf("%10d elements  =>  %6d ms \n", LENGTH, endTime - startTime);
+    }
 
     /**
      * Returns true if the given array is in sorted ascending order.

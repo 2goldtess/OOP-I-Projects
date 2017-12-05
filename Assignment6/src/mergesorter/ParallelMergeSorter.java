@@ -2,20 +2,34 @@ package mergesorter;
 
 import java.util.Comparator;
 
+/**
+ * This class carries out the merge sort algorithm using multiple threads.
+ * It is a modified version of the MergeSorter class. It contains a modified version of the sort
+ * method and the MergeSort method. Both methods contain a parameter for the number of threads available.
+ *
+ * @author Kentessa Fanfair
+ */
 public class ParallelMergeSorter {
 
     /**
-     * Sorts an array, using the merge sort algorithm.
+     * Sorts an array, using the merge sort algorithm and additional threads.
      * @param a the array to sort
      * @param comp the comparator to compare array elements
-     * @param additionalThreads the number of threads allotted for the current iteration
+     * @param availableThreads the number of threads allotted for the current iteration
      */
-    public static <E> void sort(E[] a, Comparator<? super E> comp, int additionalThreads) {
-        mergeSort(a, 0, a.length - 1, comp, additionalThreads);
+    public static <E> void sort(E[] a, Comparator<? super E> comp, int availableThreads) {
+        mergeSort(a, 0, a.length - 1, comp, availableThreads);
     }
 
+    /**
+     * Sorts a range of an array, using the merge sort algorithm using multiple threads.
+     *
+     * @param a the array to sort
+     * @param from the first index of the range to sort
+     * @param to the last index of the range to sort
+     * @param comp the comparator to compare array elements
+     */
     private static <E> void mergeSort(E[] a, int from, int to, Comparator<? super E> comp, int availableThreads) {
-
 
         if (from == to)
             return;
@@ -27,20 +41,17 @@ public class ParallelMergeSorter {
 
         int mid = (from + to) / 2;
 
-        // Sort the first and the second half
+        // Sort the first and the second half on separate threads (if available)
         Thread leftSorterThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 mergeSort(a, from, mid, comp, availableThreads / 2);
             }
-
         });
-
 
         Thread rightSorterThread = new Thread(new Runnable() {
             @Override
             public void run() {
-
                 mergeSort(a, mid + 1, to, comp, availableThreads / 2);
             }
         });
@@ -52,8 +63,8 @@ public class ParallelMergeSorter {
         try {
             leftSorterThread.join();
             rightSorterThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
         }
 
         ParallelMergeSorter.merge(a, from, mid, to, comp);

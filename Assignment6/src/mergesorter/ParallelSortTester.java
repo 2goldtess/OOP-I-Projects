@@ -3,6 +3,11 @@ package mergesorter;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * This class is used to test the ParallelMergeSorter class.
+ *
+ * @author Kentessa Fanfair
+ */
 class ParallelSortTester extends Thread {
 
     static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
@@ -12,7 +17,7 @@ class ParallelSortTester extends Thread {
     Integer[] randomArrays = null;
 
     /**
-     * This method overrides the thread method inherited from the Thread class. For each round an array of random
+     * This method overrides the run method inherited from the Thread class. For each round an array of random
      * numbers are created and passed to the ParallelMergeSort class which sorts the array at different speeds based on
      * the number of available processors issued to the calling method.
      */
