@@ -3,11 +3,6 @@ package mergesorter;
 import java.util.Comparator;
 
 public class ParallelMergeSorter {
-    private static int runningThreads;
-
-    public synchronized void decrementRunningThreads() {
-        runningThreads--;
-    }
 
     /**
      * Sorts an array, using the merge sort algorithm.
@@ -20,7 +15,7 @@ public class ParallelMergeSorter {
 
     private static <E> void mergeSort(E[] a, int from, int to, Comparator<? super E> comp, int availableThreads) {
 
-//        runningThreads = availableThreads - 1;
+//        System.out.println(Thread.currentThread().getName());
 
         if (from == to) { // or from.length < 1?
             return;
@@ -37,7 +32,7 @@ public class ParallelMergeSorter {
         Thread leftSorterThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                mergeSort(a, from, mid, comp, availableThreads);
+                mergeSort(a, from, mid, comp, availableThreads / 2);
             }
 
         });
@@ -46,7 +41,8 @@ public class ParallelMergeSorter {
         Thread rightSorterThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                mergeSort(a, mid + 1, to, comp, availableThreads - 1);
+
+                mergeSort(a, mid + 1, to, comp, availableThreads / 2);
             }
         });
 
@@ -61,7 +57,6 @@ public class ParallelMergeSorter {
             e.printStackTrace();
         }
 
-        //System.out.println(Runtime.getRuntime().availableProcessors());
         ParallelMergeSorter.merge(a, from, mid, to, comp);
     }
 

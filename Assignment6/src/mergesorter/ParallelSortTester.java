@@ -5,7 +5,8 @@ import java.util.Comparator;
 
 class ParallelSortTester extends Thread {
 
-    static final int AVAILABLETHREADS = Runtime.getRuntime().availableProcessors();
+    static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+
     static final int ROUNDS = 15;
     int LENGTH = 1000;   // length of array to sort for first iteration
     Integer[] randomArrays = null;
@@ -28,7 +29,7 @@ class ParallelSortTester extends Thread {
         };
 
 
-        for (int k = 1; k <= AVAILABLETHREADS; k *= 2 ) {
+        for (int k = 1; k <= AVAILABLE_PROCESSORS; k *= 2 ) {
 
             System.out.printf("%n%n %s :%n", k + " threads");
 
@@ -38,7 +39,7 @@ class ParallelSortTester extends Thread {
 
                 // run the algorithm and time how long it takes to sort the elements
                 long startTime = System.currentTimeMillis();
-                ParallelMergeSorter.sort(randomArrays, comp, k / 2);
+                ParallelMergeSorter.sort(randomArrays, comp, k);
                 long endTime = System.currentTimeMillis();
 
                 if (!SortTester.isSorted(randomArrays, comp)) {

@@ -12,8 +12,8 @@ import java.util.Random;
  */
 public class SortTester {
     public static void main(String[] args) {
-        ParallelSortTester pst = new ParallelSortTester();
-        pst.start();
+        ParallelSortTester parallelSortTester = new ParallelSortTester();
+        parallelSortTester.start();
     }
 
 //    public static void runSortTester() {
