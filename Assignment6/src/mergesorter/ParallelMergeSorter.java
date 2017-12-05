@@ -29,8 +29,9 @@ public class ParallelMergeSorter {
      * @param to the last index of the range to sort
      * @param comp the comparator to compare array elements
      */
-    private static <E> void mergeSort(E[] a, int from, int to, Comparator<? super E> comp, int availableThreads) {
+    private static <E> void mergeSort(final E[] a, final int from, final int to, final Comparator<? super E> comp, final int availableThreads) {
 
+        System.out.println(Thread.currentThread().getName());
         if (from == to)
             return;
 
@@ -39,7 +40,7 @@ public class ParallelMergeSorter {
             return;
         }
 
-        int mid = (from + to) / 2;
+        final int mid = (from + to) / 2;
 
         // Sort the first and the second half on separate threads (if available)
         Thread leftSorterThread = new Thread(new Runnable() {
@@ -81,8 +82,7 @@ public class ParallelMergeSorter {
      * @param comp the comparator to compare array elements
      */
     @SuppressWarnings("unchecked")
-    private static <E> void merge(E[] a,
-                                  int from, int mid, int to, Comparator<? super E> comp) {
+    private static <E> void merge(E[] a, int from, int mid, int to, Comparator<? super E> comp) {
         int n = to - from + 1;
         // Size of the range to be merged
 

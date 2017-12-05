@@ -10,7 +10,8 @@ import java.util.Comparator;
  */
 class ParallelSortTester extends Thread {
 
-    static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors();
+    static final int AVAILABLE_PROCESSORS = Runtime.getRuntime().availableProcessors() * 2; // *2 to show slow down when more threads
+                                                                                            // are created than the system can support
     static final int ROUNDS = 15;
 
     int LENGTH = 1000;   // length of array to sort for first iteration
